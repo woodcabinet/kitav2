@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="108" fill="#080C09"/>
+  <rect x="16" y="16" width="480" height="480" rx="96" fill="none" stroke="#D4A843" stroke-width="3" opacity="0.2"/>
+  <!-- K left -->
+  <path d="M128 140 L128 372 L168 372 L168 274 L248 372 L298 372 L200 258 L290 140 L242 140 L168 244 L168 140 Z" fill="#D4A843"/>
+  <!-- K right -->
+  <path d="M268 140 L268 372 L308 372 L308 274 L388 372 L438 372 L340 258 L430 140 L382 140 L308 244 L308 140 Z" fill="#D4A843" opacity="0.7"/>
+  <!-- Subtle gold glow -->
+  <circle cx="256" cy="256" r="140" fill="none" stroke="#D4A843" stroke-width="1" opacity="0.06"/>
+</svg>

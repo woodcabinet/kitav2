@@ -1,0 +1,39 @@
+{
+  "name": "KitaKakis — By Singaporeans, For Singaporeans",
+  "short_name": "KitaKakis",
+  "description": "Discover Singapore's freshest streetwear & fashion brands",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#080C09",
+  "theme_color": "#080C09",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["shopping", "lifestyle"],
+  "lang": "en",
+  "dir": "ltr"
+}
