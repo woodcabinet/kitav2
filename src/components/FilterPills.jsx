@@ -1,6 +1,7 @@
-const filters = ['All', 'Drops', 'Events', 'TikTok', 'Fashion'];
+const defaultFilters = ['All', 'Threads', 'TikTok', 'Drops', 'Events', 'Fashion'];
 
-export default function FilterPills({ active, onChange }) {
+export default function FilterPills({ active, onChange, pills }) {
+  const filters = pills || defaultFilters;
   return (
     <div className="flex gap-1.5 px-4 py-2 overflow-x-auto no-scrollbar">
       {filters.map(f => (

@@ -8,6 +8,7 @@ export default function StoryViewer({ stories, currentIndex, onClose, onNext, on
   const [progress, setProgress] = useState(0);
   const [liked, setLiked] = useState(false);
   const [paused, setPaused] = useState(false);
+  const [reply, setReply] = useState('');
   const shouldAdvance = useRef(false);
 
   const item = story.items[itemIndex];
@@ -146,9 +147,16 @@ export default function StoryViewer({ stories, currentIndex, onClose, onNext, on
         </div>
 
         <div className="flex items-center gap-3 px-4">
-          <div className="flex-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2.5">
-            <p className="text-white/40 text-sm">Reply to {story.brandName}...</p>
-          </div>
+          <input
+            type="text"
+            value={reply}
+            onChange={e => setReply(e.target.value)}
+            onFocus={() => setPaused(true)}
+            onBlur={() => setPaused(false)}
+            placeholder={`Reply to ${story.brandName}...`}
+            onClick={e => e.stopPropagation()}
+            className="flex-1 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:border-white/40"
+          />
           <button
             onClick={() => setLiked(!liked)}
             className="w-10 h-10 flex items-center justify-center"
@@ -158,8 +166,14 @@ export default function StoryViewer({ stories, currentIndex, onClose, onNext, on
               className={`transition-all ${liked ? 'fill-rust text-rust scale-110' : 'text-white'}`}
             />
           </button>
-          <button className="w-10 h-10 flex items-center justify-center">
-            <Send size={22} className="text-white" />
+          <button
+            onClick={e => {
+              e.stopPropagation();
+              if (reply.trim()) setReply('');
+            }}
+            className="w-10 h-10 flex items-center justify-center"
+          >
+            <Send size={22} className={reply.trim() ? 'text-gold' : 'text-white/50'} />
           </button>
         </div>
       </div>

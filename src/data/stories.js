@@ -38,9 +38,23 @@ const storyContent = {
   squarishmind: [
     { id: 'sms1', caption: 'Art meets fashion meets Singapore. 🔲', timestamp: '2d ago' },
   ],
+  rageyvintage: [
+    { id: 'rvs1', caption: 'Vintage starter jackets just dropped. Telegram was cool but KitaKakis is safer 🔥', timestamp: '3h ago' },
+    { id: 'rvs2', caption: 'Queensway haul incoming. 90s heat only.', timestamp: '3h ago' },
+  ],
+  woofies: [
+    { id: 'wfs1', caption: 'Restock day at Woofie\'s. Everything $10. Pull up to Bugis 🐾', timestamp: '5h ago' },
+  ],
+  nearestten: [
+    { id: 'nts1', caption: 'New 3-storey store at Pagoda Street. Rooftop cafe vibes ☕', timestamp: '1d ago' },
+    { id: 'nts2', caption: 'Y2K fairycore section just got restocked ✨', timestamp: '1d ago' },
+  ],
+  twoworlds: [
+    { id: 'tws1', caption: 'European village thrift in Bugis. 30+ vendors, daily restocks 🌍', timestamp: '2d ago' },
+  ],
 };
 
-const unseenBrands = ['toneff', 'koyoyu', 'maroon', 'charmsandlinks', 'no1apparels'];
+const unseenBrands = ['toneff', 'koyoyu', 'maroon', 'charmsandlinks', 'no1apparels', 'rageyvintage', 'woofies', 'nearestten'];
 
 export const stories = brands.map(brand => ({
   brandId: brand.id,

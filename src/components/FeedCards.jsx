@@ -214,6 +214,7 @@ export function BrandStoryCard({ post, liked, onLike, onBrandClick }) {
 }
 
 export function EventCard({ post }) {
+  const [rsvpd, setRsvpd] = useState(false);
   return (
     <div className="rounded-xl overflow-hidden" style={{ background: '#111A10' }}>
       <div className="p-3.5">
@@ -234,18 +235,26 @@ export function EventCard({ post }) {
           <span className="flex items-center gap-1"><MapPin size={10} className="text-rust/50" /> {post.venue}</span>
         </div>
         <p className="text-[12px] text-cream/50 mb-3 leading-relaxed">{post.description}</p>
-        <button className="w-full py-2 rounded-lg text-sm font-medium text-gold/80 transition-all hover:text-gold" style={{
-          background: 'rgba(212,168,67,0.06)',
-          border: '1px solid rgba(212,168,67,0.15)',
-        }}>
-          RSVP
+        <button
+          onClick={() => setRsvpd(r => !r)}
+          className="w-full py-2 rounded-lg text-sm font-medium transition-all active:scale-[0.98]"
+          style={rsvpd ? {
+            background: 'rgba(122,158,122,0.12)',
+            border: '1px solid rgba(122,158,122,0.25)',
+            color: '#7A9E7A',
+          } : {
+            background: 'rgba(212,168,67,0.06)',
+            border: '1px solid rgba(212,168,67,0.15)',
+            color: 'rgba(212,168,67,0.8)',
+          }}>
+          {rsvpd ? "RSVP'd ✓" : 'RSVP'}
         </button>
       </div>
     </div>
   );
 }
 
-export function DropPreviewCard({ post, wishlisted, onWishlist }) {
+export function DropPreviewCard({ post, wishlisted, onWishlist, onShopClick }) {
   const { timeLeft } = useCountdown();
   return (
     <div className="rounded-xl overflow-hidden" style={{
@@ -283,9 +292,10 @@ export function DropPreviewCard({ post, wishlisted, onWishlist }) {
             </div>
           ))}
         </div>
-        <button className="w-full py-2.5 rounded-lg text-sm font-semibold text-offblack" style={{
-          background: 'linear-gradient(135deg, #D4A843 0%, #E4C373 100%)',
-        }}>
+        <button
+          onClick={() => onShopClick?.()}
+          className="w-full py-2.5 rounded-lg text-sm font-semibold text-offblack active:scale-[0.98] transition-transform"
+          style={{ background: 'linear-gradient(135deg, #D4A843 0%, #E4C373 100%)' }}>
           View Full Drop
         </button>
       </div>
@@ -311,6 +321,75 @@ export function CommunityCard({ post, liked, onLike }) {
         <p className="text-[13px] leading-relaxed text-cream/55">{post.content}</p>
       </div>
       <PostActions liked={liked} onLike={() => onLike?.(post.id)} likeCount={post.likes} />
+    </div>
+  );
+}
+
+// =================== THREAD CARD — newsletter / announcement style ===================
+
+export function ThreadCard({ post }) {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div className="mx-3 my-2 rounded-2xl overflow-hidden" style={{
+      background: 'linear-gradient(165deg, #151D13 0%, #131A11 50%, #121810 100%)',
+      border: `1px solid ${post.tagColor || '#D4A843'}25`,
+    }}>
+      {/* Thread header */}
+      <div className="px-4 py-2.5 flex items-center gap-2" style={{
+        background: `linear-gradient(90deg, ${post.tagColor || '#D4A843'}12 0%, rgba(14,20,12,0.5) 100%)`,
+        borderBottom: '1px solid rgba(36,56,38,0.25)',
+      }}>
+        <span className="text-lg">{post.authorAvatar}</span>
+        <span className="text-[12px] font-semibold text-cream/80">{post.author}</span>
+        <span className="text-warm/25">·</span>
+        <span className="text-[10px] text-warm/35">{post.timestamp}</span>
+        <span className="ml-auto text-[8px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded" style={{
+          background: `${post.tagColor || '#D4A843'}18`,
+          color: post.tagColor || '#D4A843',
+          border: `1px solid ${post.tagColor || '#D4A843'}30`,
+        }}>{post.tag}</span>
+      </div>
+
+      {/* Thread body */}
+      <div className="px-4 py-3">
+        <h3 className="text-[14px] font-bold text-cream/90 leading-snug mb-2">{post.title}</h3>
+        <p className="text-[12px] text-cream/55 leading-relaxed mb-3">{post.body}</p>
+
+        {/* Bullet points */}
+        <div className={`space-y-1.5 ${!expanded && post.bullets?.length > 3 ? 'max-h-[72px] overflow-hidden relative' : ''}`}>
+          {(expanded ? post.bullets : post.bullets?.slice(0, 3))?.map((bullet, i) => (
+            <div key={i} className="flex items-start gap-2 text-[11px] text-cream/60 leading-snug">
+              <span className="text-gold/60 shrink-0 mt-0.5">→</span>
+              <span>{bullet}</span>
+            </div>
+          ))}
+          {!expanded && post.bullets?.length > 3 && (
+            <div className="absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[#131A11] to-transparent" />
+          )}
+        </div>
+        {post.bullets?.length > 3 && (
+          <button onClick={() => setExpanded(!expanded)}
+            className="text-[11px] text-gold/70 font-medium mt-1.5">
+            {expanded ? 'Show less' : `+ ${post.bullets.length - 3} more`}
+          </button>
+        )}
+      </div>
+
+      {/* Thread footer */}
+      <div className="px-4 py-2 flex items-center justify-between" style={{ borderTop: '1px solid rgba(36,56,38,0.2)' }}>
+        <div className="flex items-center gap-3">
+          <button className="text-[11px] text-warm/40 flex items-center gap-1 hover:text-cream/60 transition-colors">
+            <Heart size={12} /> Like
+          </button>
+          <button className="text-[11px] text-warm/40 flex items-center gap-1 hover:text-cream/60 transition-colors">
+            <MessageCircle size={12} /> Discuss
+          </button>
+        </div>
+        <button className="text-[11px] text-warm/40 flex items-center gap-1 hover:text-cream/60 transition-colors">
+          <Share2 size={12} /> Share
+        </button>
+      </div>
     </div>
   );
 }

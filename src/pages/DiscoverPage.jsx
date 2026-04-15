@@ -5,6 +5,17 @@ import { brands } from '../data/brands';
 // Real SG events scraped from web
 const events = [
   {
+    id: 'e0', title: 'ARTBOX Camp 2026', date: 'Apr 3–5 & 10–12', time: '12–11PM',
+    venue: 'Singapore Expo Hall 3, 1 Expo Drive', area: 'SG Expo',
+    desc: '250+ rising brands, street food, art installations & Wiggle Wiggle showcase. Singapore\'s boldest creative festival.',
+    entry: '$7–8', type: 'Fair',
+    tags: ['250+ Brands', 'Art', 'F&B'],
+    coords: { top: '55%', left: '92%' },
+    color: '#D4A843',
+    hot: true,
+    featured: true,
+  },
+  {
     id: 'e1', title: 'Resurrack @ Bugis Art Lane', date: 'Every Sat & Sun', time: '3–9PM',
     venue: 'Bugis Street Art Lane', area: 'Bugis',
     desc: '50+ vintage vendors, live music, photo booths. Singapore\'s vibiest weekend flea.',
@@ -98,12 +109,14 @@ const mapLocations = [
   { name: 'Marina Bay', lat: 1.2816, lng: 103.8636, events: 1, stores: 0, color: '#D4A843' },
   { name: 'Chinatown', lat: 1.2839, lng: 103.8448, events: 1, stores: 1, color: '#7A9E7A' },
   { name: 'Changi', lat: 1.3344, lng: 103.9625, events: 1, stores: 0, color: '#C4622D' },
+  { name: 'SG Expo', lat: 1.3350, lng: 103.9590, events: 1, stores: 0, color: '#F2D279' },
 ];
 
 export default function DiscoverPage({ onBrandClick }) {
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [eventFilter, setEventFilter] = useState('all');
   const [rsvpd, setRsvpd] = useState(new Set());
+  const [searchQuery, setSearchQuery] = useState('');
 
   const mapRef = useRef(null);
   const mapInstanceRef = useRef(null);
@@ -223,10 +236,29 @@ export default function DiscoverPage({ onBrandClick }) {
     });
   };
 
-  const filteredEvents = eventFilter === 'all' ? events :
+  const baseEvents = eventFilter === 'all' ? events :
     eventFilter === 'this-week' ? events.filter(e => e.type === 'Weekly' || e.date.includes('Ongoing')) :
     eventFilter === 'pop-up' ? events.filter(e => e.type === 'Pop-Up') :
     events.filter(e => e.type === 'Fair' || e.type === 'Seasonal');
+
+  const q = searchQuery.trim().toLowerCase();
+  const filteredEvents = q
+    ? baseEvents.filter(e =>
+        e.title.toLowerCase().includes(q) ||
+        e.desc.toLowerCase().includes(q) ||
+        e.area.toLowerCase().includes(q) ||
+        e.tags.some(t => t.toLowerCase().includes(q))
+      )
+    : baseEvents;
+
+  const filteredBrands = q
+    ? brands.filter(b =>
+        b.name.toLowerCase().includes(q) ||
+        b.shortName.toLowerCase().includes(q) ||
+        b.category.toLowerCase().includes(q) ||
+        b.tags.some(t => t.toLowerCase().includes(q))
+      )
+    : null; // null means "show default sections"
 
   const locationEvents = selectedLocation
     ? events.filter(e => e.area === selectedLocation)
@@ -250,6 +282,8 @@ export default function DiscoverPage({ onBrandClick }) {
           <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-warm/25" />
           <input
             type="text"
+            value={searchQuery}
+            onChange={e => setSearchQuery(e.target.value)}
             placeholder="Search brands, events, pieces..."
             className="w-full rounded-xl pl-9 pr-4 py-2.5 text-sm text-cream placeholder-warm/25 focus:outline-none"
             style={{ background: '#131A12', border: '1px solid rgba(36,56,38,0.4)' }}
@@ -365,11 +399,23 @@ export default function DiscoverPage({ onBrandClick }) {
           {filteredEvents.map((ev, i) => (
             <div key={ev.id} className="rounded-2xl overflow-hidden animate-fade-in" style={{
               animationDelay: `${i * 0.05}s`,
-              background: 'linear-gradient(165deg, #151D13 0%, #131A11 50%, #121810 100%)',
-              border: '1px solid rgba(36,56,38,0.5)',
+              background: ev.featured
+                ? 'linear-gradient(165deg, #1A1A0E 0%, #161510 50%, #131108 100%)'
+                : 'linear-gradient(165deg, #151D13 0%, #131A11 50%, #121810 100%)',
+              border: ev.featured ? '1.5px solid rgba(212,168,67,0.3)' : '1px solid rgba(36,56,38,0.5)',
             }}>
+              {/* Featured banner */}
+              {ev.featured && (
+                <div className="px-3 py-1.5 flex items-center justify-between text-[9px] font-bold" style={{
+                  background: 'linear-gradient(90deg, rgba(212,168,67,0.15), rgba(212,168,67,0.03))',
+                  borderBottom: '1px solid rgba(212,168,67,0.1)',
+                }}>
+                  <span className="text-gold flex items-center gap-1"><Star size={9} /> FEATURED — THIS WEEKEND</span>
+                  <span className="text-gold/50">250+ brands</span>
+                </div>
+              )}
               {/* Color accent bar */}
-              <div className="h-1" style={{ background: `linear-gradient(90deg, ${ev.color}, transparent)` }} />
+              <div className={ev.featured ? 'h-1.5' : 'h-1'} style={{ background: `linear-gradient(90deg, ${ev.color}, ${ev.featured ? ev.color + '44' : 'transparent'})` }} />
 
               <div className="p-3.5">
                 <div className="flex items-start justify-between gap-2 mb-2">
@@ -431,7 +477,41 @@ export default function DiscoverPage({ onBrandClick }) {
         </div>
       </div>
 
+      {/* Brand search results */}
+      {filteredBrands !== null && (
+        <div className="px-4 mb-5">
+          <div className="flex items-center gap-1.5 mb-2.5">
+            <Search size={14} className="text-gold/50" />
+            <h2 className="text-sm font-semibold text-cream/80">Brands ({filteredBrands.length})</h2>
+          </div>
+          {filteredBrands.length === 0 ? (
+            <p className="text-[12px] text-warm/30 py-4 text-center">No brands found</p>
+          ) : (
+            <div className="space-y-2">
+              {filteredBrands.map(brand => (
+                <button
+                  key={brand.id}
+                  onClick={() => onBrandClick?.(brand.id)}
+                  className="w-full flex items-center gap-3 rounded-xl p-2.5 active:scale-[0.98] transition-transform text-left"
+                  style={{ background: '#111A10', border: '1px solid rgba(36,56,38,0.4)' }}
+                >
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center text-base shrink-0 overflow-hidden" style={{ background: brand.heroGradient }}>
+                    {brand.logo ? <img src={brand.logo} alt="" className="w-full h-full object-cover" onError={e => { e.target.style.display='none'; }} /> : brand.avatar}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-medium text-cream/85 truncate">{brand.name}</p>
+                    <p className="text-[10px] text-warm/35">{brand.category} · {brand.location}</p>
+                  </div>
+                  <ChevronRight size={14} className="text-warm/25 shrink-0" />
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
+
       {/* New on KitaKakis */}
+      {filteredBrands === null && (
       <div className="px-4 mb-5">
         <div className="flex items-center gap-1.5 mb-2.5">
           <Sparkles size={14} className="text-gold/50" />
@@ -462,6 +542,8 @@ export default function DiscoverPage({ onBrandClick }) {
           ))}
         </div>
       </div>
+
+      )}
 
       {/* Trending */}
       <div className="px-4 pb-6">

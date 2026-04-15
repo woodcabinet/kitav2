@@ -1,11 +1,30 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
+
+function loadSet(key, fallback) {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? new Set(JSON.parse(raw)) : new Set(fallback);
+  } catch { return new Set(fallback); }
+}
+
+function loadArray(key, fallback) {
+  try {
+    const raw = localStorage.getItem(key);
+    return raw ? JSON.parse(raw) : fallback;
+  } catch { return fallback; }
+}
 
 export function useAppState() {
-  const [wishlisted, setWishlisted] = useState(new Set());
-  const [following, setFollowing] = useState(new Set(['maroon']));
-  const [tiktokSync, setTiktokSync] = useState(new Set(['toneff', 'maroon']));
-  const [stamps, setStamps] = useState([true, true, true, false, false, false, false, false, false, false]);
+  const [wishlisted, setWishlisted] = useState(() => loadSet('kk-wishlisted', []));
+  const [following, setFollowing] = useState(() => loadSet('kk-following', ['maroon']));
+  const [tiktokSync, setTiktokSync] = useState(() => loadSet('kk-tiktokSync', ['toneff', 'maroon']));
+  const [stamps, setStamps] = useState(() => loadArray('kk-stamps', [true, true, true, false, false, false, false, false, false, false]));
   const [toast, setToast] = useState(null);
+
+  useEffect(() => { localStorage.setItem('kk-wishlisted', JSON.stringify([...wishlisted])); }, [wishlisted]);
+  useEffect(() => { localStorage.setItem('kk-following', JSON.stringify([...following])); }, [following]);
+  useEffect(() => { localStorage.setItem('kk-tiktokSync', JSON.stringify([...tiktokSync])); }, [tiktokSync]);
+  useEffect(() => { localStorage.setItem('kk-stamps', JSON.stringify(stamps)); }, [stamps]);
 
   const toggleWishlist = useCallback((id) => {
     setWishlisted(prev => {

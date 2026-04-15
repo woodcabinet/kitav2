@@ -192,7 +192,7 @@ export default function BrandPage({ brandId, appState, onBack }) {
                 </div>
                 <p className="text-[11px] text-warm/30 mb-2">Available on KitaKakis</p>
                 <div className="flex items-center gap-3 text-warm/40">
-                  <button className="transition-transform active:scale-90">
+                  <button onClick={() => toggleWishlist(drop.id)} className="transition-transform active:scale-90">
                     <Heart size={18} className={wishlisted.has(drop.id) ? 'fill-rust text-rust' : ''} />
                   </button>
                   <MessageCircle size={17} />
