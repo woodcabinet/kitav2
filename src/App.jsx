@@ -1,188 +1,111 @@
-import { useState, useEffect } from 'react';
-import { ShoppingCart, Plus, Minus, X, ChevronRight } from 'lucide-react';
-import BottomNav from './components/BottomNav';
-import Toast from './components/Toast';
-import Walkthrough from './components/Walkthrough';
-import HomePage from './pages/HomePage';
-import ShopPage from './pages/ShopPage';
-import DiscoverPage from './pages/DiscoverPage';
-import ProfilePage from './pages/ProfilePage';
-import BrandPage from './pages/BrandPage';
-import { useAppState } from './hooks/useAppState';
+import { BrowserRouter, Routes, Route, Outlet, Navigate } from 'react-router-dom'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { AuthProvider } from './contexts/AuthContext'
+
+// Consumer layouts & pages
+import { ConsumerHeader } from './components/consumer/ConsumerHeader'
+import { BottomNav } from './components/consumer/BottomNav'
+import { SideNav } from './components/consumer/SideNav'
+import HomePage from './pages/consumer/HomePage'
+import DiscoverPage from './pages/consumer/DiscoverPage'
+import SearchPage from './pages/consumer/SearchPage'
+// Events + Drops now live inside Discover
+import ThreadsPage from './pages/consumer/ThreadsPage'
+import ShopPage from './pages/consumer/ShopPage'
+import RewardsPage from './pages/consumer/RewardsPage'
+import BrandProfilePage from './pages/consumer/BrandProfilePage'
+import ProfilePage from './pages/consumer/ProfilePage'
+
+// Brand dashboard pages
+import { DashboardSidebar } from './components/brand/DashboardSidebar'
+import DashboardOverview from './pages/brand/DashboardOverview'
+import ContentPage from './pages/brand/ContentPage'
+import ConnectPage from './pages/brand/ConnectPage'
+import StorePage from './pages/brand/StorePage'
+import BrandEventsPage from './pages/brand/EventsPage'
+import OnboardingPage from './pages/brand/OnboardingPage'
+
+// Auth pages
+import LoginPage from './pages/auth/LoginPage'
+
+const queryClient = new QueryClient()
+
+// Consumer layout wrapper
+function ConsumerLayout() {
+  return (
+    <div className="min-h-screen paper-texture">
+      {/* Desktop left rail (Instagram-web style), collapses to icons <1280px */}
+      <SideNav />
+
+      {/* Centered content column — phone-width on mobile, feed-width on desktop */}
+      <div className="md:pl-[72px] xl:pl-60 flex justify-center">
+        <div className="w-full max-w-md md:max-w-[630px] min-h-screen bg-[#FAF6EE] md:border-x md:border-[#E8DDC8] relative">
+          <ConsumerHeader />
+          <main className="pb-20 md:pb-8">
+            <Outlet />
+          </main>
+          <BottomNav />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Brand dashboard layout wrapper
+function DashboardLayout() {
+  return (
+    <div className="flex min-h-screen paper-texture">
+      <DashboardSidebar />
+      <main className="flex-1 overflow-auto">
+        <Outlet />
+      </main>
+    </div>
+  )
+}
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('home');
-  const [activeBrand, setActiveBrand] = useState(null);
-  const [showWalkthrough, setShowWalkthrough] = useState(() => {
-    return !localStorage.getItem('kk-onboarded');
-  });
-  const appState = useAppState();
-
-  // Cart state — persisted to localStorage
-  const [cart, setCart] = useState(() => {
-    try { return JSON.parse(localStorage.getItem('kk-cart') || '[]'); } catch { return []; }
-  });
-
-  useEffect(() => {
-    localStorage.setItem('kk-cart', JSON.stringify(cart));
-  }, [cart]);
-
-  const handleCartAdd = (item) => {
-    setCart(prev => {
-      const existing = prev.find(c => c.id === item.id);
-      if (existing) return prev.map(c => c.id === item.id ? { ...c, qty: c.qty + 1 } : c);
-      return [...prev, { ...item, qty: 1 }];
-    });
-  };
-
-  const handleCartRemove = (id, delta) => {
-    setCart(prev => {
-      return prev.map(c => {
-        if (c.id !== id) return c;
-        const newQty = c.qty + delta;
-        if (newQty <= 0) return null;
-        return { ...c, qty: newQty };
-      }).filter(Boolean);
-    });
-  };
-
-  const cartCount = cart.reduce((sum, item) => sum + item.qty, 0);
-  const cartTotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
-  const [showCart, setShowCart] = useState(false);
-
-  const handleBrandClick = (brandId) => {
-    setActiveBrand(brandId);
-  };
-
-  const handleBack = () => {
-    setActiveBrand(null);
-  };
-
-  const handleTabChange = (tab) => {
-    setActiveBrand(null);
-    setActiveTab(tab);
-  };
-
-  const handleWalkthroughComplete = () => {
-    localStorage.setItem('kk-onboarded', '1');
-    setShowWalkthrough(false);
-  };
-
   return (
-    <div className="max-w-md mx-auto bg-offblack min-h-screen relative">
-      {showWalkthrough && <Walkthrough onComplete={handleWalkthroughComplete} />}
-      <Toast message={appState.toast} />
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            {/* Auth */}
+            <Route path="/auth/login" element={<LoginPage />} />
+            <Route path="/auth/signup" element={<LoginPage />} />
 
-      {activeBrand ? (
-        <BrandPage brandId={activeBrand} appState={appState} onBack={handleBack} />
-      ) : (
-        <>
-          {activeTab === 'home' && <HomePage appState={appState} onBrandClick={handleBrandClick} onCartAdd={handleCartAdd} onShopClick={() => handleTabChange('shop')} />}
-          {activeTab === 'shop' && <ShopPage appState={appState} onBrandClick={handleBrandClick} cart={cart} onCartAdd={handleCartAdd} onCartRemove={handleCartRemove} />}
-          {activeTab === 'discover' && <DiscoverPage onBrandClick={handleBrandClick} />}
-          {activeTab === 'profile' && <ProfilePage appState={appState} />}
-        </>
-      )}
+            {/* Brand onboarding (standalone) */}
+            <Route path="/brand/onboarding" element={<OnboardingPage />} />
 
-      {/* Floating Cart FAB — circle button visible on all tabs */}
-      {cartCount > 0 && !showCart && (
-        <button
-          onClick={() => setShowCart(true)}
-          className="fixed z-[60] bottom-24 right-4 w-14 h-14 rounded-full flex items-center justify-center shadow-2xl shadow-black/40 active:scale-90 transition-transform"
-          style={{
-            background: 'linear-gradient(135deg, #D4A843 0%, #B8922E 100%)',
-          }}
-        >
-          <ShoppingCart size={22} className="text-offblack" />
-          <span className="absolute -top-1 -right-1 min-w-[22px] h-[22px] rounded-full bg-rust flex items-center justify-center px-1 shadow-lg">
-            <span className="text-[11px] font-bold text-white">{cartCount > 9 ? '9+' : cartCount}</span>
-          </span>
-        </button>
-      )}
+            {/* Global search (standalone full-page) */}
+            <Route path="/search" element={<SearchPage />} />
 
-      {/* Global Cart Drawer */}
-      {showCart && (
-        <div className="fixed inset-0 z-[100] flex flex-col justify-end">
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setShowCart(false)} />
-          <div className="relative rounded-t-3xl max-h-[80vh] flex flex-col" style={{
-            background: 'linear-gradient(180deg, #151D13 0%, #0E140C 100%)',
-            border: '1px solid rgba(36,56,38,0.5)',
-            borderBottom: 'none',
-          }}>
-            <div className="flex justify-center pt-3 pb-2">
-              <div className="w-10 h-1 rounded-full bg-warm/20" />
-            </div>
+            {/* Brand dashboard */}
+            <Route path="/dashboard" element={<DashboardLayout />}>
+              <Route index element={<DashboardOverview />} />
+              <Route path="content" element={<ContentPage />} />
+              <Route path="connect" element={<ConnectPage />} />
+              <Route path="analytics" element={<DashboardOverview />} />
+              <Route path="store" element={<StorePage />} />
+              <Route path="events" element={<BrandEventsPage />} />
+              <Route path="drops" element={<Navigate to="/dashboard/store" replace />} />
+              <Route path="settings" element={<div className="p-6"><h1 className="text-2xl font-bold">Settings</h1></div>} />
+            </Route>
 
-            <div className="px-5 pb-3 flex items-center justify-between" style={{ borderBottom: '1px solid rgba(36,56,38,0.3)' }}>
-              <div className="flex items-center gap-2">
-                <ShoppingCart size={16} className="text-gold" />
-                <h3 className="text-lg font-bold text-cream/95">Cart</h3>
-                <span className="text-[11px] text-warm/40">({cartCount} {cartCount === 1 ? 'item' : 'items'})</span>
-              </div>
-              <button onClick={() => setShowCart(false)} className="w-8 h-8 rounded-full flex items-center justify-center" style={{ background: 'rgba(36,56,38,0.3)' }}>
-                <X size={14} className="text-warm/50" />
-              </button>
-            </div>
-
-            <div className="flex-1 overflow-y-auto px-5 py-3">
-              {cart.length === 0 ? (
-                <div className="py-12 text-center">
-                  <ShoppingCart size={32} className="text-warm/15 mx-auto mb-3" />
-                  <p className="text-sm text-warm/40">Your cart is empty</p>
-                  <p className="text-[11px] text-warm/25 mt-1">Browse the shop and add some pieces</p>
-                </div>
-              ) : (
-                <div className="space-y-2">
-                  {cart.map(item => (
-                    <div key={item.id} className="flex items-center gap-3 rounded-xl p-3" style={{
-                      background: 'linear-gradient(165deg, #151D13 0%, #131A11 50%, #121810 100%)',
-                      border: '1px solid rgba(36,56,38,0.5)',
-                    }}>
-                      <div className="flex-1 min-w-0">
-                        <p className="text-[12px] text-cream/85 font-medium truncate">{item.name}</p>
-                        <p className="text-[10px] text-warm/40">{item.brand} · <span className="text-gold/70">${item.price}</span></p>
-                      </div>
-                      <div className="flex items-center gap-2 shrink-0">
-                        <button onClick={() => handleCartRemove(item.id, -1)}
-                          className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: 'rgba(36,56,38,0.4)' }}>
-                          <Minus size={11} className="text-warm/60" />
-                        </button>
-                        <span className="text-[12px] font-bold text-cream/90 w-4 text-center tabular-nums">{item.qty}</span>
-                        <button onClick={() => handleCartRemove(item.id, 1)}
-                          className="w-7 h-7 rounded-lg flex items-center justify-center" style={{ background: 'rgba(212,168,67,0.1)' }}>
-                          <Plus size={11} className="text-gold/70" />
-                        </button>
-                      </div>
-                      <p className="text-sm font-semibold text-gold tabular-nums w-12 text-right">${item.price * item.qty}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-
-            {cart.length > 0 && (
-              <div className="px-5 py-4" style={{ borderTop: '1px solid rgba(36,56,38,0.3)' }}>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-sm text-warm/50">Total</span>
-                  <span className="text-xl font-bold text-gold tabular-nums">${cartTotal}</span>
-                </div>
-                <button
-                  onClick={() => {
-                    setCart([]);
-                    setShowCart(false);
-                    appState.showToast(`Order placed! 🎉 Your ${cartCount} item${cartCount > 1 ? 's' : ''} will be ready at the drop.`);
-                  }}
-                  className="w-full py-3.5 rounded-xl text-sm font-bold text-offblack bg-gold flex items-center justify-center gap-2 shadow-lg shadow-gold/10 active:scale-[0.98] transition-transform">
-                  <ShoppingCart size={15} /> Checkout · ${cartTotal}
-                </button>
-                <p className="text-[9px] text-warm/30 text-center mt-2">Free delivery on orders above $50</p>
-              </div>
-            )}
-          </div>
-        </div>
-      )}
-
-      <BottomNav activeTab={activeTab} onTabChange={handleTabChange} cartCount={cartCount} />
-    </div>
-  );
+            {/* Consumer app */}
+            <Route element={<ConsumerLayout />}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/discover" element={<DiscoverPage />} />
+              <Route path="/events" element={<Navigate to="/discover" replace />} />
+              <Route path="/drops" element={<Navigate to="/discover" replace />} />
+              <Route path="/threads" element={<ThreadsPage />} />
+              <Route path="/shop" element={<ShopPage />} />
+              <Route path="/rewards" element={<RewardsPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/brand/:slug" element={<BrandProfilePage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
+    </QueryClientProvider>
+  )
 }

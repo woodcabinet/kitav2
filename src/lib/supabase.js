@@ -7,6 +7,5 @@ if (!supabaseUrl || !supabaseAnonKey) {
   console.warn('Supabase env vars missing — check your .env.local file')
 }
 
-const supabase = createClient(supabaseUrl, supabaseAnonKey)
-
+export const supabase = createClient(supabaseUrl ?? '', supabaseAnonKey ?? '')
 export default supabase
