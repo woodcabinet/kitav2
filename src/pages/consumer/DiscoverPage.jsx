@@ -55,7 +55,9 @@ function buildExploreGrid(query, category) {
     if (query && !brand.name.toLowerCase().includes(query.toLowerCase()) &&
         !brand.tagline?.toLowerCase().includes(query.toLowerCase())) return
     if (category !== 'all' && brand.category !== category) return
-    items.push({ type: 'brand', data: brand, sort: brand.follower_count })
+    // Sort by follower count when available, otherwise a stable offset so
+    // unverified brands don't all clump at the top of the feed.
+    items.push({ type: 'brand', data: brand, sort: brand.follower_count ?? 500 })
   })
 
   // Interleave: sort by relevance, then interleave types for variety

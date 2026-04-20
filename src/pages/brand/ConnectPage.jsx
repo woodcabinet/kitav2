@@ -100,7 +100,10 @@ function BrandConnectionCard({ brand }) {
           {brand.verified && <CheckCircle size={11} className="text-[#D94545] flex-shrink-0" />}
         </div>
         <CategoryBadge category={brand.category} className="mt-0.5" />
-        <p className="text-xs text-[#8B7355] mt-0.5">{formatNumber(brand.follower_count)} followers · {brand.location}</p>
+        <p className="text-xs text-[#8B7355] mt-0.5">
+          {brand.follower_count != null && <>{formatNumber(brand.follower_count)} followers · </>}
+          {brand.location}
+        </p>
       </div>
       <button
         onClick={() => setConnected(c => !c)}

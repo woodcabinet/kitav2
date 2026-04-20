@@ -141,14 +141,21 @@ export default function BrandProfilePage() {
         <div className="flex items-center gap-1.5 text-[#6B5744] mb-4">
           <MapPin size={13} />
           <span className="text-sm">{brand.location}</span>
-          <span className="text-[#C4B49A]">·</span>
-          <span className="text-sm">{formatNumber(brand.follower_count)} followers</span>
+          {brand.follower_count != null && (
+            <>
+              <span className="text-[#C4B49A]">·</span>
+              <span className="text-sm">{formatNumber(brand.follower_count)} followers</span>
+            </>
+          )}
         </div>
 
-        {/* Stat pills */}
+        {/* Stat pills — skip Followers pill when unverified; replaces with
+            a subtle "Verify via IG" cue so the grid stays balanced */}
         <div className="grid grid-cols-3 gap-2">
           {[
-            { label: 'Followers', value: formatNumber(brand.follower_count) },
+            brand.follower_count != null
+              ? { label: 'Followers', value: formatNumber(brand.follower_count) }
+              : { label: 'Verified via', value: '—' },
             { label: 'Products', value: brandProducts.length },
             { label: 'Events', value: brandEvents.length },
           ].map(s => (

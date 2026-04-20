@@ -34,9 +34,13 @@ export function formatCurrency(amount, currency = 'SGD') {
 }
 
 export function formatNumber(n) {
+  // Honesty principle: null/undefined means "not verified yet" — show an
+  // em-dash rather than fabricating a zero. Callers that want to hide the
+  // stat entirely should check `n == null` first.
+  if (n == null) return '—'
   if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M'
   if (n >= 1000) return (n / 1000).toFixed(1) + 'K'
-  return n?.toString() ?? '0'
+  return n.toString()
 }
 
 export function slugify(text) {

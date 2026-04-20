@@ -381,8 +381,12 @@ function BrandRow({ brand }) {
         <p className="text-[13px] text-[#6B5744] truncate">{brand.tagline}</p>
         <div className="flex items-center gap-2 mt-0.5 text-[11px] text-[#8B7355]">
           <span className="flex items-center gap-0.5"><MapPin size={11} /> {brand.location}</span>
-          <span>·</span>
-          <span>{formatNumber(brand.follower_count)} followers</span>
+          {brand.follower_count != null && (
+            <>
+              <span>·</span>
+              <span>{formatNumber(brand.follower_count)} followers</span>
+            </>
+          )}
         </div>
       </div>
     </Link>

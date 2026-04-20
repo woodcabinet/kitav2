@@ -24,7 +24,9 @@ export function BrandCard({ brand, compact = false }) {
             <span className="text-xs text-[#8B7355]">{brand.location}</span>
           </div>
         </div>
-        <span className="text-xs text-[#6B5744] font-medium">{formatNumber(brand.follower_count)}</span>
+        {brand.follower_count != null && (
+          <span className="text-xs text-[#6B5744] font-medium">{formatNumber(brand.follower_count)}</span>
+        )}
       </Link>
     )
   }
@@ -76,7 +78,9 @@ export function BrandCard({ brand, compact = false }) {
           </div>
           <div className="flex items-center gap-2">
             <CategoryBadge category={brand.category} />
-            <span className="text-xs text-[#6B5744]">{formatNumber(brand.follower_count)} followers</span>
+            {brand.follower_count != null && (
+              <span className="text-xs text-[#6B5744]">{formatNumber(brand.follower_count)} followers</span>
+            )}
           </div>
         </div>
       </div>

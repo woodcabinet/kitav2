@@ -100,7 +100,7 @@ export const MOCK_BRANDS = [
     tagline: 'Streetwear from the heartlands.',
     description: 'Independent Singapore streetwear label building graphic-led pieces with a cult following. Known for limited weekly drops.',
     logo_url: MAROON.logo, banner_url: MAROON.banner,
-    category: 'fashion', location: 'Bugis', verified: true, follower_count: 3700,
+    category: 'fashion', location: 'Bugis', verified: true, follower_count: null, // unverified — populated via social OAuth
     instagram: 'maroon.clothing', website: 'maroon-clothing.store',
     lat: 1.3009, lng: 103.8556,
   },
@@ -109,7 +109,7 @@ export const MOCK_BRANDS = [
     tagline: 'Contemporary streetwear, studio-made.',
     description: 'Orchard-based contemporary streetwear studio focused on considered silhouettes and Japanese-inspired cuts.',
     logo_url: KOYOYU.logo, banner_url: KOYOYU.banner,
-    category: 'fashion', location: '2 Orchard Link', verified: true, follower_count: 1970,
+    category: 'fashion', location: '2 Orchard Link', verified: true, follower_count: null, // unverified — populated via social OAuth
     instagram: 'koyoyu.studio', website: 'koyoyu.com',
     lat: 1.3006, lng: 103.8386,
   },
@@ -118,7 +118,7 @@ export const MOCK_BRANDS = [
     tagline: 'Build-your-own Italian charm bracelets.',
     description: 'DIY jewellery studio on Club Street where you assemble your own Italian charm bracelets. Walk-in workshops daily.',
     logo_url: CL.logo, banner_url: CL.hero,
-    category: 'arts_crafts', location: '93 Club Street', verified: false, follower_count: 2450,
+    category: 'arts_crafts', location: '93 Club Street', verified: false, follower_count: null, // unverified — populated via social OAuth
     instagram: 'charms_and_links', website: 'charmsandlinks.com',
     experience_brand: true,
     lat: 1.2812, lng: 103.8466,
@@ -128,7 +128,7 @@ export const MOCK_BRANDS = [
     tagline: 'Wear your culture.',
     description: 'Southeast Asian culture-led clothing label telling stories of the region through modern cuts and batik prints.',
     logo_url: HB.logo, banner_url: HB.banner,
-    category: 'fashion', location: '2 Fowlie Rd', verified: true, follower_count: 5800,
+    category: 'fashion', location: '2 Fowlie Rd', verified: true, follower_count: null, // unverified — populated via social OAuth
     instagram: 'heritagebay.sg', website: 'heritagebayshop.com',
     lat: 1.3122, lng: 103.9067,
   },
@@ -137,7 +137,7 @@ export const MOCK_BRANDS = [
     tagline: 'Upcycled. One-of-one. Always.',
     description: "Singapore's biggest vintage and upcycled streetwear label. Haji Lane flagship. TikTok live sales every Tue, Thu, Sun.",
     logo_url: VW.logo, banner_url: VW.banner,
-    category: 'fashion', location: '41 Haji Lane', verified: true, follower_count: 87000,
+    category: 'fashion', location: '41 Haji Lane', verified: true, follower_count: null, // unverified — populated via social OAuth
     instagram: 'vintagewknd', website: 'vintagewknd.com',
     experience_brand: true, // thrift = rotating one-of-ones; events drive discovery
     lat: 1.3020, lng: 103.8594,
@@ -147,7 +147,7 @@ export const MOCK_BRANDS = [
     tagline: 'Everything $10. Open daily 1-8pm.',
     description: 'Flat-$10 thrift warehouse. Golden Landmark and Haji Lane outlets, restocked daily with vintage, Y2K and streetwear.',
     logo_url: VW.wkndClubBabyBlue, banner_url: VW.banner,
-    category: 'fashion', location: 'Golden Landmark #03-31', verified: false, follower_count: 14200,
+    category: 'fashion', location: 'Golden Landmark #03-31', verified: false, follower_count: null, // unverified — populated via social OAuth
     instagram: 'woofie.warehouse',
     experience_brand: true, unclaimed: true,
     lat: 1.3012, lng: 103.8580,
@@ -157,7 +157,7 @@ export const MOCK_BRANDS = [
     tagline: 'Curated thrift from $10.',
     description: 'Curated thrift across three Chinatown outlets. 42K-strong community, fresh drops weekly.',
     logo_url: VW.wkndClubBabyPink, banner_url: VW.banner,
-    category: 'fashion', location: '57A Pagoda Street', verified: true, follower_count: 42000,
+    category: 'fashion', location: '57A Pagoda Street', verified: true, follower_count: null, // unverified — populated via social OAuth
     instagram: 'nearest.ten',
     experience_brand: true, unclaimed: true,
     lat: 1.2836, lng: 103.8439,
@@ -167,7 +167,7 @@ export const MOCK_BRANDS = [
     tagline: 'Stories, stitched slow.',
     description: 'Founded by two Singaporean students. Story-driven garments — currently running a three-piece capsule: Askew Shirt, Jet Black Pleated Jeans, and the Reversible Jacket.',
     logo_url: TONEFF.logo, banner_url: TONEFF.banner,
-    category: 'fashion', location: 'Online', verified: false, follower_count: 1120,
+    category: 'fashion', location: 'Online', verified: false, follower_count: null, // unverified — populated via social OAuth
     instagram: 'toneff.clothing', website: 'toneffclothing.com',
     lat: 1.2966, lng: 103.8520,
   },
@@ -176,7 +176,7 @@ export const MOCK_BRANDS = [
     tagline: 'Secondhand, not second best.',
     description: 'Founded 2022 by Audrey. Sustainable secondhand pop-ups rotating through Queensway, Peace Centre, North Bridge and 313@Somerset.',
     logo_url: VW.superwastedBabyTeeBlack, banner_url: HB.collection,
-    category: 'fashion', location: '313@Somerset pop-up', verified: true, follower_count: 18400,
+    category: 'fashion', location: '313@Somerset pop-up', verified: true, follower_count: null, // unverified — populated via social OAuth
     instagram: 'un.wastelands', website: 'unwastelands.com',
     experience_brand: true, unclaimed: true,
     lat: 1.3006, lng: 103.8386,

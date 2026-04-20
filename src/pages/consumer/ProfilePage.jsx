@@ -107,9 +107,11 @@ export default function ProfilePage() {
                     <p className="font-semibold text-sm text-ink truncate group-hover:text-accent transition-colors">{brand.name}</p>
                     <p className="text-xs text-[#8B7355] truncate">{brand.tagline}</p>
                   </div>
-                  <span className="text-[11px] bg-accent/10 text-accent font-bold px-2.5 py-1 rounded-full">
-                    {brand.follower_count?.toLocaleString() ?? 0}
-                  </span>
+                  {brand.follower_count != null && (
+                    <span className="text-[11px] bg-accent/10 text-accent font-bold px-2.5 py-1 rounded-full">
+                      {brand.follower_count.toLocaleString()}
+                    </span>
+                  )}
                 </Link>
               ))}
             </div>

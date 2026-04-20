@@ -20,19 +20,47 @@ const PROXIES = [
   (u) => `https://thingproxy.freeboard.io/fetch/${u}`,
 ]
 
-async function proxyFetch(url, { timeout = 12000 } = {}) {
+// Heuristic: an SPA shell returns very little meaningful HTML on a plain
+// GET (React/Vue/Next stub). If the body is tiny OR contains a <noscript>
+// "please enable JavaScript" cue, retry via Browserbase rendering.
+function looksLikeSpaShell(html) {
+  if (!html || html.length < 4000) return true
+  const lower = html.toLowerCase()
+  const hasNoscript = /<noscript>[^<]*(enable|javascript|required)/i.test(html)
+  const textOnly = lower.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()
+  return hasNoscript || textOnly.length < 400
+}
+
+async function proxyFetch(url, { timeout = 12000, allowRender = true } = {}) {
   // Prefer server-side fetch (no CORS, no rate-limits). Fall back to proxies
   // if the endpoint isn't reachable (local dev without `vercel dev`).
-  try {
-    const controller = new AbortController()
-    const tid = setTimeout(() => controller.abort(), timeout)
-    const res = await fetch(`/api/scrape?url=${encodeURIComponent(url)}`, { signal: controller.signal })
-    clearTimeout(tid)
-    if (res.ok) {
-      const data = await res.json()
-      if (data?.html && data.html.length > 200) return data.html
-    }
-  } catch { /* fall through */ }
+  const hitServer = async (mode) => {
+    try {
+      const controller = new AbortController()
+      const tid = setTimeout(() => controller.abort(), timeout)
+      const res = await fetch(`/api/scrape?url=${encodeURIComponent(url)}${mode ? `&mode=${mode}` : ''}`, { signal: controller.signal })
+      clearTimeout(tid)
+      if (res.ok) {
+        const data = await res.json()
+        if (data?.html && data.html.length > 200) return data.html
+      }
+    } catch { /* fall through */ }
+    return null
+  }
+
+  // 1. Plain fetch
+  const fetched = await hitServer()
+  if (fetched && !looksLikeSpaShell(fetched)) return fetched
+
+  // 2. Render with Browserbase if the site looks like an SPA shell
+  if (allowRender && fetched && looksLikeSpaShell(fetched)) {
+    const rendered = await hitServer('render')
+    if (rendered) return rendered
+    // if render failed (no Browserbase key configured), return the fetched
+    // HTML anyway — downstream parsers will try their best.
+    return fetched
+  }
+  if (fetched) return fetched
 
   let lastErr
   for (const build of PROXIES) {
