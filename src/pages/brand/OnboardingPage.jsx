@@ -107,16 +107,29 @@ export default function OnboardingPage() {
     }))
   }
 
-  function goLive() {
-    saveBrandProfile({
-      name: scraped.name, tagline: scraped.tagline, description: scraped.description,
-      logo_url: scraped.logo_url, banner_url: scraped.banner_url, platform: scraped.platform,
-      category: scraped.suggested_category, tags: scraped.suggested_tags,
-      website: scraped.url, instagram: scraped.instagram,
-      products: scraped.products, gallery: scraped.gallery,
-      onboarded_at: new Date().toISOString(),
-    })
-    setStep(4)
+  const [saving, setSaving] = useState(false)
+  const [savedProfile, setSavedProfile] = useState(null)
+
+  async function goLive() {
+    setSaving(true)
+    setError(null)
+    try {
+      const saved = await saveBrandProfile({
+        name: scraped.name, tagline: scraped.tagline, description: scraped.description,
+        logo_url: scraped.logo_url, banner_url: scraped.banner_url, platform: scraped.platform,
+        category: scraped.suggested_category, tags: scraped.suggested_tags,
+        website: scraped.url, instagram: scraped.instagram,
+        products: scraped.products, gallery: scraped.gallery,
+        onboarded_at: new Date().toISOString(),
+      })
+      setSavedProfile(saved)
+      // Even if the save errored we still advance — the profile was cached
+      // locally and the user can fix the DB issue from the dashboard. The
+      // error tag on `saved` lets StepLive show a honest banner.
+      setStep(4)
+    } finally {
+      setSaving(false)
+    }
   }
 
   return (
@@ -191,6 +204,7 @@ export default function OnboardingPage() {
                 onAddProduct={addProduct}
                 onBack={() => setStep(1)}
                 onLive={goLive}
+                saving={saving}
               />
             </StepWrapper>
           )}
@@ -198,7 +212,11 @@ export default function OnboardingPage() {
           {/* ═══ STEP 4: LIVE + ANALYTICS EXPLAINER ═══ */}
           {step === 4 && (
             <StepWrapper key="4">
-              <StepLive scraped={scraped} onDashboard={() => navigate('/dashboard')} />
+              <StepLive
+                scraped={scraped}
+                savedProfile={savedProfile}
+                onDashboard={() => navigate('/dashboard')}
+              />
             </StepWrapper>
           )}
         </AnimatePresence>
@@ -642,7 +660,7 @@ function StepScanning() {
 
 // ═══════════════════════════════ STEP 3: REVIEW ═══════════════════════════════
 
-function StepReview({ scraped, onField, onProduct, onRemoveProduct, onAddProduct, onBack, onLive }) {
+function StepReview({ scraped, onField, onProduct, onRemoveProduct, onAddProduct, onBack, onLive, saving }) {
   return (
     <div>
       <div className="flex items-start gap-3 mb-5">
@@ -762,16 +780,29 @@ function StepReview({ scraped, onField, onProduct, onRemoveProduct, onAddProduct
       )}
 
       <div className="flex gap-2">
-        <button onClick={onBack} className="px-5 py-4 border-2 border-[#E8DDCB] text-gray-600 font-semibold rounded-2xl hover:bg-white">
+        <button
+          onClick={onBack}
+          disabled={saving}
+          className="px-5 py-4 border-2 border-[#E8DDCB] text-gray-600 font-semibold rounded-2xl hover:bg-white disabled:opacity-50"
+        >
           ← Back
         </button>
         <motion.button
-          whileHover={{ scale: 1.01 }}
-          whileTap={{ scale: 0.98 }}
+          whileHover={{ scale: saving ? 1 : 1.01 }}
+          whileTap={{ scale: saving ? 1 : 0.98 }}
           onClick={onLive}
-          className="flex-1 bg-[#D94545] hover:bg-[#a85225] text-white font-semibold py-4 rounded-2xl flex items-center justify-center gap-2 shadow-warm transition-colors"
+          disabled={saving}
+          className="flex-1 bg-[#D94545] hover:bg-[#a85225] disabled:opacity-70 disabled:cursor-not-allowed text-white font-semibold py-4 rounded-2xl flex items-center justify-center gap-2 shadow-warm transition-colors"
         >
-          Looks good, go live <ArrowRight size={18} />
+          {saving ? (
+            <>
+              <RefreshCw size={18} className="animate-spin" /> Saving your brand...
+            </>
+          ) : (
+            <>
+              Looks good, go live <ArrowRight size={18} />
+            </>
+          )}
         </motion.button>
       </div>
     </div>
@@ -854,7 +885,9 @@ function ProductRow({ product, idx, onChange, onRemove }) {
 
 // ═══════════════════════════════ STEP 4: LIVE + ANALYTICS ═══════════════════════════════
 
-function StepLive({ scraped, onDashboard }) {
+function StepLive({ scraped, savedProfile, onDashboard }) {
+  const isDemo = savedProfile?.demo === true
+  const saveError = savedProfile?.error
   return (
     <div>
       <div className="text-center mb-6">
@@ -864,13 +897,36 @@ function StepLive({ scraped, onDashboard }) {
           transition={{ type: 'spring', stiffness: 200, damping: 12 }}
           className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-100 mb-4"
         >
-          <span className="text-4xl">🎉</span>
+          <span className="text-4xl">{isDemo ? '👀' : '🎉'}</span>
         </motion.div>
-        <h1 className="font-display text-3xl font-bold text-[#1A1513] mb-1">You're live!</h1>
+        <h1 className="font-display text-3xl font-bold text-[#1A1513] mb-1">
+          {isDemo ? "Preview ready" : "You're live!"}
+        </h1>
         <p className="font-hand text-xl text-[#D94545]">
-          {scraped?.name ?? 'Your brand'} is on kitakakis
+          {scraped?.name ?? 'Your brand'} {isDemo ? 'looks good so far' : 'is on kitakakis'}
         </p>
       </div>
+
+      {/* Honest status banner — Supabase unreachable / demo mode / saved */}
+      {saveError && (
+        <div className="mb-4 p-3 bg-red-50 border border-red-100 rounded-2xl flex items-start gap-2">
+          <AlertCircle size={16} className="text-red-500 flex-shrink-0 mt-0.5" />
+          <div className="flex-1">
+            <p className="text-sm font-semibold text-red-700">Saved locally, not to the cloud yet</p>
+            <p className="text-xs text-red-600 mt-0.5">{saveError}</p>
+            <p className="text-xs text-red-500 mt-1">Your brand is cached in this browser. Sign in and retry from the dashboard to publish.</p>
+          </div>
+        </div>
+      )}
+      {isDemo && !saveError && (
+        <div className="mb-4 p-3 bg-amber-50 border border-amber-100 rounded-2xl flex items-start gap-2">
+          <AlertCircle size={16} className="text-amber-600 flex-shrink-0 mt-0.5" />
+          <div className="flex-1">
+            <p className="text-sm font-semibold text-amber-800">Demo mode — sign in to publish</p>
+            <p className="text-xs text-amber-700 mt-0.5">This preview is saved to your browser. Create an account from the dashboard to publish your brand for real.</p>
+          </div>
+        </div>
+      )}
 
       {/* Quick stats */}
       <div className="grid grid-cols-3 gap-2 mb-6">
