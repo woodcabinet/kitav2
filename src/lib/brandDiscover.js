@@ -76,6 +76,17 @@ export async function discoverBrand(businessName) {
   if (!businessName || businessName.trim().length < 2) return null
   const name = businessName.trim()
 
+  // Prefer the server-side endpoint — no CORS, no free-proxy rate limits.
+  try {
+    const res = await fetch(`/api/discover?q=${encodeURIComponent(name)}`, {
+      signal: AbortSignal.timeout?.(15000),
+    })
+    if (res.ok) {
+      const data = await res.json()
+      if (data && !data.error) return data
+    }
+  } catch { /* fall through to proxy path */ }
+
   const [web, instagram, tiktok, facebook] = await Promise.all([
     ddgSearch(`${name} official site`, 5).catch(() => []),
     ddgSearch(`${name} site:instagram.com`, 4).catch(() => []),

@@ -879,41 +879,48 @@ function StepLive({ scraped, onDashboard }) {
         <StatPill value="✓" label="Dashboard ready" />
       </div>
 
-      {/* Analytics explainer */}
+      {/* Analytics explainer — only shows what's actually wired up. Numbers
+          you haven't connected yet are marked "pending" so we never show
+          a fake figure. Connect the data source to light it up. */}
       <div className="bg-[#FAF6EE] border border-[#E8DDCB] rounded-2xl p-5 mb-4">
         <p className="font-display text-lg font-bold text-[#1A1513] mb-1">📊 Your analytics, decoded</p>
-        <p className="font-hand text-base text-[#D94545] mb-4">here's what we'll track for you</p>
+        <p className="font-hand text-base text-[#D94545] mb-4">connect a source to light it up — we won't show numbers we can't verify</p>
 
         <div className="space-y-3">
           <MetricExplainer
             icon={Users} color="#D94545"
             label="Followers"
-            meaning="People who hit save on your profile. Growing = your audience is growing."
-            source="Pulled from your Instagram + Kitakakis saves daily"
+            meaning="Verified audience size, pulled directly from each platform."
+            source="Connect Instagram · TikTok · YouTube"
+            status="pending"
           />
           <MetricExplainer
             icon={Eye} color="#1A1513"
             label="Impressions"
-            meaning="How many times your posts + products appeared on someone's screen."
-            source="Kitakakis feed + discover + shop views"
+            meaning="How many times your posts + products appeared on someone's screen inside Kitakakis."
+            source="Live — counted as people browse"
+            status="live"
           />
           <MetricExplainer
             icon={Heart} color="#D94545"
             label="Engagement rate"
-            meaning="% of people who see your post and interact (like, save, share, comment). 3%+ is solid, 5%+ is great."
-            source="Calculated weekly from impressions + interactions"
+            meaning="% of people who see your post and interact. Computed from real events only."
+            source="Connect a social account to include off-platform posts"
+            status="partial"
           />
           <MetricExplainer
             icon={DollarSign} color="#1A1513"
             label="Revenue"
-            meaning="Money from products sold through Kitakakis. Direct to your Stripe, we take 2%."
-            source="Real-time, updates as orders come in"
+            meaning="Money from products sold through Kitakakis. Off-platform sales need Shopify/Stripe."
+            source="Connect Stripe · Shopify · Square"
+            status="pending"
           />
           <MetricExplainer
             icon={TrendingUp} color="#D94545"
             label="Top posts"
-            meaning="Which posts pulled the most attention this month. Do more of what works."
-            source="Ranked by impressions × engagement weekly"
+            meaning="Your best-performing posts this month, ranked by real interactions."
+            source="Live for Kitakakis posts"
+            status="live"
           />
         </div>
       </div>
@@ -930,7 +937,12 @@ function StepLive({ scraped, onDashboard }) {
   )
 }
 
-function MetricExplainer({ icon: Icon, color, label, meaning, source }) {
+function MetricExplainer({ icon: Icon, color, label, meaning, source, status = 'live' }) {
+  const statusStyles = {
+    live:    { dot: 'bg-green-500',  text: 'text-green-700',  label: 'LIVE' },
+    partial: { dot: 'bg-amber-500',  text: 'text-amber-700',  label: 'PARTIAL' },
+    pending: { dot: 'bg-gray-400',   text: 'text-gray-500',   label: 'PENDING' },
+  }[status] ?? { dot: 'bg-gray-300', text: 'text-gray-500', label: '' }
   return (
     <div className="flex items-start gap-3 p-3 bg-white rounded-xl border border-[#E8DDCB]">
       <div
@@ -940,7 +952,13 @@ function MetricExplainer({ icon: Icon, color, label, meaning, source }) {
         <Icon size={16} style={{ color }} />
       </div>
       <div className="flex-1 min-w-0">
-        <p className="font-semibold text-sm text-[#1A1513]">{label}</p>
+        <div className="flex items-center gap-1.5">
+          <p className="font-semibold text-sm text-[#1A1513]">{label}</p>
+          <span className={`inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-wider ${statusStyles.text}`}>
+            <span className={`w-1.5 h-1.5 rounded-full ${statusStyles.dot}`} />
+            {statusStyles.label}
+          </span>
+        </div>
         <p className="text-xs text-gray-600 leading-relaxed mt-0.5">{meaning}</p>
         <p className="text-[10px] text-gray-400 italic mt-1">{source}</p>
       </div>

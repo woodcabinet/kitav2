@@ -38,27 +38,50 @@ export function EventMap({ events }) {
         const now = new Date()
         const start = new Date(event.starts_at)
         const end = event.ends_at ? new Date(event.ends_at) : null
-        const isHappening = start <= now && (!end || end >= now)
+        const isLive = start <= now && (!end || end >= now)
+        const daysUntil = Math.floor((start - now) / 86400000)
 
-        const color = isHappening ? '#D94545' : '#1A1513'
-        const pulseHTML = isHappening
-          ? `<div style="position:absolute;width:44px;height:44px;border-radius:50%;background:rgba(217,69,69,0.35);top:-6px;left:-6px;animation:mapPulse 2s ease-in-out infinite;"></div>`
+        // Traffic-light coding:
+        //   GREEN  = live right now (go!)
+        //   AMBER  = today or this week (coming up soon)
+        //   RED    = later (1+ week out, or past)
+        let color, ring, label
+        if (isLive) {
+          color = '#16A34A'; ring = 'rgba(22,163,74,0.32)'
+          label = 'LIVE'
+        } else if (daysUntil >= 0 && daysUntil <= 7) {
+          color = '#F59E0B'; ring = 'rgba(245,158,11,0.28)'
+          label = daysUntil === 0 ? 'TODAY' : formatDate(event.starts_at, 'EEE')
+        } else {
+          color = '#D94545'; ring = 'rgba(217,69,69,0.24)'
+          label = daysUntil > 7 ? formatDate(event.starts_at, 'd MMM') : 'PAST'
+        }
+
+        const pulseHTML = isLive
+          ? `<div style="position:absolute;width:52px;height:52px;border-radius:50%;background:${ring};top:-10px;left:-10px;animation:mapPulse 2s ease-in-out infinite;pointer-events:none;"></div>`
           : ''
 
+        // Pointer-style SVG pin (teardrop): rounded head with a tapered
+        // point anchored at the bottom-centre. Label sits inside the head.
         const iconHTML = `
-          <div style="position:relative;width:32px;height:32px;">
+          <div style="position:relative;width:32px;height:42px;filter:drop-shadow(0 3px 4px rgba(0,0,0,0.25));">
             ${pulseHTML}
-            <div style="width:32px;height:32px;border-radius:50%;background:${color};border:3px solid white;box-shadow:0 2px 8px rgba(0,0,0,0.25);display:flex;align-items:center;justify-content:center;cursor:pointer;">
-              <span style="color:white;font-size:10px;font-weight:700;">${isHappening ? '!' : formatDate(event.starts_at, 'd')}</span>
-            </div>
+            <svg width="32" height="42" viewBox="0 0 32 42" xmlns="http://www.w3.org/2000/svg" style="cursor:pointer;overflow:visible;">
+              <path d="M16 1 C7.16 1 1 7.16 1 16 C1 27 16 41 16 41 C16 41 31 27 31 16 C31 7.16 24.84 1 16 1 Z"
+                    fill="${color}" stroke="white" stroke-width="2.5" stroke-linejoin="round"/>
+              <circle cx="16" cy="16" r="6.5" fill="white" opacity="0.95"/>
+              <text x="16" y="19" text-anchor="middle"
+                    font-family="ui-sans-serif,system-ui,sans-serif"
+                    font-size="7" font-weight="800" fill="${color}">${label}</text>
+            </svg>
           </div>
         `
 
         const icon = L.divIcon({
           html: iconHTML,
           className: 'event-map-pin',
-          iconSize: [32, 32],
-          iconAnchor: [16, 16],
+          iconSize: [32, 42],
+          iconAnchor: [16, 41], // tip of the pointer sits on the coordinate
         })
 
         L.marker([event.lat, event.lng], { icon })
@@ -83,11 +106,12 @@ export function EventMap({ events }) {
 
       <div ref={mapContainer} className="h-80 w-full z-0" />
 
-      {/* Legend */}
-      <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-sm rounded-xl px-3 py-2 shadow-sm z-[1000]">
-        <div className="flex items-center gap-3 text-[10px] font-semibold">
-          <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-full bg-[#D94545] animate-pulse" />Live</span>
-          <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-full bg-[#1A1513]" />Upcoming</span>
+      {/* Legend — traffic light */}
+      <div className="absolute top-3 left-3 bg-[#FAF6EE]/95 backdrop-blur-sm rounded-xl px-3 py-2 shadow-warm border border-[#E8DDC8] z-[1000]">
+        <div className="flex items-center gap-3 text-[10px] font-semibold text-ink">
+          <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-[#16A34A] animate-pulse" />Live</span>
+          <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-[#F59E0B]" />This week</span>
+          <span className="flex items-center gap-1.5"><span className="w-2.5 h-2.5 rounded-full bg-[#D94545]" />Later</span>
         </div>
       </div>
 

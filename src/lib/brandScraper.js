@@ -21,6 +21,19 @@ const PROXIES = [
 ]
 
 async function proxyFetch(url, { timeout = 12000 } = {}) {
+  // Prefer server-side fetch (no CORS, no rate-limits). Fall back to proxies
+  // if the endpoint isn't reachable (local dev without `vercel dev`).
+  try {
+    const controller = new AbortController()
+    const tid = setTimeout(() => controller.abort(), timeout)
+    const res = await fetch(`/api/scrape?url=${encodeURIComponent(url)}`, { signal: controller.signal })
+    clearTimeout(tid)
+    if (res.ok) {
+      const data = await res.json()
+      if (data?.html && data.html.length > 200) return data.html
+    }
+  } catch { /* fall through */ }
+
   let lastErr
   for (const build of PROXIES) {
     try {
@@ -311,18 +324,22 @@ async function scrapeInstagram(handle, warnings) {
     const ogImage = meta(html, doc, 'og:image')
     const ogDesc = meta(html, doc, 'og:description') ?? ''
     const ogTitle = meta(html, doc, 'og:title') ?? ''
-    const followersMatch = ogDesc.match(/([\d,.]+[KMkm]?)\s+Followers/)
+    // NOTE: we intentionally do NOT extract follower counts. Instagram's
+    // og:description count is often stale or wrong, and surfacing a wrong
+    // number is worse than no number. Brands will connect their IG via
+    // OAuth (Meta Graph API) to get verified counts — see /dashboard.
     return {
       handle: clean,
       url: `https://instagram.com/${clean}`,
       profile_pic: ogImage,
       display_name: ogTitle.split('(')[0]?.trim(),
-      followers: followersMatch?.[1],
+      followers: null,           // verified-only; unset until OAuth connect
       bio_preview: ogDesc.split(' - ').pop()?.trim(),
+      verified: false,           // unverified public-page scrape
     }
   } catch (e) {
     warnings.push(`Instagram scrape failed: ${e.message}`)
-    return { handle: clean, url: `https://instagram.com/${clean}` }
+    return { handle: clean, url: `https://instagram.com/${clean}`, followers: null, verified: false }
   }
 }
 
