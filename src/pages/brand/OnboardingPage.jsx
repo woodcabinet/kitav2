@@ -8,11 +8,11 @@ import {
   DollarSign, BarChart2, Eye, MessageCircle
 } from 'lucide-react'
 import { scrapeBrand } from '../../lib/brandScraper'
-import { discoverBrand } from '../../lib/brandDiscover'
 import { saveBrandProfile } from '../../lib/brandStore'
 import { CATEGORY_LABELS } from '../../lib/utils'
 import { useAuth } from '../../contexts/AuthContext'
 import { supabase, hasSupabase } from '../../lib/supabase'
+import { ImageUploader } from '../../components/shared/ImageUploader'
 
 // ═══════════════════════════════ MAIN ═══════════════════════════════
 
@@ -20,77 +20,59 @@ export default function OnboardingPage() {
   const navigate = useNavigate()
   const [step, setStep] = useState(0)
   const [businessName, setBusinessName] = useState('')
-  const [discovered, setDiscovered] = useState(null)
-  const [selected, setSelected] = useState(new Set())
-  const [customInputs, setCustomInputs] = useState({ website: '', instagram: '', tiktok: '' })
-  const [scanning, setScanning] = useState(false)
+  const [inputs, setInputs] = useState({ website: '', instagram: '', tiktok: '' })
   const [scraped, setScraped] = useState(null)
   const [error, setError] = useState(null)
-  const [discovering, setDiscovering] = useState(false)
-
-  async function runDiscovery() {
-    if (!businessName.trim()) {
-      setError('Tell us what your business is called ☕')
-      return
-    }
-    setError(null)
-    setDiscovering(true)
-    try {
-      const d = await discoverBrand(businessName)
-      setDiscovered(d)
-      setStep(1)
-    } catch (e) {
-      setError(e.message ?? 'Search failed. Try a different name or add your URL manually.')
-    } finally {
-      setDiscovering(false)
-    }
-  }
-
-  function toggleSelect(key) {
-    setSelected(s => {
-      const n = new Set(s)
-      n.has(key) ? n.delete(key) : n.add(key)
-      return n
-    })
-  }
-
-  function getSelectedSources() {
-    const sources = { website: null, instagram: null, tiktok: null }
-    selected.forEach(key => {
-      const [kind, i] = key.split(':')
-      const item = discovered?.[kind === 'instagram' || kind === 'tiktok' || kind === 'facebook' ? kind : 'websites']?.[parseInt(i)]
-      if (!item) return
-      if (kind === 'website' && !sources.website) sources.website = item.url
-      if (kind === 'instagram' && !sources.instagram) sources.instagram = item.handle
-      if (kind === 'tiktok' && !sources.tiktok) sources.tiktok = item.handle
-    })
-    // Manual inputs override
-    if (customInputs.website) sources.website = customInputs.website
-    if (customInputs.instagram) sources.instagram = customInputs.instagram.replace(/^@/, '')
-    if (customInputs.tiktok) sources.tiktok = customInputs.tiktok.replace(/^@/, '')
-    return sources
-  }
 
   async function runScan() {
-    const sources = getSelectedSources()
-    if (!sources.website && !sources.instagram) {
-      setError('Pick at least one source — a website or social account.')
+    const name = businessName.trim()
+    const website = inputs.website.trim()
+    const instagram = inputs.instagram.replace(/^@/, '').trim()
+    const tiktok = inputs.tiktok.replace(/^@/, '').trim()
+
+    if (!name) { setError("What's your business called?"); return }
+    if (!website && !instagram && !tiktok) {
+      setError('Add at least one — a website, Instagram, or TikTok handle.')
       return
     }
     setError(null)
-    setScanning(true)
-    setStep(2)
+    setStep(1) // scanning
     try {
-      const data = await scrapeBrand({ website: sources.website, instagram: sources.instagram })
-      if (!data.name && businessName) data.name = businessName
+      const data = await scrapeBrand({
+        website: website || null,
+        instagram: instagram || null,
+      })
+      if (!data.name) data.name = name
+      if (tiktok) data.tiktok = { handle: tiktok, url: `https://tiktok.com/@${tiktok}` }
       setScraped(data)
-      setStep(3)
+      setStep(2) // review
     } catch (e) {
-      setError(e.message ?? 'Scan failed.')
-      setStep(1)
-    } finally {
-      setScanning(false)
+      setError(e.message ?? 'Scan failed — try different URL or skip.')
+      setStep(0)
     }
+  }
+
+  function skipScan() {
+    // Let the user proceed without scraping — they'll fill everything in manually
+    const name = businessName.trim()
+    if (!name) { setError("At least give us your business name"); return }
+    setError(null)
+    setScraped({
+      name,
+      tagline: '',
+      description: '',
+      logo_url: '',
+      banner_url: '',
+      gallery: [],
+      products: [],
+      suggested_category: 'lifestyle',
+      suggested_tags: [],
+      url: inputs.website || null,
+      instagram: inputs.instagram ? { handle: inputs.instagram.replace(/^@/, '') } : null,
+      tiktok: inputs.tiktok ? { handle: inputs.tiktok.replace(/^@/, '') } : null,
+      warnings: ['Manual mode — fill in the blanks below.'],
+    })
+    setStep(2)
   }
 
   function updateField(field, value) {
@@ -137,10 +119,7 @@ export default function OnboardingPage() {
         onboarded_at: new Date().toISOString(),
       })
       setSavedProfile(saved)
-      // Even if the save errored we still advance — the profile was cached
-      // locally and the user can fix the DB issue from the dashboard. The
-      // error tag on `saved` lets StepLive show a honest banner.
-      setStep(4)
+      setStep(3)
     } finally {
       setSaving(false)
     }
@@ -170,62 +149,47 @@ export default function OnboardingPage() {
         <ProgressDots current={step} />
 
         <AnimatePresence mode="wait">
-          {/* ═══ STEP 0: NAME ═══ */}
+          {/* ═══ STEP 0: NAME + LINKS ═══ */}
           {step === 0 && (
             <StepWrapper key="0">
-              <StepName
-                value={businessName}
-                onChange={setBusinessName}
-                onContinue={runDiscovery}
-                error={error}
-                loading={discovering}
-              />
-            </StepWrapper>
-          )}
-
-          {/* ═══ STEP 1: PICK SOURCES ═══ */}
-          {step === 1 && discovered && (
-            <StepWrapper key="1">
-              <StepDiscovery
+              <StepNameAndLinks
                 name={businessName}
-                discovered={discovered}
-                selected={selected}
-                onToggle={toggleSelect}
-                customInputs={customInputs}
-                onCustomInput={(k, v) => setCustomInputs(c => ({ ...c, [k]: v }))}
-                onBack={() => setStep(0)}
+                onName={setBusinessName}
+                inputs={inputs}
+                onInputs={(k, v) => setInputs(s => ({ ...s, [k]: v }))}
                 onContinue={runScan}
+                onSkip={skipScan}
                 error={error}
               />
             </StepWrapper>
           )}
 
-          {/* ═══ STEP 2: SCANNING ═══ */}
-          {step === 2 && (
-            <StepWrapper key="2">
+          {/* ═══ STEP 1: SCANNING ═══ */}
+          {step === 1 && (
+            <StepWrapper key="1">
               <StepScanning />
             </StepWrapper>
           )}
 
-          {/* ═══ STEP 3: REVIEW + EDIT ═══ */}
-          {step === 3 && scraped && (
-            <StepWrapper key="3">
+          {/* ═══ STEP 2: REVIEW + EDIT ═══ */}
+          {step === 2 && scraped && (
+            <StepWrapper key="2">
               <StepReview
                 scraped={scraped}
                 onField={updateField}
                 onProduct={updateProduct}
                 onRemoveProduct={removeProduct}
                 onAddProduct={addProduct}
-                onBack={() => setStep(1)}
+                onBack={() => setStep(0)}
                 onLive={goLive}
                 saving={saving}
               />
             </StepWrapper>
           )}
 
-          {/* ═══ STEP 4: LIVE + ANALYTICS EXPLAINER ═══ */}
-          {step === 4 && (
-            <StepWrapper key="4">
+          {/* ═══ STEP 3: LIVE ═══ */}
+          {step === 3 && (
+            <StepWrapper key="3">
               <StepLive
                 scraped={scraped}
                 savedProfile={savedProfile}
@@ -346,7 +310,7 @@ function StepWrapper({ children }) {
 function ProgressDots({ current }) {
   return (
     <div className="flex items-center justify-center gap-2 mb-6">
-      {[0, 1, 2, 3, 4].map(i => (
+      {[0, 1, 2, 3].map(i => (
         <motion.div
           key={i}
           animate={{
@@ -380,7 +344,114 @@ function SteamDecor() {
   )
 }
 
-// ═══════════════════════════════ STEP 0: NAME ═══════════════════════════════
+// ═══════════════════════════════ STEP 0: NAME + LINKS ═══════════════════════════════
+
+function StepNameAndLinks({ name, onName, inputs, onInputs, onContinue, onSkip, error }) {
+  const [loading, setLoading] = useState(false)
+  async function go() {
+    setLoading(true)
+    try { await onContinue() } finally { setLoading(false) }
+  }
+  return (
+    <div>
+      <div className="text-center mb-5">
+        <motion.div
+          initial={{ scale: 0, rotate: -30 }}
+          animate={{ scale: 1, rotate: 0 }}
+          transition={{ type: 'spring', stiffness: 200, damping: 15 }}
+          className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#D94545] mb-3 shadow-warm-lg"
+        >
+          <Coffee size={24} className="text-white" />
+        </motion.div>
+        <h1 className="font-display text-2xl sm:text-3xl font-bold text-[#1A1513] mb-1 leading-tight">
+          Let's set up your brand
+        </h1>
+        <p className="text-gray-600 text-sm">
+          We'll scan what you give us and auto-fill the rest. <span className="font-hand text-[#D94545] text-base">edit everything after ✏️</span>
+        </p>
+      </div>
+
+      <div className="space-y-3">
+        <div>
+          <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide">Business name *</label>
+          <input
+            type="text"
+            autoFocus
+            value={name}
+            onChange={e => onName(e.target.value)}
+            placeholder="Maroon Clothing"
+            className="w-full mt-1 px-4 py-3 font-display text-lg bg-white border-2 border-[#E8DDCB] rounded-xl outline-none focus:border-[#D94545]"
+          />
+        </div>
+
+        <div>
+          <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide flex items-center gap-1"><Globe size={11}/> Website</label>
+          <input
+            type="text"
+            value={inputs.website}
+            onChange={e => onInputs('website', e.target.value)}
+            placeholder="maroonclothing.com"
+            className="w-full mt-1 px-4 py-3 bg-white border-2 border-[#E8DDCB] rounded-xl text-sm outline-none focus:border-[#D94545]"
+          />
+        </div>
+
+        <div className="grid grid-cols-2 gap-2">
+          <div>
+            <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide flex items-center gap-1"><Instagram size={11}/> Instagram</label>
+            <input
+              type="text"
+              value={inputs.instagram}
+              onChange={e => onInputs('instagram', e.target.value)}
+              placeholder="@yourhandle"
+              className="w-full mt-1 px-3 py-3 bg-white border-2 border-[#E8DDCB] rounded-xl text-sm outline-none focus:border-[#D94545]"
+            />
+          </div>
+          <div>
+            <label className="text-[11px] font-semibold text-gray-500 uppercase tracking-wide flex items-center gap-1"><Music2 size={11}/> TikTok</label>
+            <input
+              type="text"
+              value={inputs.tiktok}
+              onChange={e => onInputs('tiktok', e.target.value)}
+              placeholder="@yourtiktok"
+              className="w-full mt-1 px-3 py-3 bg-white border-2 border-[#E8DDCB] rounded-xl text-sm outline-none focus:border-[#D94545]"
+            />
+          </div>
+        </div>
+      </div>
+
+      {error && (
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="mt-4 px-4 py-3 bg-red-50 border border-red-100 rounded-2xl flex items-start gap-2">
+          <AlertCircle size={16} className="text-red-500 flex-shrink-0 mt-0.5" />
+          <p className="text-sm text-red-600">{error}</p>
+        </motion.div>
+      )}
+
+      <motion.button
+        whileHover={{ scale: 1.01 }}
+        whileTap={{ scale: 0.98 }}
+        onClick={go}
+        disabled={loading}
+        className="mt-5 w-full bg-[#D94545] hover:bg-[#a85225] disabled:opacity-70 text-white font-semibold py-4 rounded-2xl flex items-center justify-center gap-2 transition-colors shadow-warm"
+      >
+        {loading ? (
+          <><RefreshCw size={18} className="animate-spin" /> Scanning…</>
+        ) : (
+          <>Scan my brand <Sparkles size={16} /></>
+        )}
+      </motion.button>
+
+      <button
+        onClick={onSkip}
+        disabled={loading}
+        className="mt-2 w-full text-xs text-gray-400 hover:text-[#D94545] py-2"
+      >
+        or skip and fill it in manually →
+      </button>
+    </div>
+  )
+}
+
+// ═══════════════════════════════ LEGACY STEP (unused, kept for reference) ═══
 
 function StepName({ value, onChange, onContinue, error, loading }) {
   return (
@@ -804,26 +875,43 @@ function StepReview({ scraped, onField, onProduct, onRemoveProduct, onAddProduct
         </div>
       </div>
 
-      {/* Image URL editors */}
-      <div className="grid grid-cols-2 gap-2 mb-4">
-        <label className="block">
-          <span className="text-[10px] font-semibold text-gray-500 uppercase tracking-wide">Logo URL</span>
-          <input
-            type="url"
-            value={scraped.logo_url ?? ''}
-            onChange={e => onField('logo_url', e.target.value)}
-            className="w-full mt-1 px-3 py-2 text-xs bg-white border border-[#E8DDCB] rounded-xl outline-none focus:border-[#D94545]"
+      {/* Image editors with upload + drag-drop + URL fallback */}
+      <div className="grid grid-cols-3 gap-2 mb-4">
+        <div className="col-span-1">
+          <ImageUploader
+            value={scraped.logo_url}
+            onChange={v => onField('logo_url', v)}
+            folder="logos"
+            aspect="square"
+            label="Logo"
           />
-        </label>
-        <label className="block">
-          <span className="text-[10px] font-semibold text-gray-500 uppercase tracking-wide">Banner URL</span>
-          <input
-            type="url"
-            value={scraped.banner_url ?? ''}
-            onChange={e => onField('banner_url', e.target.value)}
-            className="w-full mt-1 px-3 py-2 text-xs bg-white border border-[#E8DDCB] rounded-xl outline-none focus:border-[#D94545]"
+        </div>
+        <div className="col-span-2">
+          <ImageUploader
+            value={scraped.banner_url}
+            onChange={v => onField('banner_url', v)}
+            folder="banners"
+            aspect="banner"
+            label="Banner"
           />
-        </label>
+        </div>
+      </div>
+
+      {/* Connect socials — placeholder for OAuth (awaiting Meta + TikTok approval) */}
+      <div className="mb-4 p-3 bg-[#FAF6EE] border border-[#E8DDCB] rounded-2xl">
+        <div className="flex items-center justify-between mb-2">
+          <p className="text-sm font-semibold text-[#1A1513]">Connect for real analytics</p>
+          <span className="text-[9px] font-bold text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded-full">COMING SOON</span>
+        </div>
+        <p className="text-xs text-gray-500 mb-2.5">Link your accounts for verified follower counts, engagement, and cross-posting.</p>
+        <div className="grid grid-cols-2 gap-2">
+          <button disabled className="flex items-center justify-center gap-1.5 py-2 px-3 bg-white border border-[#E8DDCB] rounded-xl text-xs text-gray-500 cursor-not-allowed opacity-70">
+            <Instagram size={12} /> Connect Instagram
+          </button>
+          <button disabled className="flex items-center justify-center gap-1.5 py-2 px-3 bg-white border border-[#E8DDCB] rounded-xl text-xs text-gray-500 cursor-not-allowed opacity-70">
+            <Music2 size={12} /> Connect TikTok
+          </button>
+        </div>
       </div>
 
       {/* Stats */}
@@ -922,12 +1010,23 @@ function StatPill({ value, label }) {
 
 function ProductRow({ product, idx, onChange, onRemove }) {
   const [expanded, setExpanded] = useState(false)
+  const primaryImage = product.images?.[0]
+
+  function setPrimaryImage(url) {
+    const rest = (product.images ?? []).slice(1)
+    onChange(idx, 'images', url ? [url, ...rest] : rest)
+  }
+
   return (
     <div className="border-2 border-[#E8DDCB] rounded-2xl overflow-hidden bg-white">
       <div className="flex items-center gap-2 p-2">
         <div className="w-12 h-12 rounded-xl overflow-hidden bg-gray-100 flex-shrink-0">
-          {product.images?.[0] && (
-            <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+          {primaryImage ? (
+            <img src={primaryImage} alt={product.name} className="w-full h-full object-cover" referrerPolicy="no-referrer" />
+          ) : (
+            <div className="w-full h-full flex items-center justify-center text-gray-300">
+              <Package size={16} />
+            </div>
           )}
         </div>
         <div className="flex-1 min-w-0">
@@ -956,29 +1055,45 @@ function ProductRow({ product, idx, onChange, onRemove }) {
             <span className="text-xs text-gray-400">stock</span>
           </div>
         </div>
-        <button onClick={() => setExpanded(e => !e)} className="w-7 h-7 rounded-lg hover:bg-gray-100 flex items-center justify-center text-gray-400">
+        <button
+          type="button"
+          onClick={() => setExpanded(e => !e)}
+          className={`w-7 h-7 rounded-lg flex items-center justify-center transition-colors ${expanded ? 'bg-[#D94545]/10 text-[#D94545]' : 'hover:bg-gray-100 text-gray-400'}`}
+          title="Edit details"
+        >
           <Edit2 size={12} />
         </button>
-        <button onClick={() => onRemove(idx)} className="w-7 h-7 rounded-lg hover:bg-red-50 flex items-center justify-center text-gray-400 hover:text-red-500">
+        <button
+          type="button"
+          onClick={() => onRemove(idx)}
+          className="w-7 h-7 rounded-lg hover:bg-red-50 flex items-center justify-center text-gray-400 hover:text-red-500"
+          title="Remove"
+        >
           <Trash2 size={12} />
         </button>
       </div>
       {expanded && (
-        <div className="border-t border-[#E8DDCB] p-2 space-y-1.5 bg-[#FAF6EE]">
-          <input
-            type="url"
-            value={product.images?.[0] ?? ''}
-            onChange={e => onChange(idx, 'images', [e.target.value, ...(product.images?.slice(1) ?? [])])}
-            placeholder="Primary image URL"
-            className="w-full px-2 py-1.5 text-xs border border-[#E8DDCB] rounded-lg bg-white outline-none"
-          />
-          <textarea
-            value={product.description ?? ''}
-            onChange={e => onChange(idx, 'description', e.target.value)}
-            placeholder="Description"
-            rows={2}
-            className="w-full px-2 py-1.5 text-xs border border-[#E8DDCB] rounded-lg bg-white outline-none resize-none"
-          />
+        <div className="border-t border-[#E8DDCB] p-3 space-y-2 bg-[#FAF6EE]">
+          <div className="flex gap-2">
+            <div className="w-20 flex-shrink-0">
+              <ImageUploader
+                value={primaryImage}
+                onChange={setPrimaryImage}
+                folder={`products/${product.id ?? idx}`}
+                aspect="square"
+                size="sm"
+              />
+            </div>
+            <div className="flex-1">
+              <textarea
+                value={product.description ?? ''}
+                onChange={e => onChange(idx, 'description', e.target.value)}
+                placeholder="Description"
+                rows={4}
+                className="w-full h-full px-2 py-1.5 text-xs border border-[#E8DDCB] rounded-lg bg-white outline-none resize-none"
+              />
+            </div>
+          </div>
         </div>
       )}
     </div>
