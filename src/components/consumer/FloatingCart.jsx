@@ -21,9 +21,9 @@ export function FloatingCart() {
 
   return (
     <>
-      {/* FAB */}
+      {/* FAB — always visible on consumer screens so people know where the cart lives */}
       <AnimatePresence>
-        {count > 0 && !open && (
+        {!open && (
           <motion.button
             key="fab"
             initial={{ scale: 0, opacity: 0, y: 20 }}
@@ -33,15 +33,22 @@ export function FloatingCart() {
             whileTap={{ scale: 0.95 }}
             transition={{ type: 'spring', stiffness: 300, damping: 20 }}
             onClick={() => setOpen(true)}
-            className="fixed z-40 bottom-24 right-4 md:bottom-6 md:right-6 bg-accent hover:bg-[#a85225] text-white rounded-full shadow-warm-lg flex items-center gap-2 pl-3.5 pr-4 py-3"
+            className={`fixed z-40 bottom-24 right-4 md:bottom-6 md:right-6 rounded-full shadow-warm-lg flex items-center gap-2 py-3 transition-colors ${
+              count > 0
+                ? 'bg-accent hover:bg-[#a85225] text-white pl-3.5 pr-4'
+                : 'bg-white border border-[#E8DDC8] text-[#6B5744] hover:text-accent px-4'
+            }`}
+            aria-label="Open cart"
           >
             <div className="relative">
               <ShoppingBag size={18} />
-              <span className="absolute -top-1.5 -right-1.5 min-w-[16px] h-[16px] px-1 bg-white text-accent text-[10px] font-bold rounded-full flex items-center justify-center">
-                {count}
-              </span>
+              {count > 0 && (
+                <span className="absolute -top-1.5 -right-1.5 min-w-[16px] h-[16px] px-1 bg-white text-accent text-[10px] font-bold rounded-full flex items-center justify-center border border-accent/10">
+                  {count}
+                </span>
+              )}
             </div>
-            <span className="text-sm font-semibold">{formatCurrency(subtotal)}</span>
+            {count > 0 && <span className="text-sm font-semibold">{formatCurrency(subtotal)}</span>}
           </motion.button>
         )}
       </AnimatePresence>
