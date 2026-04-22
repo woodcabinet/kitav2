@@ -7,7 +7,9 @@ import {
 import { Avatar } from '../../components/shared/Avatar'
 import { CategoryBadge, PlatformBadge } from '../../components/shared/Badge'
 import { EventMap } from '../../components/consumer/EventMap'
-import { MOCK_BRANDS, MOCK_POSTS, MOCK_EVENTS, MOCK_DROPS } from '../../data/mockData'
+import { MOCK_BRANDS, MOCK_POSTS, MOCK_EVENTS, MOCK_DROPS, MOCK_PRODUCTS } from '../../data/mockData'
+import { addToCart } from '../../lib/cartStore'
+import { ShoppingBag } from 'lucide-react'
 import { formatRelativeTime, formatNumber, formatDate, formatCurrency, formatCountdown, CATEGORY_LABELS } from '../../lib/utils'
 import { downloadICS, googleCalendarURL } from '../../lib/calendar'
 import { cn } from '../../lib/utils'
@@ -296,15 +298,25 @@ function BrandTile({ brand }) {
 
 // ─── Events tab with calendar add ──────────────────────────
 
-function EventsTab({ events }) {
+function EventsTab({ events, loading }) {
+  const liveCount = events.filter(e => e.source === 'eventbrite').length
   return (
     <div className="space-y-3">
       {/* Map widget pinned at top */}
       <div className="px-4">
         <EventMap events={events} />
-        <p className="text-[11px] text-[#8B7355] mt-1.5 px-1">
-          {events.length} events across Singapore — tap a pin to preview
-        </p>
+        <div className="flex items-center justify-between mt-1.5 px-1">
+          <p className="text-[11px] text-[#8B7355]">
+            {events.length} events across Singapore — tap a pin to preview
+          </p>
+          {loading ? (
+            <span className="text-[11px] text-[#8B7355] animate-pulse">Fetching live…</span>
+          ) : liveCount > 0 ? (
+            <span className="text-[11px] font-semibold text-green-700 bg-green-50 px-2 py-0.5 rounded-full">
+              · {liveCount} live
+            </span>
+          ) : null}
+        </div>
       </div>
       <div className="px-4 space-y-3">
         {events.map(event => (
@@ -422,7 +434,78 @@ function EventFullCard({ event }) {
               </div>
             )}
           </div>
+
+          {/* External RSVP fallback for scraped events */}
+          {event.url && event.source && (
+            <a
+              href={event.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-2.5 border-2 border-gray-200 rounded-xl text-xs font-semibold text-[#6B5744] hover:bg-[#F5EFE4] transition-colors"
+              title={`View on ${event.source}`}
+            >
+              ↗
+            </a>
+          )}
         </div>
+
+        {/* Shop-the-event — products from the hosting brand */}
+        <ShopTheEvent event={event} />
+      </div>
+    </div>
+  )
+}
+
+// Horizontal product rail under each event — the commerce loop Eventbrite can't touch.
+// Only shows when the event has a linked Kita brand with in-stock products.
+function ShopTheEvent({ event }) {
+  const brandId = event.brand_id
+  const products = useMemo(() => {
+    if (!brandId) return []
+    return MOCK_PRODUCTS.filter(p => p.brand_id === brandId).slice(0, 6)
+  }, [brandId])
+
+  if (!products.length) return null
+
+  return (
+    <div className="mt-4 pt-4 border-t border-[#E8DDC8]">
+      <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center gap-1.5">
+          <ShoppingBag size={13} className="text-[#D94545]" />
+          <p className="text-xs font-semibold text-ink">Shop the event</p>
+        </div>
+        <Link to={`/brand/${event.brand?.slug}`} className="text-[11px] text-[#D94545] font-semibold hover:underline">
+          See all →
+        </Link>
+      </div>
+      <div className="flex gap-2 overflow-x-auto no-scrollbar -mx-1 px-1 pb-1">
+        {products.map(product => (
+          <div
+            key={product.id}
+            className="flex-shrink-0 w-28 paper-card rounded-xl overflow-hidden border border-[#E8DDC8]"
+          >
+            <Link to={`/brand/${product.brand?.slug}`} className="block">
+              <div className="aspect-square bg-[#F0E7D5] overflow-hidden">
+                {product.images?.[0] && (
+                  <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover" />
+                )}
+              </div>
+              <div className="p-2">
+                <p className="text-[11px] font-semibold text-ink line-clamp-1 leading-tight">{product.name}</p>
+                <div className="flex items-center justify-between mt-1">
+                  <span className="text-[11px] font-bold text-accent">{formatCurrency(product.price)}</span>
+                  <button
+                    onClick={(e) => { e.preventDefault(); e.stopPropagation(); addToCart(product) }}
+                    className="w-6 h-6 bg-accent rounded-lg flex items-center justify-center hover:bg-[#a85225] active:scale-90 transition-all"
+                    aria-label="Add to cart"
+                  >
+                    <ShoppingBag size={11} className="text-white" />
+                  </button>
+                </div>
+              </div>
+            </Link>
+          </div>
+        ))}
       </div>
     </div>
   )
@@ -535,6 +618,34 @@ export default function DiscoverPage() {
   const [query, setQuery] = useState('')
   const [activeCategory, setActiveCategory] = useState('all')
   const [activeTab, setActiveTab] = useState('explore')
+  const [liveEvents, setLiveEvents] = useState([])
+  const [liveEventsLoading, setLiveEventsLoading] = useState(false)
+
+  // Fetch live SG events from our scraper on first mount.
+  // Falls back silently to seeded events if the edge function errors out.
+  useEffect(() => {
+    let cancelled = false
+    setLiveEventsLoading(true)
+    fetch('/api/events-discover')
+      .then(r => r.ok ? r.json() : { events: [] })
+      .then(d => { if (!cancelled) setLiveEvents(Array.isArray(d.events) ? d.events : []) })
+      .catch(() => {})
+      .finally(() => { if (!cancelled) setLiveEventsLoading(false) })
+    return () => { cancelled = true }
+  }, [])
+
+  // Merge seeded + scraped events; de-dupe on title+venue to avoid double-posting
+  const allEvents = useMemo(() => {
+    const seen = new Set()
+    const merged = []
+    for (const ev of [...liveEvents, ...MOCK_EVENTS]) {
+      const key = `${ev.title}|${ev.venue_name}`.toLowerCase()
+      if (seen.has(key)) continue
+      seen.add(key)
+      merged.push(ev)
+    }
+    return merged.sort((a, b) => new Date(a.starts_at) - new Date(b.starts_at))
+  }, [liveEvents])
 
   const exploreItems = useMemo(
     () => buildExploreGrid(query, activeCategory),
@@ -630,7 +741,7 @@ export default function DiscoverPage() {
       )}
 
       {/* ─── Events tab ─── */}
-      {activeTab === 'events' && <EventsTab events={MOCK_EVENTS} />}
+      {activeTab === 'events' && <EventsTab events={allEvents} loading={liveEventsLoading} />}
 
       {/* ─── Drops tab ─── */}
       {activeTab === 'drops' && <DropsTab drops={MOCK_DROPS} />}
@@ -638,7 +749,7 @@ export default function DiscoverPage() {
       {/* ─── Map tab ─── */}
       {activeTab === 'map' && (
         <div className="px-4 pt-3">
-          <EventMap events={MOCK_EVENTS} />
+          <EventMap events={allEvents} />
         </div>
       )}
     </div>
