@@ -142,29 +142,31 @@ export default function ShopPage() {
                     </div>
                   </div>
 
-                  <div className="p-3">
+                  <div className="px-3 pt-3 pb-1">
                     <p className="text-[10px] uppercase tracking-wide text-[#8B7355] truncate">
                       {product.brand?.name}
                     </p>
                     <p className="font-semibold text-sm text-ink line-clamp-2 mt-0.5 leading-snug">
                       {product.name}
                     </p>
-                    <div className="flex items-center justify-between mt-1">
-                      <p className="font-display text-lg text-accent">
-                        {formatCurrency(product.price)}
-                      </p>
-                      {!outOfStock && (
-                        <button
-                          onClick={(e) => { e.preventDefault(); e.stopPropagation(); addToCart(product) }}
-                          className="w-8 h-8 bg-accent rounded-xl flex items-center justify-center hover:bg-[#a85225] active:scale-90 transition-all"
-                          aria-label="Add to cart"
-                        >
-                          <ShoppingBag size={14} className="text-white" />
-                        </button>
-                      )}
-                    </div>
                   </div>
                 </Link>
+                {/* Price + Add-to-Cart outside the Link so the button never navigates */}
+                <div className="px-3 pb-3 flex items-center justify-between">
+                  <p className="font-display text-lg text-accent">
+                    {formatCurrency(product.price)}
+                  </p>
+                  {!outOfStock && (
+                    <button
+                      type="button"
+                      onClick={() => addToCart(product)}
+                      className="w-8 h-8 bg-accent rounded-xl flex items-center justify-center hover:bg-[#a85225] active:scale-90 transition-all"
+                      aria-label="Add to cart"
+                    >
+                      <ShoppingBag size={14} className="text-white" />
+                    </button>
+                  )}
+                </div>
               </motion.div>
             )
           })}

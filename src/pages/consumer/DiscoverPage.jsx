@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import {
-  Search, X, SlidersHorizontal, Map, Grid3X3, Zap, Calendar,
+  Search, X, SlidersHorizontal, Grid3X3, Zap, Calendar,
   Heart, CheckCircle, MapPin, Clock, Users, Flame, CalendarPlus
 } from 'lucide-react'
 import { Avatar } from '../../components/shared/Avatar'
@@ -21,7 +21,6 @@ const TABS = [
   { id: 'explore', label: 'Explore', icon: Grid3X3 },
   { id: 'events', label: 'Events', icon: Calendar },
   { id: 'drops', label: 'Drops', icon: Zap },
-  { id: 'map', label: 'Map', icon: Map },
 ]
 
 // Build a mixed grid of items for the Instagram explore view
@@ -745,13 +744,6 @@ export default function DiscoverPage() {
 
       {/* ─── Drops tab ─── */}
       {activeTab === 'drops' && <DropsTab drops={MOCK_DROPS} />}
-
-      {/* ─── Map tab ─── */}
-      {activeTab === 'map' && (
-        <div className="px-4 pt-3">
-          <EventMap events={allEvents} />
-        </div>
-      )}
     </div>
   )
 }
