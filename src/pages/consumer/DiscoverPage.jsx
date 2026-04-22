@@ -298,10 +298,19 @@ function BrandTile({ brand }) {
 
 function EventsTab({ events }) {
   return (
-    <div className="px-4 space-y-3">
-      {events.map(event => (
-        <EventFullCard key={event.id} event={event} />
-      ))}
+    <div className="space-y-3">
+      {/* Map widget pinned at top */}
+      <div className="px-4">
+        <EventMap events={events} />
+        <p className="text-[11px] text-[#8B7355] mt-1.5 px-1">
+          {events.length} events across Singapore — tap a pin to preview
+        </p>
+      </div>
+      <div className="px-4 space-y-3">
+        {events.map(event => (
+          <EventFullCard key={event.id} event={event} />
+        ))}
+      </div>
     </div>
   )
 }
@@ -538,16 +547,16 @@ export default function DiscoverPage() {
       <div className="sticky top-0 z-20 bg-[#FAF6EE] px-4 pt-3 pb-2 border-b border-[#E8DDC8]">
         <div className="flex gap-2 mb-3">
           <div className="flex-1 relative">
-            <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#8B7355]" />
+            <Search size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#8B7355] pointer-events-none" />
             <input
               type="text"
               value={query}
               onChange={e => setQuery(e.target.value)}
               placeholder="Search brands, events, drops..."
-              className="w-full pl-9 pr-8 py-2.5 bg-[#F0E7D5] rounded-xl text-sm outline-none focus:ring-2 focus:ring-[#D94545]/30"
+              className="w-full pl-3 pr-14 py-2.5 bg-[#F0E7D5] rounded-xl text-sm outline-none focus:ring-2 focus:ring-[#D94545]/30"
             />
             {query && (
-              <button onClick={() => setQuery('')} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#8B7355]">
+              <button onClick={() => setQuery('')} className="absolute right-9 top-1/2 -translate-y-1/2 text-[#8B7355]">
                 <X size={14} />
               </button>
             )}

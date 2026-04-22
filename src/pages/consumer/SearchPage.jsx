@@ -138,19 +138,19 @@ export default function SearchPage() {
             <ArrowLeft size={20} />
           </Link>
           <div className="flex-1 relative">
-            <Search size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#8B7355]" />
+            <Search size={18} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#8B7355] pointer-events-none" />
             <input
               ref={inputRef}
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search brands, events, products…"
-              className="w-full pl-11 pr-11 py-2.5 rounded-2xl bg-[#FAF6EE] border border-[#E8DDC8] text-[15px] text-[#1A1513] placeholder:text-[#A89880] focus:outline-none focus:border-accent focus:bg-white transition-all font-body"
+              className="w-full pl-4 pr-16 py-2.5 rounded-2xl bg-[#FAF6EE] border border-[#E8DDC8] text-[15px] text-[#1A1513] placeholder:text-[#A89880] focus:outline-none focus:border-accent focus:bg-white transition-all font-body"
             />
             {query && (
               <button
                 onClick={() => { setQuery(''); inputRef.current?.focus() }}
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center rounded-full hover:bg-[#F0E7D5] text-[#8B7355]"
+                className="absolute right-10 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center rounded-full hover:bg-[#F0E7D5] text-[#8B7355]"
               >
                 <X size={16} />
               </button>

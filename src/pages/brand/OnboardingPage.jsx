@@ -897,28 +897,10 @@ function StepReview({ scraped, onField, onProduct, onRemoveProduct, onAddProduct
         </div>
       </div>
 
-      {/* Connect socials — placeholder for OAuth (awaiting Meta + TikTok approval) */}
-      <div className="mb-4 p-3 bg-[#FAF6EE] border border-[#E8DDCB] rounded-2xl">
-        <div className="flex items-center justify-between mb-2">
-          <p className="text-sm font-semibold text-[#1A1513]">Connect for real analytics</p>
-          <span className="text-[9px] font-bold text-amber-700 bg-amber-100 px-1.5 py-0.5 rounded-full">COMING SOON</span>
-        </div>
-        <p className="text-xs text-gray-500 mb-2.5">Link your accounts for verified follower counts, engagement, and cross-posting.</p>
-        <div className="grid grid-cols-2 gap-2">
-          <button disabled className="flex items-center justify-center gap-1.5 py-2 px-3 bg-white border border-[#E8DDCB] rounded-xl text-xs text-gray-500 cursor-not-allowed opacity-70">
-            <Instagram size={12} /> Connect Instagram
-          </button>
-          <button disabled className="flex items-center justify-center gap-1.5 py-2 px-3 bg-white border border-[#E8DDCB] rounded-xl text-xs text-gray-500 cursor-not-allowed opacity-70">
-            <Music2 size={12} /> Connect TikTok
-          </button>
-        </div>
-      </div>
-
       {/* Stats */}
-      <div className="grid grid-cols-3 gap-2 mb-4">
+      <div className="grid grid-cols-2 gap-2 mb-4">
         <StatPill value={scraped.products?.length ?? 0} label="Products" />
         <StatPill value={scraped.gallery?.length ?? 0} label="Images" />
-        <StatPill value={scraped.instagram?.followers ?? '—'} label="IG followers" />
       </div>
 
       {/* Products */}
@@ -1157,42 +1139,42 @@ function StepLive({ scraped, savedProfile, onDashboard }) {
           a fake figure. Connect the data source to light it up. */}
       <div className="bg-[#FAF6EE] border border-[#E8DDCB] rounded-2xl p-5 mb-4">
         <p className="font-display text-lg font-bold text-[#1A1513] mb-1">📊 Your analytics, decoded</p>
-        <p className="font-hand text-base text-[#D94545] mb-4">connect a source to light it up — we won't show numbers we can't verify</p>
+        <p className="font-hand text-base text-[#D94545] mb-4">everything below is live from your Kita storefront — real numbers only</p>
 
         <div className="space-y-3">
           <MetricExplainer
             icon={Users} color="#D94545"
             label="Followers"
-            meaning="Verified audience size, pulled directly from each platform."
-            source="Connect Instagram · TikTok · YouTube"
-            status="pending"
+            meaning="People who follow your brand on Kita. They see your posts & drops first."
+            source="Live from your Kita storefront"
+            status="live"
           />
           <MetricExplainer
             icon={Eye} color="#1A1513"
             label="Impressions"
-            meaning="How many times your posts + products appeared on someone's screen inside Kitakakis."
-            source="Live — counted as people browse"
+            meaning="How many times your storefront, posts, and products appeared on someone's screen."
+            source="Live from your Kita storefront"
             status="live"
           />
           <MetricExplainer
             icon={Heart} color="#D94545"
-            label="Engagement rate"
-            meaning="% of people who see your post and interact. Computed from real events only."
-            source="Connect a social account to include off-platform posts"
-            status="partial"
+            label="Engagement"
+            meaning="Likes, comments, saves, and RSVPs across your Kita content."
+            source="Live from your Kita storefront"
+            status="live"
           />
           <MetricExplainer
             icon={DollarSign} color="#1A1513"
             label="Revenue"
-            meaning="Money from products sold through Kitakakis. Off-platform sales need Shopify/Stripe."
-            source="Connect Stripe · Shopify · Square"
-            status="pending"
+            meaning="Money earned through Kita checkouts — updates the moment an order lands."
+            source="Live from your Kita storefront"
+            status="live"
           />
           <MetricExplainer
             icon={TrendingUp} color="#D94545"
-            label="Top posts"
-            meaning="Your best-performing posts this month, ranked by real interactions."
-            source="Live for Kitakakis posts"
+            label="Top products"
+            meaning="Your best-performing pieces this month, ranked by Kita clicks and sales."
+            source="Live from your Kita storefront"
             status="live"
           />
         </div>

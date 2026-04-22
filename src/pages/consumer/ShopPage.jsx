@@ -1,9 +1,10 @@
 import { useState, useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, Coffee, Heart } from 'lucide-react'
+import { Search, Coffee, Heart, ShoppingBag } from 'lucide-react'
 import { MOCK_PRODUCTS } from '../../data/mockData'
 import { formatCurrency } from '../../lib/utils'
+import { addToCart } from '../../lib/cartStore'
 
 const CATEGORIES = [
   { id: 'all', label: 'All' },
@@ -55,13 +56,13 @@ export default function ShopPage() {
       {/* Search */}
       <div className="px-4 mb-3">
         <div className="relative">
-          <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-[#8B7355]" />
+          <Search size={16} className="absolute right-4 top-1/2 -translate-y-1/2 text-[#8B7355]" />
           <input
             type="text"
             value={searchInput}
             onChange={(e) => setSearchInput(e.target.value)}
             placeholder="search by name, brand, or vibe…"
-            className="w-full paper-card rounded-2xl pl-11 pr-4 py-3 text-sm text-ink placeholder:text-[#8B7355] focus:outline-none focus:ring-2 focus:ring-accent/30"
+            className="w-full paper-card rounded-2xl pl-4 pr-11 py-3 text-sm text-ink placeholder:text-[#8B7355] focus:outline-none focus:ring-2 focus:ring-accent/30"
           />
         </div>
       </div>
@@ -130,11 +131,11 @@ export default function ShopPage() {
                     {/* Stock badge */}
                     <div className="absolute top-2 right-2">
                       {outOfStock ? (
-                        <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#E8DDC8] text-[#8B7355]">
+                        <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-[#E8DDC8] text-[#8B7355]">
                           sold out
                         </span>
                       ) : lowStock ? (
-                        <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-accent text-cream animate-pulse">
+                        <span className="text-[11px] font-bold px-2.5 py-1 rounded-full bg-accent text-cream animate-pulse">
                           only {stock} left
                         </span>
                       ) : null}
@@ -148,9 +149,20 @@ export default function ShopPage() {
                     <p className="font-semibold text-sm text-ink line-clamp-2 mt-0.5 leading-snug">
                       {product.name}
                     </p>
-                    <p className="font-display text-lg text-accent mt-1">
-                      {formatCurrency(product.price)}
-                    </p>
+                    <div className="flex items-center justify-between mt-1">
+                      <p className="font-display text-lg text-accent">
+                        {formatCurrency(product.price)}
+                      </p>
+                      {!outOfStock && (
+                        <button
+                          onClick={(e) => { e.preventDefault(); e.stopPropagation(); addToCart(product) }}
+                          className="w-8 h-8 bg-accent rounded-xl flex items-center justify-center hover:bg-[#a85225] active:scale-90 transition-all"
+                          aria-label="Add to cart"
+                        >
+                          <ShoppingBag size={14} className="text-white" />
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </Link>
               </motion.div>

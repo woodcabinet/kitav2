@@ -140,7 +140,7 @@ function EventPopup({ event, onClose }) {
 
       <div className="flex items-center gap-2 mb-2">
         {isLive && (
-          <span className="flex items-center gap-1 bg-[#D94545] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+          <span className="flex items-center gap-1 bg-[#D94545] text-white text-[11px] font-bold px-2.5 py-1 rounded-full">
             <span className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
             LIVE
           </span>

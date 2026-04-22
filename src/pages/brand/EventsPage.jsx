@@ -88,7 +88,7 @@ function UpcomingTab({ events }) {
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
               <h4 className="font-bold text-sm text-ink truncate">{event.title}</h4>
-              <span className="text-[10px] font-semibold bg-[#C4B49A] text-[#D94545] px-2 py-0.5 rounded-full">
+              <span className="text-[11px] font-semibold bg-[#C4B49A] text-[#D94545] px-2.5 py-1 rounded-full">
                 {EVENT_TYPE_LABELS[event.event_type]}
               </span>
             </div>
@@ -262,7 +262,7 @@ function DraftsTab({ events }) {
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
               <h4 className="font-bold text-sm text-ink truncate">{event.title}</h4>
-              <span className="text-[10px] font-semibold bg-yellow-50 text-yellow-700 px-2 py-0.5 rounded-full">DRAFT</span>
+              <span className="text-[11px] font-semibold bg-yellow-50 text-yellow-700 px-2.5 py-1 rounded-full">DRAFT</span>
             </div>
             <div className="text-xs text-[#6B5744] space-y-0.5 mb-2">
               <span className="flex items-center gap-1"><Clock size={11} /> {formatDate(event.starts_at, 'EEE, MMM d')}</span>
@@ -543,12 +543,12 @@ export default function EventsPage() {
             <Icon size={16} />
             {label}
             {id === 'upcoming' && upcomingEvents.length > 0 && (
-              <span className="bg-[#D94545] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full ml-1">
+              <span className="bg-[#D94545] text-white text-[11px] font-bold px-2 py-0.5 rounded-full ml-1">
                 {upcomingEvents.length}
               </span>
             )}
             {id === 'drafts' && draftEvents.length > 0 && (
-              <span className="bg-yellow-400 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full ml-1">
+              <span className="bg-yellow-400 text-white text-[11px] font-bold px-2 py-0.5 rounded-full ml-1">
                 {draftEvents.length}
               </span>
             )}

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Heart, ShoppingBag, Zap } from 'lucide-react'
 import { cn, formatCurrency, formatCountdown } from '../../lib/utils'
 import { Avatar } from '../shared/Avatar'
+import { addToCart } from '../../lib/cartStore'
 
 export function ProductCard({ product }) {
   const [wishlisted, setWishlisted] = useState(false)
@@ -28,9 +29,9 @@ export function ProductCard({ product }) {
         </button>
         {/* Drop badge */}
         {isDropItem && (
-          <div className="absolute top-2 left-2 flex items-center gap-1 bg-accent text-white rounded-full px-2 py-0.5">
-            <Zap size={10} />
-            <span className="text-[10px] font-bold">DROP</span>
+          <div className="absolute top-2 left-2 flex items-center gap-1 bg-accent text-white rounded-full px-2.5 py-1">
+            <Zap size={11} />
+            <span className="text-[11px] font-bold">DROP</span>
           </div>
         )}
         {/* Out of stock */}
@@ -57,7 +58,11 @@ export function ProductCard({ product }) {
             )}
           </div>
           {!isOutOfStock && (
-            <button className="w-8 h-8 bg-accent rounded-xl flex items-center justify-center hover:bg-[#a85225] transition-colors">
+            <button
+              onClick={(e) => { e.preventDefault(); e.stopPropagation(); addToCart(product) }}
+              className="w-8 h-8 bg-accent rounded-xl flex items-center justify-center hover:bg-[#a85225] active:scale-90 transition-all"
+              aria-label="Add to cart"
+            >
               <ShoppingBag size={14} className="text-white" />
             </button>
           )}

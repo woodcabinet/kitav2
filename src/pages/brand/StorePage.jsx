@@ -107,7 +107,7 @@ function ProductsTab() {
                         <div className="flex items-center gap-1.5">
                           <p className="font-semibold text-sm text-ink">{product.name}</p>
                           {isDrop && (
-                            <span className="flex items-center gap-0.5 bg-[#D94545] text-white text-[9px] font-bold px-1.5 py-0.5 rounded-full">
+                            <span className="flex items-center gap-1 bg-[#D94545] text-white text-[11px] font-bold px-2.5 py-1 rounded-full">
                               <Zap size={8} /> DROP
                             </span>
                           )}

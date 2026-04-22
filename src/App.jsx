@@ -6,6 +6,7 @@ import { AuthProvider } from './contexts/AuthContext'
 import { ConsumerHeader } from './components/consumer/ConsumerHeader'
 import { BottomNav } from './components/consumer/BottomNav'
 import { SideNav } from './components/consumer/SideNav'
+import { FloatingCart } from './components/consumer/FloatingCart'
 import HomePage from './pages/consumer/HomePage'
 import DiscoverPage from './pages/consumer/DiscoverPage'
 import SearchPage from './pages/consumer/SearchPage'
@@ -47,6 +48,7 @@ function ConsumerLayout() {
           <BottomNav />
         </div>
       </div>
+      <FloatingCart />
     </div>
   )
 }

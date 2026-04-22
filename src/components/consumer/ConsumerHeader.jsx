@@ -31,13 +31,13 @@ export function ConsumerHeader() {
         {/* Inline search — collapses to icon on very narrow mobile, bar on larger */}
         <form onSubmit={onSubmit} className="flex-1 max-w-[260px] mx-2 hidden sm:block">
           <div className="relative">
-            <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-[#8B7355]" />
+            <Search size={15} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#8B7355]" />
             <input
               type="text"
               value={q}
               onChange={(e) => setQ(e.target.value)}
               placeholder="Search brands, products, events…"
-              className="w-full pl-9 pr-3 py-1.5 rounded-xl bg-white border border-[#E8DDC8] text-[13px] text-ink placeholder:text-[#A89880] focus:outline-none focus:border-accent transition-all"
+              className="w-full pl-3 pr-9 py-1.5 rounded-xl bg-white border border-[#E8DDC8] text-[13px] text-ink placeholder:text-[#A89880] focus:outline-none focus:border-accent transition-all"
               onFocus={(e) => {
                 // Route to full search page on focus for rich experience
                 if (location.pathname !== '/search') {
