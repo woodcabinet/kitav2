@@ -1,11 +1,65 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Heart, MessageCircle, Share2, Bookmark, MoreHorizontal, CheckCircle, ShoppingBag, Plus } from 'lucide-react'
+import { Heart, MessageCircle, Share2, Bookmark, MoreHorizontal, CheckCircle, ShoppingBag, Plus, Volume2, VolumeX } from 'lucide-react'
 import { cn, formatRelativeTime, formatNumber, formatCurrency } from '../../lib/utils'
 import { Avatar } from '../shared/Avatar'
 import { PlatformBadge } from '../shared/Badge'
 import { MOCK_PRODUCTS } from '../../data/mockData'
 import { addToCart } from '../../lib/cartStore'
+
+// Autoplay-on-scroll: the video starts (muted, so browsers allow it) the
+// moment 60%+ of the frame is visible; pauses when it scrolls out. The sound
+// toggle stays sticky across this card — tap once to unmute, stays unmuted
+// for this post even as you scroll back and forth.
+function FeedVideo({ src, poster }) {
+  const videoRef = useRef(null)
+  const [muted, setMuted] = useState(true)
+  const [failed, setFailed] = useState(false)
+
+  useEffect(() => {
+    const el = videoRef.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.play().catch(() => {}) // swallow autoplay rejections
+        } else {
+          el.pause()
+        }
+      },
+      { threshold: 0.6 }
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
+  if (failed && poster) {
+    return <img src={poster} alt="Post" className="w-full h-full object-cover" />
+  }
+
+  return (
+    <div className="relative w-full h-full">
+      <video
+        ref={videoRef}
+        src={src}
+        poster={poster}
+        muted={muted}
+        loop
+        playsInline
+        preload="metadata"
+        onError={() => setFailed(true)}
+        className="w-full h-full object-cover"
+      />
+      <button
+        onClick={(e) => { e.stopPropagation(); setMuted(m => !m) }}
+        aria-label={muted ? 'Unmute' : 'Mute'}
+        className="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-black/55 backdrop-blur-sm text-white flex items-center justify-center hover:bg-black/70 transition-colors"
+      >
+        {muted ? <VolumeX size={15} /> : <Volume2 size={15} />}
+      </button>
+    </div>
+  )
+}
 
 function ShopThisPost({ productIds }) {
   const products = productIds
@@ -93,14 +147,7 @@ export function PostCard({ post }) {
       {mediaUrl && (
         <div className="aspect-square overflow-hidden bg-black">
           {isVideo ? (
-            <video
-              src={mediaUrl}
-              poster={post.poster_url}
-              controls
-              playsInline
-              preload="metadata"
-              className="w-full h-full object-cover"
-            />
+            <FeedVideo src={mediaUrl} poster={post.poster_url} />
           ) : (
             <img
               src={mediaUrl}

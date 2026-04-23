@@ -181,6 +181,228 @@ export const MOCK_BRANDS = [
     experience_brand: true, unclaimed: true,
     lat: 1.3006, lng: 103.8386,
   },
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // Batch 2 — cross-category seeding (food, craft, experiences, toys, home).
+  // All real SG businesses. Logos are initial-avatars while the brand claims
+  // the listing; banners reuse in-house photography assets as consistent
+  // placeholders. Coordinates are real.
+  // ═══════════════════════════════════════════════════════════════════════
+
+  // — Food & Drink —
+  {
+    id: '10', slug: 'birds-of-paradise', name: 'Birds of Paradise Gelato',
+    tagline: 'Botanical gelato, handmade in Katong.',
+    description: 'Artisanal gelato made with seasonal herbs, flowers and spices. Pandan, sea salt, white chrysanthemum — flavours you won\'t find anywhere else.',
+    logo_url: 'https://ui-avatars.com/api/?name=Birds+Paradise&background=D94545&color=fff&size=400&bold=true&font-size=0.32',
+    banner_url: HB.collection,
+    category: 'food_beverage', location: '63 East Coast Rd', verified: true, follower_count: null,
+    instagram: 'birdsofparadisesg', website: 'birdsofparadise.sg',
+    lat: 1.3067, lng: 103.9021,
+  },
+  {
+    id: '11', slug: 'tiong-bahru-bakery', name: 'Tiong Bahru Bakery',
+    tagline: 'Croissants, community, since 2012.',
+    description: 'Artisan French bakery rooted in Tiong Bahru. Kouign amann, croissants baked twice daily, and a neighbourhood café feel across all outlets.',
+    logo_url: 'https://ui-avatars.com/api/?name=Tiong+Bahru&background=6B5744&color=fff&size=400&bold=true&font-size=0.32',
+    banner_url: TONEFF.editorial,
+    category: 'food_beverage', location: '56 Eng Hoon St', verified: true, follower_count: null,
+    instagram: 'tiongbahrubakery', website: 'tiongbahrubakery.com',
+    lat: 1.2845, lng: 103.8333,
+  },
+  {
+    id: '12', slug: 'sin-lee-foods', name: 'Sin Lee Foods',
+    tagline: 'Comfort brunch, Tiong Bahru style.',
+    description: 'Neighbourhood café known for taro pancakes, dirty fries and all-day breakfast. A Tiong Bahru staple since 2014.',
+    logo_url: 'https://ui-avatars.com/api/?name=Sin+Lee&background=C15E2E&color=fff&size=400&bold=true&font-size=0.4',
+    banner_url: MAROON.editorial,
+    category: 'food_beverage', location: '4 Jalan Bukit Ho Swee', verified: false, follower_count: null,
+    instagram: 'sinleefoods', website: 'sinleefoods.com',
+    lat: 1.2898, lng: 103.8316,
+  },
+  {
+    id: '13', slug: 'killiney-kopitiam', name: 'Killiney Kopitiam',
+    tagline: 'Singapore\'s oldest kopi house. Est. 1919.',
+    description: 'Over a century of kopi, kaya toast and curry chicken. The original Killiney Road outlet is heritage — more than 30 branches islandwide.',
+    logo_url: 'https://ui-avatars.com/api/?name=Killiney&background=1A1513&color=FAF6EE&size=400&bold=true&font-size=0.4',
+    banner_url: HB.banner,
+    category: 'food_beverage', location: '67 Killiney Rd', verified: true, follower_count: null,
+    instagram: 'killineykopitiam', website: 'killiney.com',
+    lat: 1.2993, lng: 103.8363,
+  },
+  {
+    id: '14', slug: 'nanyang-old-coffee', name: 'Nanyang Old Coffee',
+    tagline: 'Chinatown kopi, the old-school way.',
+    description: 'Traditional Nanyang-style kopi brewed from wok-roasted beans. Includes a mini kopi museum upstairs — free entry, bring your nostalgia.',
+    logo_url: 'https://ui-avatars.com/api/?name=Nanyang+Old&background=6B5744&color=fff&size=400&bold=true&font-size=0.32',
+    banner_url: CL.hero,
+    category: 'food_beverage', location: '268 South Bridge Rd', verified: false, follower_count: null,
+    instagram: 'nanyangoldcoffee', website: 'nanyangoldcoffee.com',
+    lat: 1.2819, lng: 103.8441,
+  },
+  {
+    id: '15', slug: 'apiary', name: 'Apiary Ice Cream',
+    tagline: 'Small batch ice cream, big personality.',
+    description: 'Siglap-based ice cream lab known for avant-garde flavours (Milo Dinosaur, Pulut Hitam, Salted Egg Yolk). Rotates weekly.',
+    logo_url: 'https://ui-avatars.com/api/?name=Apiary&background=D94545&color=fff&size=400&bold=true&font-size=0.4',
+    banner_url: VW.banner,
+    category: 'food_beverage', location: '28 Siglap Dr', verified: false, follower_count: null,
+    instagram: 'apiarysg', website: 'apiary.sg',
+    lat: 1.3101, lng: 103.9187,
+  },
+
+  // — Arts & Crafts —
+  {
+    id: '16', slug: 'ashley-pottery', name: 'Ashley Studio Pottery',
+    tagline: 'Wheel-throwing classes in Bukit Timah.',
+    description: 'Intimate pottery studio tucked away in Cluny Court. Wheel-throwing and hand-building workshops for beginners to advanced.',
+    logo_url: 'https://ui-avatars.com/api/?name=Ashley+Studio&background=8B7355&color=fff&size=400&bold=true&font-size=0.3',
+    banner_url: CL.hero,
+    category: 'arts_crafts', location: 'Cluny Court, Bukit Timah', verified: true, follower_count: null,
+    instagram: 'ashleystudio.sg', website: 'ashleystudio.com',
+    experience_brand: true,
+    lat: 1.3253, lng: 103.8163,
+  },
+  {
+    id: '17', slug: 'smol', name: 'Smol Crochet',
+    tagline: 'Handmade crochet, one stitch at a time.',
+    description: 'Home-based crochet brand. Plushies, bag charms, flower bouquets that never wilt. Custom orders via IG DM.',
+    logo_url: 'https://ui-avatars.com/api/?name=Smol&background=D94545&color=fff&size=400&bold=true&font-size=0.5',
+    banner_url: TONEFF.editorial,
+    category: 'arts_crafts', location: 'Online', verified: false, follower_count: null,
+    instagram: 'smol.crochet',
+    lat: 1.3521, lng: 103.8198,
+  },
+  {
+    id: '18', slug: 'sprout-stationery', name: 'Sprout Stationery',
+    tagline: 'Handmade paper goods, printed in SG.',
+    description: 'Risograph-printed greeting cards, notebooks and prints. Every piece designed and printed in-house in a Geylang studio.',
+    logo_url: 'https://ui-avatars.com/api/?name=Sprout&background=6B5744&color=fff&size=400&bold=true&font-size=0.4',
+    banner_url: HB.collection,
+    category: 'arts_crafts', location: 'Geylang', verified: false, follower_count: null,
+    instagram: 'sprout.sg', website: 'sproutstationery.sg',
+    lat: 1.3151, lng: 103.8866,
+  },
+
+  // — Lifestyle / Home —
+  {
+    id: '19', slug: 'cat-socrates', name: 'Cat Socrates',
+    tagline: 'Odds, ends & lovely things.',
+    description: 'Beloved curated gift shop with Joo Chiat and Bras Basah outlets. Stationery, ceramics, local zines, cat-themed everything.',
+    logo_url: 'https://ui-avatars.com/api/?name=Cat+Socrates&background=C15E2E&color=fff&size=400&bold=true&font-size=0.3',
+    banner_url: MAROON.editorial,
+    category: 'lifestyle', location: '448 Joo Chiat Rd', verified: true, follower_count: null,
+    instagram: 'cat_socrates', website: 'cat-socrates.com',
+    lat: 1.3122, lng: 103.9028,
+  },
+  {
+    id: '20', slug: 'commune', name: 'Commune',
+    tagline: 'Furniture for real homes.',
+    description: 'Solid wood furniture designed in Singapore. Showrooms at Marina Square and Millenia Walk. Lifetime warranty.',
+    logo_url: 'https://ui-avatars.com/api/?name=Commune&background=1A1513&color=FAF6EE&size=400&bold=true&font-size=0.3',
+    banner_url: HB.banner,
+    category: 'home_decor', location: 'Millenia Walk #01-90', verified: true, follower_count: null,
+    instagram: 'communelifestyle', website: 'commune.com.sg',
+    lat: 1.2911, lng: 103.8621,
+  },
+  {
+    id: '21', slug: 'scene-shang', name: 'Scene Shang',
+    tagline: 'Modern Asian design.',
+    description: 'Contemporary Asian-inspired home goods and furniture. Shophouse showroom on Liang Seah Street.',
+    logo_url: 'https://ui-avatars.com/api/?name=Scene+Shang&background=8B7355&color=fff&size=400&bold=true&font-size=0.3',
+    banner_url: TONEFF.banner,
+    category: 'home_decor', location: '263 Beach Rd', verified: false, follower_count: null,
+    instagram: 'sceneshang', website: 'sceneshang.com',
+    lat: 1.2994, lng: 103.8601,
+  },
+  {
+    id: '22', slug: 'naiise-iconic', name: 'Naiise Iconic',
+    tagline: 'Curated Singapore, under one roof.',
+    description: 'Concept store stocking 200+ local brands across design, fashion, home, and F&B. Jewel Changi Airport flagship.',
+    logo_url: 'https://ui-avatars.com/api/?name=Naiise&background=D94545&color=fff&size=400&bold=true&font-size=0.4',
+    banner_url: VW.banner,
+    category: 'lifestyle', location: 'Jewel Changi L1-210', verified: true, follower_count: null,
+    instagram: 'naiise', website: 'naiiseiconic.com',
+    lat: 1.3604, lng: 103.9897,
+  },
+
+  // — Experiences / Entertainment —
+  {
+    id: '23', slug: 'woopa-travels', name: 'Woopa Travels',
+    tagline: 'Kampong tours, real locals.',
+    description: 'Ground-up local tour operator. Pulau Ubin kampong day trips, heritage food trails in Little India and Kampong Glam.',
+    logo_url: 'https://ui-avatars.com/api/?name=Woopa&background=C15E2E&color=fff&size=400&bold=true&font-size=0.4',
+    banner_url: HB.collection,
+    category: 'entertainment', location: 'Changi Point', verified: true, follower_count: null,
+    instagram: 'woopatravels', website: 'woopatravels.com',
+    experience_brand: true,
+    lat: 1.3894, lng: 103.9885,
+  },
+  {
+    id: '24', slug: 'wheelers-yard', name: "Wheeler's Yard",
+    tagline: 'Bike shop meets brunch spot.',
+    description: 'Iconic Balestier bike shop with a full café. Big blue door, Instagram pilgrimage site, actually really good flat whites.',
+    logo_url: 'https://ui-avatars.com/api/?name=Wheelers+Yard&background=6B5744&color=fff&size=400&bold=true&font-size=0.3',
+    banner_url: MAROON.banner,
+    category: 'food_beverage', location: '28 Lorong Ampas', verified: true, follower_count: null,
+    instagram: 'wheelersyard', website: 'wheelersyard.com',
+    lat: 1.3272, lng: 103.8490,
+  },
+  {
+    id: '25', slug: 'punggol-sunrise', name: 'Punggol Sunrise Farm',
+    tagline: 'Urban farm tours + pick-your-own.',
+    description: 'Working urban farm on Punggol Barat. Weekend kampong tours, farm-to-table cooking classes, kids\' sessions.',
+    logo_url: 'https://ui-avatars.com/api/?name=Punggol+Sun&background=D94545&color=fff&size=400&bold=true&font-size=0.3',
+    banner_url: KOYOYU.banner,
+    category: 'entertainment', location: 'Punggol Barat', verified: false, follower_count: null,
+    instagram: 'punggolsunrise',
+    experience_brand: true,
+    lat: 1.4155, lng: 103.9019,
+  },
+
+  // — Toys & Kids —
+  {
+    id: '26', slug: 'better-toy-store', name: 'The Better Toy Store',
+    tagline: 'Thoughtful toys, made to last.',
+    description: 'Curated wooden and sustainable toys. Grippies, Grimm\'s, Plan Toys, Pikler triangles. Robertson Walk showroom.',
+    logo_url: 'https://ui-avatars.com/api/?name=Better+Toy&background=8B7355&color=fff&size=400&bold=true&font-size=0.3',
+    banner_url: TONEFF.editorial,
+    category: 'other', location: 'Robertson Walk', verified: true, follower_count: null,
+    instagram: 'thebettertoystore', website: 'thebettertoystore.com',
+    lat: 1.2908, lng: 103.8394,
+  },
+  {
+    id: '27', slug: 'hopscotch-friends', name: 'Hopscotch Friends',
+    tagline: 'Kids apparel that keeps up.',
+    description: 'Playful, durable kids\' clothing with a focus on original illustration. Collab capsules with local artists.',
+    logo_url: 'https://ui-avatars.com/api/?name=Hopscotch&background=C15E2E&color=fff&size=400&bold=true&font-size=0.3',
+    banner_url: HB.banner,
+    category: 'other', location: 'Online', verified: false, follower_count: null,
+    instagram: 'hopscotchfriends', website: 'hopscotchfriends.com',
+    lat: 1.3123, lng: 103.8543,
+  },
+
+  // — Fashion (more local brands) —
+  {
+    id: '28', slug: 'love-bonito', name: 'Love, Bonito',
+    tagline: 'Apparel, by Asian women.',
+    description: 'Homegrown fashion brand designed for Asian fits. Funan, Raffles City and 313 flagships.',
+    logo_url: 'https://ui-avatars.com/api/?name=Love+Bonito&background=1A1513&color=FAF6EE&size=400&bold=true&font-size=0.3',
+    banner_url: KOYOYU.banner,
+    category: 'fashion', location: 'Funan #01-22', verified: true, follower_count: null,
+    instagram: 'lovebonito', website: 'lovebonito.com',
+    lat: 1.2905, lng: 103.8507,
+  },
+  {
+    id: '29', slug: 'beyond-the-vines', name: 'Beyond The Vines',
+    tagline: 'Playful, not precious.',
+    description: 'Singapore-based contemporary fashion. Best known for the dumpling bags and pastel essentials.',
+    logo_url: 'https://ui-avatars.com/api/?name=BTV&background=D94545&color=fff&size=400&bold=true&font-size=0.5',
+    banner_url: MAROON.editorial,
+    category: 'fashion', location: 'Design Orchard L2', verified: true, follower_count: null,
+    instagram: 'beyondthevines', website: 'beyondthevines.com',
+    lat: 1.3007, lng: 103.8389,
+  },
 ]
 
 // ═══════════════════════════════ POSTS ═══════════════════════════════
@@ -249,6 +471,91 @@ export const MOCK_POSTS = [
     media_urls: [HB.mandarinParangShirt],
     likes: 1120, comments: 43, shares: 28, views: 16400,
     published_at: new Date(Date.now() - 30 * 60 * 60 * 1000).toISOString(),
+  },
+
+  // ── Batch 2 posts (food, craft, experiences, lifestyle) ──
+  // Video URLs are stable cc0 / Google public test bucket clips. Each video
+  // post carries a poster_url so the card still looks right if a video fails
+  // to load. Image posts point at ui-avatars (logo) or brand banner assets.
+  {
+    id: 'p10', brand_id: '11', brand: MOCK_BRANDS[10], platform: 'instagram',
+    content: 'Morning rush. Croissants out of the oven at 7:30 sharp — still warm if you\'re quick. Today\'s pick: kouign amann + flat white. See you at Eng Hoon.',
+    media_urls: ['https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4'],
+    media_type: 'video', poster_url: TONEFF.editorial,
+    product_ids: ['pr32', 'pr33'],
+    likes: 3120, comments: 184, shares: 67, views: 41000,
+    published_at: new Date(Date.now() - 3 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 'p11', brand_id: '10', brand: MOCK_BRANDS[9], platform: 'instagram',
+    content: 'New flavour drop: White Chrysanthemum Sorbet. Limited to 80 scoops a day at Katong. Don\'t blink.',
+    media_urls: ['https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4'],
+    media_type: 'video', poster_url: HB.collection,
+    product_ids: ['pr30', 'pr31'],
+    likes: 2240, comments: 142, shares: 89, views: 34000,
+    published_at: new Date(Date.now() - 7 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 'p12', brand_id: '16', brand: MOCK_BRANDS[15], platform: 'instagram',
+    content: 'Beginner wheel-throwing, Saturday 2–5pm. 3 seats left. Walk away with your own mug. $95, all materials included.',
+    media_urls: ['https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4'],
+    media_type: 'video', poster_url: CL.hero,
+    likes: 890, comments: 54, shares: 22, views: 12800,
+    published_at: new Date(Date.now() - 11 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 'p13', brand_id: '24', brand: MOCK_BRANDS[23], platform: 'instagram',
+    content: 'Sunday morning. Big blue door, flat whites pouring, bikes lined up. Come through.',
+    media_urls: ['https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4'],
+    media_type: 'video', poster_url: MAROON.banner,
+    likes: 4120, comments: 238, shares: 124, views: 68000,
+    published_at: new Date(Date.now() - 15 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 'p14', brand_id: '23', brand: MOCK_BRANDS[22], platform: 'tiktok',
+    content: 'Pulau Ubin kampong day trip this Saturday. Bike the island, lunch at Season Live Seafood, last ferry home at sunset. 8 spots left.',
+    media_urls: ['https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4'],
+    media_type: 'video', poster_url: HB.collection,
+    likes: 1840, comments: 96, shares: 74, views: 28200,
+    published_at: new Date(Date.now() - 19 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 'p15', brand_id: '17', brand: MOCK_BRANDS[16], platform: 'instagram',
+    content: 'Crochet bag charms — strawberry and cherry, $12 each. Made in a week, shipped in a padded envelope. DM to order.',
+    media_urls: ['https://ui-avatars.com/api/?name=Smol&background=D94545&color=fff&size=800&bold=true&font-size=0.5'],
+    product_ids: ['pr34', 'pr35'],
+    likes: 680, comments: 48, shares: 19, views: 9400,
+    published_at: new Date(Date.now() - 23 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 'p16', brand_id: '13', brand: MOCK_BRANDS[12], platform: 'instagram',
+    content: 'Kaya toast set, kopi-o kosong, two soft boiled eggs — still $5.80 because some things don\'t need to change.',
+    media_urls: [HB.banner],
+    product_ids: ['pr36'],
+    likes: 2100, comments: 114, shares: 63, views: 31000,
+    published_at: new Date(Date.now() - 28 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 'p17', brand_id: '19', brand: MOCK_BRANDS[18], platform: 'instagram',
+    content: 'New arrivals at Joo Chiat: hand-drawn zines from local illustrators, $8–18. Come browse, bring a friend, stay a while.',
+    media_urls: [MAROON.editorial],
+    likes: 940, comments: 38, shares: 21, views: 13600,
+    published_at: new Date(Date.now() - 32 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 'p18', brand_id: '26', brand: MOCK_BRANDS[25], platform: 'instagram',
+    content: 'Pikler triangle, solid birch, hand-finished — $180. Built for 18mo to 4yrs. Ships flat, takes 10 mins to assemble.',
+    media_urls: [TONEFF.editorial],
+    product_ids: ['pr37'],
+    likes: 520, comments: 28, shares: 14, views: 7800,
+    published_at: new Date(Date.now() - 38 * 60 * 60 * 1000).toISOString(),
+  },
+  {
+    id: 'p19', brand_id: '28', brand: MOCK_BRANDS[27], platform: 'instagram',
+    content: 'Spring drop is live. New utility dress — $69, comes in four colourways. Linked in bio.',
+    media_urls: [KOYOYU.banner],
+    likes: 5600, comments: 312, shares: 186, views: 89000,
+    published_at: new Date(Date.now() - 42 * 60 * 60 * 1000).toISOString(),
   },
 ]
 
@@ -709,6 +1016,76 @@ export const MOCK_PRODUCTS = [
     id: 'pr25', brand_id: '3', brand: MOCK_BRANDS[2],
     name: 'Sterling Silver Base Bracelet', price: 48, compare_price: null,
     images: [CL.b3], category: 'accessories', stock: 18,
+  },
+
+  // ── Batch 2 products (food, craft, experiences, toys) ──
+  // Images reuse ui-avatars / brand banner assets for now — when a brand
+  // claims the listing they'll upload proper product photography.
+  {
+    id: 'pr30', brand_id: '10', brand: MOCK_BRANDS[9],
+    name: 'White Chrysanthemum Sorbet (pint)', price: 16, compare_price: null,
+    images: ['https://ui-avatars.com/api/?name=White+Chrys&background=D94545&color=fff&size=800&bold=true&font-size=0.28'],
+    category: 'food_beverage', stock: 24,
+  },
+  {
+    id: 'pr31', brand_id: '10', brand: MOCK_BRANDS[9],
+    name: 'Pandan Gelato (pint)', price: 14, compare_price: null,
+    images: ['https://ui-avatars.com/api/?name=Pandan&background=6B5744&color=fff&size=800&bold=true&font-size=0.4'],
+    category: 'food_beverage', stock: 40,
+  },
+  {
+    id: 'pr32', brand_id: '11', brand: MOCK_BRANDS[10],
+    name: 'Kouign Amann (box of 4)', price: 18, compare_price: null,
+    images: ['https://ui-avatars.com/api/?name=Kouign+Amann&background=C15E2E&color=fff&size=800&bold=true&font-size=0.26'],
+    category: 'food_beverage', stock: 60,
+  },
+  {
+    id: 'pr33', brand_id: '11', brand: MOCK_BRANDS[10],
+    name: 'Classic Croissant (pack of 6)', price: 21, compare_price: null,
+    images: ['https://ui-avatars.com/api/?name=Croissant&background=8B7355&color=fff&size=800&bold=true&font-size=0.32'],
+    category: 'food_beverage', stock: 85,
+  },
+  {
+    id: 'pr34', brand_id: '17', brand: MOCK_BRANDS[16],
+    name: 'Strawberry Crochet Bag Charm', price: 12, compare_price: null,
+    images: ['https://ui-avatars.com/api/?name=Strawberry&background=D94545&color=fff&size=800&bold=true&font-size=0.32'],
+    category: 'arts_crafts', stock: 12,
+  },
+  {
+    id: 'pr35', brand_id: '17', brand: MOCK_BRANDS[16],
+    name: 'Cherry Crochet Bag Charm', price: 12, compare_price: null,
+    images: ['https://ui-avatars.com/api/?name=Cherry&background=C15E2E&color=fff&size=800&bold=true&font-size=0.4'],
+    category: 'arts_crafts', stock: 8,
+  },
+  {
+    id: 'pr36', brand_id: '13', brand: MOCK_BRANDS[12],
+    name: 'Kaya Toast Breakfast Set', price: 5.80, compare_price: null,
+    images: ['https://ui-avatars.com/api/?name=Kaya+Toast&background=1A1513&color=FAF6EE&size=800&bold=true&font-size=0.28'],
+    category: 'food_beverage', stock: 999,
+  },
+  {
+    id: 'pr37', brand_id: '26', brand: MOCK_BRANDS[25],
+    name: 'Pikler Triangle (birch)', price: 180, compare_price: null,
+    images: ['https://ui-avatars.com/api/?name=Pikler&background=8B7355&color=fff&size=800&bold=true&font-size=0.4'],
+    category: 'other', stock: 6,
+  },
+  {
+    id: 'pr38', brand_id: '20', brand: MOCK_BRANDS[19],
+    name: 'Solid Oak Side Table', price: 390, compare_price: 450,
+    images: ['https://ui-avatars.com/api/?name=Commune&background=1A1513&color=FAF6EE&size=800&bold=true&font-size=0.32'],
+    category: 'home_decor', stock: 4,
+  },
+  {
+    id: 'pr39', brand_id: '28', brand: MOCK_BRANDS[27],
+    name: 'Utility Dress — Sand', price: 69, compare_price: null,
+    images: ['https://ui-avatars.com/api/?name=LB&background=D94545&color=fff&size=800&bold=true&font-size=0.5'],
+    category: 'fashion', stock: 32,
+  },
+  {
+    id: 'pr40', brand_id: '29', brand: MOCK_BRANDS[28],
+    name: 'BTV Dumpling Bag — Mint', price: 49, compare_price: null,
+    images: ['https://ui-avatars.com/api/?name=BTV&background=6B5744&color=fff&size=800&bold=true&font-size=0.5'],
+    category: 'fashion', stock: 18,
   },
 ]
 
