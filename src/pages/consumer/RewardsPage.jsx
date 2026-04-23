@@ -1,29 +1,33 @@
 import { motion } from 'framer-motion'
-import { Gift, Star, CheckCircle, Lock, Sparkles, Coffee, Trophy } from 'lucide-react'
+import {
+  Gift, Star, CheckCircle, Lock, Sparkles, Coffee, Trophy,
+  Handshake, Heart, Crown, Users, MapPin, ShoppingBag, Share2, Target,
+  CalendarCheck, PenLine
+} from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
 
 const TIERS = [
-  { name: 'Kawan',    min: 0,    max: 499,       icon: '🤝', blurb: 'welcome to the table' },
-  { name: 'Sayang',   min: 500,  max: 1999,      icon: '❤️', blurb: 'one of the regulars' },
-  { name: 'Jaguh',    min: 2000, max: 4999,      icon: '⭐', blurb: 'champion of the kopitiam' },
-  { name: 'Pahlawan', min: 5000, max: Infinity,  icon: '🏆', blurb: 'legendary local' },
+  { name: 'Kawan',    min: 0,    max: 499,       Icon: Handshake, blurb: 'welcome to the table' },
+  { name: 'Sayang',   min: 500,  max: 1999,      Icon: Heart,     blurb: 'one of the regulars' },
+  { name: 'Jaguh',    min: 2000, max: 4999,      Icon: Star,      blurb: 'champion of the kopitiam' },
+  { name: 'Pahlawan', min: 5000, max: Infinity,  Icon: Crown,     blurb: 'legendary local' },
 ]
 
 const HOW_TO_EARN = [
-  { action: 'Follow a local brand',  points: '+5',         icon: '👥' },
-  { action: 'Attend an event',       points: '+50',        icon: '📍' },
-  { action: 'Make a purchase',       points: '+100 / $10', icon: '🛍️' },
-  { action: 'Share a post',          points: '+10',        icon: '📤' },
-  { action: 'Refer a friend',        points: '+200',       icon: '🎯' },
-  { action: 'Daily check-in',        points: '+2',         icon: '📅' },
-  { action: 'Write a review',        points: '+25',        icon: '✏️' },
+  { action: 'Follow a local brand',  points: '+5',         Icon: Users },
+  { action: 'Attend an event',       points: '+50',        Icon: MapPin },
+  { action: 'Make a purchase',       points: '+100 / $10', Icon: ShoppingBag },
+  { action: 'Share a post',          points: '+10',        Icon: Share2 },
+  { action: 'Refer a friend',        points: '+200',       Icon: Target },
+  { action: 'Daily check-in',        points: '+2',         Icon: CalendarCheck },
+  { action: 'Write a review',        points: '+25',        Icon: PenLine },
 ]
 
 const REWARDS = [
-  { title: 'Free kopi at Sunday Folks',    brand: 'Sunday Folks', points: 150, available: true },
-  { title: '$5 off Maroon merch',          brand: 'Maroon',       points: 200, available: true },
+  { title: 'Free kopi at Sunday Folks',    brand: 'Sunday Folks',   points: 150, available: true },
+  { title: '$5 off Maroon merch',          brand: 'Maroon',         points: 200, available: true },
   { title: 'Charm workshop — 20% off',     brand: 'Charms & Links', points: 500, available: true },
-  { title: 'Free tote (Heritage Bay)',     brand: 'Heritage Bay', points: 350, available: true },
+  { title: 'Free tote (Heritage Bay)',     brand: 'Heritage Bay',   points: 350, available: true },
 ]
 
 const ACTIVITY = [
@@ -39,6 +43,8 @@ export default function RewardsPage() {
   const tier = TIERS.find(t => points >= t.min && points <= t.max) ?? TIERS[0]
   const nextTier = TIERS[TIERS.indexOf(tier) + 1]
   const progress = nextTier ? Math.min(100, ((points - tier.min) / (nextTier.min - tier.min)) * 100) : 100
+  const TierIcon = tier.Icon
+  const NextTierIcon = nextTier?.Icon
 
   return (
     <div className="pb-24 bg-[#FAF6EE] min-h-screen">
@@ -65,7 +71,7 @@ export default function RewardsPage() {
                 transition={{ type: 'spring', stiffness: 180, damping: 14, delay: 0.2 }}
                 className="flex flex-col items-center gap-1 px-3 py-2 rounded-2xl bg-accent/10 animate-breathe"
               >
-                <span className="text-2xl">{tier.icon}</span>
+                <TierIcon size={24} className="text-accent" />
                 <span className="font-display font-semibold text-[13px] text-accent">{tier.name}</span>
               </motion.div>
             </div>
@@ -75,7 +81,10 @@ export default function RewardsPage() {
               <div className="mt-5">
                 <div className="flex items-center justify-between text-xs mb-1.5">
                   <span className="text-[#6B5744] font-medium">{points.toLocaleString()} pts</span>
-                  <span className="text-[#8B7355]">{(nextTier.min - points).toLocaleString()} to {nextTier.name} {nextTier.icon}</span>
+                  <span className="text-[#8B7355] inline-flex items-center gap-1">
+                    {(nextTier.min - points).toLocaleString()} to {nextTier.name}
+                    {NextTierIcon && <NextTierIcon size={12} />}
+                  </span>
                 </div>
                 <div className="h-2.5 bg-[#F0E7D5] rounded-full overflow-hidden">
                   <motion.div
@@ -104,7 +113,9 @@ export default function RewardsPage() {
             return (
               <div key={reward.title} className={`paper-card rounded-2xl p-3 flex flex-col ${!reward.available ? 'opacity-60' : ''}`}>
                 <div className="flex items-start justify-between mb-2">
-                  <span className="text-2xl">🎁</span>
+                  <div className="w-9 h-9 rounded-xl bg-accent/10 flex items-center justify-center">
+                    <Gift size={18} className="text-accent" />
+                  </div>
                   <span className="text-[10px] font-bold uppercase tracking-wider text-accent bg-accent/10 px-2 py-0.5 rounded-full flex items-center gap-0.5">
                     <Star size={9} className="fill-current" />{reward.points}
                   </span>
@@ -134,21 +145,24 @@ export default function RewardsPage() {
           <h2 className="font-display text-lg font-semibold text-ink">Climb the ladder</h2>
         </div>
         <div className="flex gap-2 overflow-x-auto scrollbar-hide pb-2">
-          {TIERS.map(t => (
-            <div key={t.name} className={`flex-shrink-0 w-40 paper-card rounded-2xl p-4 ${tier.name === t.name ? 'ring-2 ring-accent' : ''}`}>
-              <div className="text-3xl mb-1">{t.icon}</div>
-              <p className="font-display font-semibold text-[15px] text-ink">{t.name}</p>
-              <p className="font-hand text-sm text-[#8B7355] leading-tight">{t.blurb}</p>
-              <p className="text-[11px] text-[#6B5744] mt-2 font-medium">
-                {t.max === Infinity ? `${t.min.toLocaleString()}+ pts` : `${t.min.toLocaleString()} – ${t.max.toLocaleString()} pts`}
-              </p>
-              {tier.name === t.name && (
-                <span className="mt-2 inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-accent">
-                  <CheckCircle size={10} /> You're here
-                </span>
-              )}
-            </div>
-          ))}
+          {TIERS.map(t => {
+            const LadderIcon = t.Icon
+            return (
+              <div key={t.name} className={`flex-shrink-0 w-40 paper-card rounded-2xl p-4 ${tier.name === t.name ? 'ring-2 ring-accent' : ''}`}>
+                <LadderIcon size={26} className="text-accent mb-2" />
+                <p className="font-display font-semibold text-[15px] text-ink">{t.name}</p>
+                <p className="font-hand text-sm text-[#8B7355] leading-tight">{t.blurb}</p>
+                <p className="text-[11px] text-[#6B5744] mt-2 font-medium">
+                  {t.max === Infinity ? `${t.min.toLocaleString()}+ pts` : `${t.min.toLocaleString()} – ${t.max.toLocaleString()} pts`}
+                </p>
+                {tier.name === t.name && (
+                  <span className="mt-2 inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-accent">
+                    <CheckCircle size={10} /> You're here
+                  </span>
+                )}
+              </div>
+            )
+          })}
         </div>
       </div>
 
@@ -159,15 +173,20 @@ export default function RewardsPage() {
           <h2 className="font-display text-lg font-semibold text-ink">Ways to earn</h2>
         </div>
         <div className="paper-card rounded-3xl p-2">
-          {HOW_TO_EARN.map((item, idx) => (
-            <div key={item.action} className={`flex items-center justify-between py-2.5 px-3 ${idx < HOW_TO_EARN.length - 1 ? 'border-b border-[#E8DDC8]' : ''}`}>
-              <div className="flex items-center gap-2.5">
-                <span className="text-lg">{item.icon}</span>
-                <span className="text-sm text-ink">{item.action}</span>
+          {HOW_TO_EARN.map((item, idx) => {
+            const EarnIcon = item.Icon
+            return (
+              <div key={item.action} className={`flex items-center justify-between py-2.5 px-3 ${idx < HOW_TO_EARN.length - 1 ? 'border-b border-[#E8DDC8]' : ''}`}>
+                <div className="flex items-center gap-2.5">
+                  <div className="w-8 h-8 rounded-lg bg-accent/10 flex items-center justify-center">
+                    <EarnIcon size={15} className="text-accent" />
+                  </div>
+                  <span className="text-sm text-ink">{item.action}</span>
+                </div>
+                <span className="text-xs font-bold text-accent bg-accent/10 px-2 py-0.5 rounded-full">{item.points}</span>
               </div>
-              <span className="text-xs font-bold text-accent bg-accent/10 px-2 py-0.5 rounded-full">{item.points}</span>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
 
@@ -191,7 +210,7 @@ export default function RewardsPage() {
       </div>
 
       <p className="font-hand text-lg text-center text-[#8B7355] mt-8 px-4">
-        every point tells a story ✨
+        every point tells a story
       </p>
     </div>
   )

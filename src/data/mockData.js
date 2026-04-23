@@ -188,22 +188,23 @@ export const MOCK_BRANDS = [
 export const MOCK_POSTS = [
   {
     id: 'p1', brand_id: '5', brand: MOCK_BRANDS[4], platform: 'tiktok',
-    content: 'LIVE TONIGHT 8PM 🔥 Hundreds of one-of-one pieces. Comment-to-claim. See you on live, Haji Lane flagship.',
-    media_urls: [VW.banner],
+    content: 'LIVE TONIGHT 8PM — hundreds of one-of-one pieces. Comment-to-claim. See you on live, Haji Lane flagship.',
+    media_urls: ['https://cdn.coverr.co/videos/coverr-fashion-model-posing-in-the-studio-3061/1080p.mp4'],
+    media_type: 'video', poster_url: VW.banner,
     likes: 5400, comments: 412, shares: 238, views: 124000,
     published_at: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
   },
   {
     id: 'p2', brand_id: '1', brand: MOCK_BRANDS[0], platform: 'instagram',
     content: "The Vortex Tee — back in stock, heavyweight cotton, $30. Weekly drop Friday 8pm.",
-    media_urls: [MAROON.vortexTee],
+    media_urls: [MAROON.vortexTee], product_ids: ['pr5', 'pr4', 'pr6'],
     likes: 920, comments: 64, shares: 31, views: 14200,
     published_at: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString(),
   },
   {
     id: 'p3', brand_id: '8', brand: MOCK_BRANDS[7], platform: 'instagram',
     content: 'The Askew Shirt, restocked. $45, made slow, numbered. Second run only — when it\'s gone it\'s gone.',
-    media_urls: [TONEFF.askewShirt],
+    media_urls: [TONEFF.askewShirt], product_ids: ['pr1', 'pr2', 'pr3'],
     likes: 540, comments: 28, shares: 14, views: 8900,
     published_at: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString(),
   },
@@ -216,7 +217,7 @@ export const MOCK_POSTS = [
   },
   {
     id: 'p5', brand_id: '3', brand: MOCK_BRANDS[2], platform: 'instagram',
-    content: 'Build your own at 93 Club St. 100+ Italian charms to mix and match. Walk-ins welcome 💫',
+    content: 'Build your own at 93 Club St. 100+ Italian charms to mix and match. Walk-ins welcome.',
     media_urls: [CL.hero],
     likes: 2240, comments: 103, shares: 67, views: 36000,
     published_at: new Date(Date.now() - 14 * 60 * 60 * 1000).toISOString(),
@@ -224,13 +225,13 @@ export const MOCK_POSTS = [
   {
     id: 'p6', brand_id: '2', brand: MOCK_BRANDS[1], platform: 'instagram',
     content: 'Diamond Zip-Up Hoodie — $88.88. Washed cotton fleece, embroidered chest. Studio exclusive.',
-    media_urls: [KOYOYU.diamondHoodie],
+    media_urls: [KOYOYU.diamondHoodie], product_ids: ['pr9', 'pr10'],
     likes: 480, comments: 22, shares: 9, views: 7400,
     published_at: new Date(Date.now() - 18 * 60 * 60 * 1000).toISOString(),
   },
   {
     id: 'p7', brand_id: '1', brand: MOCK_BRANDS[0], platform: 'instagram',
-    content: "Pinstripe Cap — $29. Only 40 made. Stacking with the Signature Tee 🩸",
+    content: "Pinstripe Cap — $29. Only 40 made. Stacking with the Signature Tee.",
     media_urls: [MAROON.pinstripeCap],
     likes: 720, comments: 38, shares: 14, views: 11200,
     published_at: new Date(Date.now() - 22 * 60 * 60 * 1000).toISOString(),
@@ -526,7 +527,7 @@ export const MOCK_THREADS = [
   {
     id: 't2',
     author: { display_name: 'Priya Nair', avatar_url: 'https://i.pravatar.cc/150?img=5', username: 'priyasg' },
-    content: "VintageWknd TikTok lives have ruined my wallet. Tue and Thu are officially 'do not disturb' hours in my house 😭",
+    content: "VintageWknd TikTok lives have ruined my wallet. Tue and Thu are officially 'do not disturb' hours in my house.",
     tags: ['vintage', 'thrift', 'weekend'],
     like_count: 312, reply_count: 64,
     created_at: new Date(Date.now() - 6 * 60 * 60 * 1000).toISOString(),

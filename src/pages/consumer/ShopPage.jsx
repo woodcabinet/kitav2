@@ -45,7 +45,7 @@ export default function ShopPage() {
           className="flex items-center gap-2 mb-1"
         >
           <Coffee size={22} className="text-accent animate-breathe" />
-          <span className="font-hand text-accent text-lg">made with love 🧡</span>
+          <span className="font-hand text-accent text-lg">curated locally</span>
         </motion.div>
         <h1 className="font-display text-4xl text-ink leading-tight">Shop local</h1>
         <p className="text-sm text-[#6B5744] mt-1">

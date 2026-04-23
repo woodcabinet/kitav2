@@ -5,7 +5,7 @@ import {
   Sparkles, CheckCircle, ArrowRight, Instagram, Globe, Search,
   RefreshCw, AlertCircle, Package, Trash2, Plus, Edit2, Coffee,
   Check, ExternalLink, Facebook, Music2, TrendingUp, Users, Heart,
-  DollarSign, BarChart2, Eye, MessageCircle
+  DollarSign, BarChart2, Eye, MessageCircle, Rocket, PartyPopper
 } from 'lucide-react'
 import { scrapeBrand } from '../../lib/brandScraper'
 import { saveBrandProfile } from '../../lib/brandStore'
@@ -367,7 +367,7 @@ function StepNameAndLinks({ name, onName, inputs, onInputs, onContinue, onSkip, 
           Let's set up your brand
         </h1>
         <p className="text-gray-600 text-sm">
-          We'll scan what you give us and auto-fill the rest. <span className="font-hand text-[#D94545] text-base">edit everything after ✏️</span>
+          We'll scan what you give us and auto-fill the rest. <span className="font-hand text-[#D94545] text-base">edit everything after</span>
         </p>
       </div>
 
@@ -626,7 +626,7 @@ function StepDiscovery({ name, discovered, selected, onToggle, customInputs, onC
 
         {totalFound === 0 && (
           <div className="text-center py-8 bg-[#FAF6EE] rounded-2xl border border-[#E8DDCB]">
-            <p className="font-hand text-2xl text-[#D94545] mb-1">no results 🤷</p>
+            <p className="font-hand text-2xl text-[#D94545] mb-1">no results</p>
             <p className="text-sm text-gray-500">No problem — add your links manually below.</p>
           </div>
         )}
@@ -763,7 +763,7 @@ function ManualInput({ icon: Icon, placeholder, value, onChange }) {
 function StepScanning() {
   const [stageIdx, setStageIdx] = useState(0)
   const stages = [
-    'Brewing the scan... ☕',
+    'Starting the scan...',
     'Reading your website...',
     'Checking Instagram vibes...',
     'Importing products...',
@@ -842,7 +842,7 @@ function StepReview({ scraped, onField, onProduct, onRemoveProduct, onAddProduct
         </div>
         <div>
           <h2 className="font-display text-2xl font-bold text-[#1A1513] leading-tight">Found your brand.</h2>
-          <p className="font-hand text-lg text-[#D94545]">edit anything, nothing is locked ✏️</p>
+          <p className="font-hand text-lg text-[#D94545]">edit anything, nothing is locked</p>
         </div>
       </div>
 
@@ -1096,7 +1096,7 @@ function StepLive({ scraped, savedProfile, onDashboard }) {
           transition={{ type: 'spring', stiffness: 200, damping: 12 }}
           className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-100 mb-4"
         >
-          <span className="text-4xl">{isDemo ? '👀' : '🎉'}</span>
+          {isDemo ? <Eye size={36} className="text-green-700" /> : <PartyPopper size={36} className="text-green-700" />}
         </motion.div>
         <h1 className="font-display text-3xl font-bold text-[#1A1513] mb-1">
           {isDemo ? "Preview ready" : "You're live!"}
@@ -1131,14 +1131,14 @@ function StepLive({ scraped, savedProfile, onDashboard }) {
       <div className="grid grid-cols-3 gap-2 mb-6">
         <StatPill value={scraped?.products?.length ?? 0} label="Products synced" />
         <StatPill value={scraped?.gallery?.length ?? 0} label="Images" />
-        <StatPill value="✓" label="Dashboard ready" />
+        <StatPill value={<Check size={18} className="inline" />} label="Dashboard ready" />
       </div>
 
       {/* Analytics explainer — only shows what's actually wired up. Numbers
           you haven't connected yet are marked "pending" so we never show
           a fake figure. Connect the data source to light it up. */}
       <div className="bg-[#FAF6EE] border border-[#E8DDCB] rounded-2xl p-5 mb-4">
-        <p className="font-display text-lg font-bold text-[#1A1513] mb-1">📊 Your analytics, decoded</p>
+        <p className="font-display text-lg font-bold text-[#1A1513] mb-1 inline-flex items-center gap-2"><BarChart2 size={18} /> Your analytics, decoded</p>
         <p className="font-hand text-base text-[#D94545] mb-4">everything below is live from your Kita storefront — real numbers only</p>
 
         <div className="space-y-3">

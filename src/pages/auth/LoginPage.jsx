@@ -123,7 +123,7 @@ export default function LoginPage() {
         </div>
 
         <p className="text-center text-xs text-gray-400 mt-4">
-          By continuing, you agree to support local. 🇸🇬
+          By continuing, you agree to support local Singapore makers.
         </p>
       </div>
     </div>

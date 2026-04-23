@@ -8,6 +8,7 @@ import { MOCK_BRANDS, MOCK_EVENTS } from '../../data/mockData'
 import { formatDate } from '../../lib/utils'
 
 const SETTINGS_ROWS = [
+  { icon: ShoppingBag, label: 'Order history', hint: 'Track past purchases', to: '/profile/orders' },
   { icon: Bell,       label: 'Notifications', hint: 'Drops, events, friends' },
   { icon: Shield,     label: 'Privacy',       hint: 'Who sees your saves' },
   { icon: HelpCircle, label: 'Help & FAQ',    hint: 'We got your back' },
@@ -201,12 +202,15 @@ export default function ProfilePage() {
             <Settings size={16} className="text-accent" /> Settings & more
           </h2>
           <div className="paper-card rounded-3xl p-2">
-            {SETTINGS_ROWS.map((row, idx) => {
+            {SETTINGS_ROWS.map(row => {
               const Icon = row.icon
+              const Cmp = row.to ? Link : 'button'
+              const extraProps = row.to ? { to: row.to } : {}
               return (
-                <button
+                <Cmp
                   key={row.label}
-                  className={`w-full flex items-center gap-3 py-3 px-3 text-left hover:bg-[#F0E7D5] rounded-2xl transition-colors ${idx < SETTINGS_ROWS.length - 1 ? '' : ''}`}
+                  {...extraProps}
+                  className="w-full flex items-center gap-3 py-3 px-3 text-left hover:bg-[#F0E7D5] rounded-2xl transition-colors"
                 >
                   <div className="w-9 h-9 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
                     <Icon size={16} className="text-accent" />
@@ -216,7 +220,7 @@ export default function ProfilePage() {
                     <p className="text-[11px] text-[#8B7355]">{row.hint}</p>
                   </div>
                   <ChevronRight size={16} className="text-[#A89880]" />
-                </button>
+                </Cmp>
               )
             })}
           </div>
@@ -224,7 +228,7 @@ export default function ProfilePage() {
       </div>
 
       <p className="font-hand text-lg text-center text-[#8B7355] mt-8 px-4">
-        made in Singapore, with love 🇸🇬
+        made in Singapore
       </p>
     </div>
   )

@@ -1,4 +1,4 @@
-import { Zap } from 'lucide-react'
+import { Zap, Flame, Gift } from 'lucide-react'
 import { DropCard } from '../../components/consumer/DropCard'
 import { MOCK_DROPS } from '../../data/mockData'
 
@@ -41,18 +41,23 @@ export default function DropsPage() {
         <h3 className="font-bold text-gray-900 mb-3">How Drops Work</h3>
         <div className="space-y-3">
           {[
-            { icon: '🔥', title: 'Hype it', desc: 'Tap the flame icon to track a drop. You\'ll get notified when it goes live.' },
-            { icon: '⚡', title: 'Drop goes live', desc: 'At the countdown, the shop opens. First come, first served.' },
-            { icon: '🎁', title: 'Support local', desc: 'Payments go directly to the brand. No middleman margin.' },
-          ].map(step => (
-            <div key={step.icon} className="flex gap-3">
-              <span className="text-2xl flex-shrink-0">{step.icon}</span>
-              <div>
-                <p className="font-semibold text-sm text-gray-900">{step.title}</p>
-                <p className="text-xs text-gray-500">{step.desc}</p>
+            { Icon: Flame, title: 'Hype it', desc: 'Tap the flame icon to track a drop. You\'ll get notified when it goes live.' },
+            { Icon: Zap,   title: 'Drop goes live', desc: 'At the countdown, the shop opens. First come, first served.' },
+            { Icon: Gift,  title: 'Support local', desc: 'Payments go directly to the brand. No middleman margin.' },
+          ].map(step => {
+            const StepIcon = step.Icon
+            return (
+              <div key={step.title} className="flex gap-3">
+                <div className="w-10 h-10 rounded-xl bg-white flex-shrink-0 flex items-center justify-center">
+                  <StepIcon size={18} className="text-accent" />
+                </div>
+                <div>
+                  <p className="font-semibold text-sm text-gray-900">{step.title}</p>
+                  <p className="text-xs text-gray-500">{step.desc}</p>
+                </div>
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       </div>
     </div>

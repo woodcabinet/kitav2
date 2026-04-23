@@ -2,7 +2,8 @@ import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import {
   Search, X, SlidersHorizontal, Grid3X3, Zap, Calendar,
-  Heart, CheckCircle, MapPin, Clock, Users, Flame, CalendarPlus
+  Heart, CheckCircle, MapPin, Clock, Users, Flame, CalendarPlus,
+  MessageCircle, ExternalLink, Check, Gift
 } from 'lucide-react'
 import { Avatar } from '../../components/shared/Avatar'
 import { CategoryBadge, PlatformBadge } from '../../components/shared/Badge'
@@ -100,7 +101,7 @@ function PostTile({ post, size }) {
       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
         <div className="flex items-center gap-4 text-white font-semibold text-sm">
           <span className="flex items-center gap-1"><Heart size={16} className="fill-white" /> {formatNumber(post.likes)}</span>
-          <span className="flex items-center gap-1">💬 {formatNumber(post.comments)}</span>
+          <span className="flex items-center gap-1"><MessageCircle size={14} className="fill-white" /> {formatNumber(post.comments)}</span>
         </div>
       </div>
       {/* Platform badge */}
@@ -282,7 +283,7 @@ function BrandTile({ brand }) {
               saved ? 'border-[#D94545] text-[#D94545] bg-[#D94545]/5' : 'border-gray-300 text-[#8B7355] hover:border-gray-400'
             )}
           >
-            {saved ? '♥' : '♡'} Save
+            <Heart size={11} className={cn('inline -mt-0.5 mr-0.5', saved ? 'fill-current' : '')} /> Save
           </button>
         </div>
         <div className="flex items-center gap-1">
@@ -414,7 +415,7 @@ function EventFullCard({ event }) {
               'bg-[#D94545] text-white hover:bg-[#a85225]'
             )}
           >
-            {isSoldOut && !rsvped ? 'Sold Out' : rsvped ? '✓ Going' : 'RSVP Now'}
+            {isSoldOut && !rsvped ? 'Sold Out' : rsvped ? (<span className="inline-flex items-center gap-1"><Check size={14} /> Going</span>) : 'RSVP Now'}
           </button>
 
           {/* Add to Calendar */}
@@ -449,7 +450,7 @@ function EventFullCard({ event }) {
               className="px-3 py-2.5 border-2 border-gray-200 rounded-xl text-xs font-semibold text-[#6B5744] hover:bg-[#F5EFE4] transition-colors"
               title={`View on ${event.source}`}
             >
-              ↗
+              <ExternalLink size={14} />
             </a>
           )}
         </div>
@@ -543,9 +544,9 @@ function DropsTab({ drops }) {
       <div className="p-4 bg-[#C4B49A] rounded-2xl">
         <p className="font-bold text-xs text-ink mb-2">How Drops Work</p>
         <div className="space-y-2 text-xs text-[#6B5744]">
-          <p>🔥 Hype a drop to get notified when it goes live.</p>
-          <p>⚡ Shop fast — first come, first served.</p>
-          <p>🎁 Payments go directly to the brand.</p>
+          <p className="flex items-start gap-2"><Flame size={13} className="mt-0.5 flex-shrink-0 text-accent" /> Hype a drop to get notified when it goes live.</p>
+          <p className="flex items-start gap-2"><Zap size={13} className="mt-0.5 flex-shrink-0 text-accent" /> Shop fast — first come, first served.</p>
+          <p className="flex items-start gap-2"><Gift size={13} className="mt-0.5 flex-shrink-0 text-accent" /> Payments go directly to the brand.</p>
         </div>
       </div>
     </div>
@@ -737,7 +738,7 @@ export default function DiscoverPage() {
 
           {exploreItems.length === 0 && (
             <div className="text-center py-16 px-8">
-              <p className="text-4xl mb-3">🔍</p>
+              <Search size={32} className="text-[#C4B49A] mx-auto mb-3" />
               <p className="font-bold text-ink">Nothing found</p>
               <p className="text-sm text-[#6B5744]">Try a different search or category.</p>
             </div>

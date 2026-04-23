@@ -5,6 +5,7 @@ import {
 } from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
 import { Avatar } from '../shared/Avatar'
+import { LogoMark } from '../shared/Logo'
 import { cn } from '../../lib/utils'
 
 const NAV = [
@@ -23,10 +24,10 @@ export function DashboardSidebar() {
     <aside className="hidden md:flex flex-col w-64 bg-[#1A1513] min-h-screen px-4 py-6 flex-shrink-0">
       {/* Logo */}
       <Link to="/dashboard" className="flex items-center gap-2 mb-8 px-2">
-        <div className="w-9 h-9 rounded-2xl bg-accent flex items-center justify-center shadow-warm animate-breathe">
-          <span className="text-white font-bold text-sm">☕</span>
-        </div>
-        <span className="font-display font-semibold text-lg text-white tracking-tight">kitakakis</span>
+        <LogoMark size={36} />
+        <span className="font-display font-semibold text-lg text-white tracking-tight">
+          kita<span className="text-accent">kakis</span>
+        </span>
       </Link>
 
       {/* Brand info */}

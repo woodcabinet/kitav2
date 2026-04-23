@@ -36,8 +36,7 @@ export class ErrorBoundary extends Component {
     return (
       <div className="min-h-[60vh] flex items-center justify-center px-6 bg-[#FAF6EE]">
         <div className="max-w-sm text-center">
-          <div className="text-5xl mb-4">☕</div>
-          <h2 className="font-display text-2xl text-ink mb-2">Something spilled</h2>
+          <h2 className="font-display text-2xl text-ink mb-2">Something went wrong</h2>
           <p className="text-sm text-[#6B5744] mb-5">
             We bumped into an unexpected error. Try reloading the page — if it keeps happening, we're already on it.
           </p>

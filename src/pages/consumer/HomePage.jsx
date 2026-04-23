@@ -33,7 +33,7 @@ export default function HomePage() {
         className="px-4 pt-4 pb-1"
       >
         <p className="font-hand text-xl text-accent leading-none">{greeting()}</p>
-        <p className="font-display text-2xl font-semibold text-ink mt-0.5">Fresh from the community ☕</p>
+        <p className="font-display text-2xl font-semibold text-ink mt-0.5">Fresh from the community</p>
       </motion.div>
 
       {/* Stories / Brand Quick Access */}

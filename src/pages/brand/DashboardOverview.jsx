@@ -282,7 +282,7 @@ export default function DashboardOverview() {
                   <div className="flex items-center gap-2 mt-0.5">
                     <PlatformBadge platform={post.platform} />
                     <span className="text-xs text-[#8B7355]">{formatNumber(post.views)} views</span>
-                    <span className="text-xs text-[#8B7355]">{post.likes} ❤</span>
+                    <span className="text-xs text-[#8B7355] inline-flex items-center gap-0.5"><Heart size={10} className="fill-current text-red-400" /> {post.likes}</span>
                   </div>
                 </div>
               </div>

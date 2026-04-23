@@ -1,9 +1,50 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Heart, MessageCircle, Share2, Bookmark, MoreHorizontal, CheckCircle } from 'lucide-react'
-import { cn, formatRelativeTime, formatNumber } from '../../lib/utils'
+import { Heart, MessageCircle, Share2, Bookmark, MoreHorizontal, CheckCircle, ShoppingBag, Plus } from 'lucide-react'
+import { cn, formatRelativeTime, formatNumber, formatCurrency } from '../../lib/utils'
 import { Avatar } from '../shared/Avatar'
 import { PlatformBadge } from '../shared/Badge'
+import { MOCK_PRODUCTS } from '../../data/mockData'
+import { addToCart } from '../../lib/cartStore'
+
+function ShopThisPost({ productIds }) {
+  const products = productIds
+    .map(id => MOCK_PRODUCTS.find(p => p.id === id))
+    .filter(Boolean)
+  if (!products.length) return null
+
+  return (
+    <div className="px-4 pt-3">
+      <div className="flex items-center gap-1.5 mb-2">
+        <ShoppingBag size={13} className="text-[#D94545]" />
+        <span className="text-xs font-semibold text-[#6B5744] uppercase tracking-wide">Shop this post</span>
+      </div>
+      <div className="flex gap-2.5 overflow-x-auto -mx-4 px-4 pb-1 scrollbar-hide">
+        {products.map(product => (
+          <div key={product.id} className="flex-shrink-0 w-36 bg-white border border-[#E8DDC8] rounded-xl overflow-hidden">
+            <Link to={`/brand/${product.brand?.slug ?? ''}`} className="block">
+              <div className="aspect-square bg-[#F4EDE0]">
+                {product.images?.[0] && (
+                  <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover" />
+                )}
+              </div>
+              <div className="p-2">
+                <p className="text-xs font-semibold text-ink line-clamp-2 leading-tight">{product.name}</p>
+                <p className="text-xs text-[#D94545] font-bold mt-1">{formatCurrency(product.price)}</p>
+              </div>
+            </Link>
+            <button
+              onClick={(e) => { e.preventDefault(); addToCart(product) }}
+              className="w-full flex items-center justify-center gap-1 bg-[#D94545] hover:bg-[#a85225] text-white text-xs font-semibold py-1.5 transition-colors"
+            >
+              <Plus size={12} /> Add
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
 
 export function PostCard({ post }) {
   const [liked, setLiked] = useState(false)
@@ -14,6 +55,9 @@ export function PostCard({ post }) {
     setLiked(l => !l)
     setLikeCount(c => liked ? c - 1 : c + 1)
   }
+
+  const isVideo = post.media_type === 'video'
+  const mediaUrl = post.media_urls?.[0]
 
   return (
     <article className="bg-[#FAF6EE] border-b border-[#E8DDC8] pb-2">
@@ -45,16 +89,30 @@ export function PostCard({ post }) {
         </div>
       </div>
 
-      {/* Image */}
-      {post.media_urls?.[0] && (
-        <div className="aspect-square overflow-hidden">
-          <img
-            src={post.media_urls[0]}
-            alt="Post"
-            className="w-full h-full object-cover"
-          />
+      {/* Media */}
+      {mediaUrl && (
+        <div className="aspect-square overflow-hidden bg-black">
+          {isVideo ? (
+            <video
+              src={mediaUrl}
+              poster={post.poster_url}
+              controls
+              playsInline
+              preload="metadata"
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <img
+              src={mediaUrl}
+              alt="Post"
+              className="w-full h-full object-cover"
+            />
+          )}
         </div>
       )}
+
+      {/* Shop this post — linked products */}
+      {post.product_ids?.length > 0 && <ShopThisPost productIds={post.product_ids} />}
 
       {/* Actions */}
       <div className="px-4 pt-3 pb-1 flex items-center justify-between">

@@ -16,6 +16,7 @@ import ShopPage from './pages/consumer/ShopPage'
 import RewardsPage from './pages/consumer/RewardsPage'
 import BrandProfilePage from './pages/consumer/BrandProfilePage'
 import ProfilePage from './pages/consumer/ProfilePage'
+import OrderHistoryPage from './pages/consumer/OrderHistoryPage'
 
 // Brand dashboard pages
 import { DashboardSidebar } from './components/brand/DashboardSidebar'
@@ -103,6 +104,7 @@ export default function App() {
               <Route path="/shop" element={<ShopPage />} />
               <Route path="/rewards" element={<RewardsPage />} />
               <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/profile/orders" element={<OrderHistoryPage />} />
               <Route path="/brand/:slug" element={<BrandProfilePage />} />
             </Route>
           </Routes>

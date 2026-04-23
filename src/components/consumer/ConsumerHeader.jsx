@@ -1,8 +1,9 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useState } from 'react'
-import { Bell, Search, User, Coffee } from 'lucide-react'
+import { Bell, Search, User } from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
 import { Avatar } from '../shared/Avatar'
+import { LogoMark } from '../shared/Logo'
 
 export function ConsumerHeader() {
   const { profile } = useAuth()
@@ -21,11 +22,11 @@ export function ConsumerHeader() {
     <header className="sticky top-0 z-40 bg-[#FAF6EE]/90 backdrop-blur-md border-b border-[#E8DDC8]">
       <div className="flex items-center justify-between gap-2 px-4 py-3">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-1.5 flex-shrink-0">
-          <div className="w-9 h-9 rounded-2xl bg-accent flex items-center justify-center shadow-warm animate-breathe">
-            <Coffee size={18} className="text-white" strokeWidth={2.5} />
-          </div>
-          <span className="font-display font-semibold text-lg text-ink tracking-tight hidden sm:inline">kitakakis</span>
+        <Link to="/" className="flex items-center gap-2 flex-shrink-0">
+          <LogoMark size={36} className="shadow-warm" />
+          <span className="font-display font-semibold text-lg text-ink tracking-tight hidden sm:inline">
+            kita<span className="text-accent">kakis</span>
+          </span>
         </Link>
 
         {/* Inline search — collapses to icon on very narrow mobile, bar on larger */}

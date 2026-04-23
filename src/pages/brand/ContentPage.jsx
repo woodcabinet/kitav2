@@ -1,19 +1,19 @@
 import { useState } from 'react'
-import { Sparkles, Instagram, Calendar, Clock, Send, CheckCircle, Plus, Wand2, RefreshCw } from 'lucide-react'
+import { Sparkles, Instagram, Calendar, Clock, Send, CheckCircle, Plus, Wand2, RefreshCw, Music2, Globe, ImagePlus, Heart } from 'lucide-react'
 import { MOCK_POSTS } from '../../data/mockData'
 import { PlatformBadge } from '../../components/shared/Badge'
 import { formatDate } from '../../lib/utils'
 
 const AI_CAPTIONS = [
-  "Your Monday just got an upgrade ☕ New single origin from Ethiopia — nutty, citrus, and dangerously smooth. Available now at all outlets. Link in bio.",
+  "Your Monday just got an upgrade — new single origin from Ethiopia — nutty, citrus, and dangerously smooth. Available now at all outlets. Link in bio.",
   "We source. We roast. We brew. But really, it's all for you. Come find your perfect cup this week.",
-  "Some things are worth waking up early for ✨ Ethiopia Yirgacheffe is in. Grab it before it's gone.",
+  "Some things are worth waking up early for. Ethiopia Yirgacheffe is in. Grab it before it's gone.",
 ]
 
 const PLATFORMS = [
-  { id: 'instagram', label: 'Instagram', icon: '📷' },
-  { id: 'tiktok', label: 'TikTok', icon: '🎵' },
-  { id: 'website', label: 'Website Blog', icon: '🌐' },
+  { id: 'instagram', label: 'Instagram', Icon: Instagram },
+  { id: 'tiktok',    label: 'TikTok',    Icon: Music2 },
+  { id: 'website',   label: 'Website Blog', Icon: Globe },
 ]
 
 export default function ContentPage() {
@@ -79,7 +79,7 @@ export default function ContentPage() {
           <div className="lg:col-span-2 space-y-4">
             {/* Media upload */}
             <div className="border-2 border-dashed border-gray-200 rounded-2xl p-8 text-center hover:border-[#D94545] transition-colors cursor-pointer">
-              <div className="text-4xl mb-2">📸</div>
+              <ImagePlus size={30} className="text-[#8B7355] mx-auto mb-2" />
               <p className="font-semibold text-gray-700">Add Photo or Video</p>
               <p className="text-sm text-[#8B7355]">Drag & drop, or click to browse</p>
               <p className="text-xs text-gray-300 mt-1">JPG, PNG, MP4 · Max 50MB</p>
@@ -128,21 +128,24 @@ export default function ContentPage() {
             <div>
               <p className="text-sm font-semibold text-gray-700 mb-2">Publish to</p>
               <div className="flex gap-2">
-                {PLATFORMS.map(p => (
-                  <button
-                    key={p.id}
-                    onClick={() => togglePlatform(p.id)}
-                    className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border-2 text-sm font-medium transition-all ${
-                      selectedPlatforms.includes(p.id)
-                        ? 'border-[#D94545] bg-[#C4B49A] text-[#D94545]'
-                        : 'border-gray-200 text-[#6B5744] hover:border-gray-300'
-                    }`}
-                  >
-                    <span>{p.icon}</span>
-                    {p.label}
-                    {selectedPlatforms.includes(p.id) && <CheckCircle size={14} />}
-                  </button>
-                ))}
+                {PLATFORMS.map(p => {
+                  const PIcon = p.Icon
+                  return (
+                    <button
+                      key={p.id}
+                      onClick={() => togglePlatform(p.id)}
+                      className={`flex items-center gap-2 px-4 py-2.5 rounded-xl border-2 text-sm font-medium transition-all ${
+                        selectedPlatforms.includes(p.id)
+                          ? 'border-[#D94545] bg-[#C4B49A] text-[#D94545]'
+                          : 'border-gray-200 text-[#6B5744] hover:border-gray-300'
+                      }`}
+                    >
+                      <PIcon size={15} />
+                      {p.label}
+                      {selectedPlatforms.includes(p.id) && <CheckCircle size={14} />}
+                    </button>
+                  )
+                })}
               </div>
             </div>
 
@@ -208,12 +211,15 @@ export default function ContentPage() {
                 Publishing to all 3 platforms simultaneously. We auto-adapt format and caption length for each platform.
               </p>
               <div className="space-y-2">
-                {PLATFORMS.filter(p => selectedPlatforms.includes(p.id)).map(p => (
-                  <div key={p.id} className="flex items-center gap-2 text-xs text-[#6B5744]">
-                    <CheckCircle size={12} className="text-green-500" />
-                    {p.icon} {p.label} — ready
-                  </div>
-                ))}
+                {PLATFORMS.filter(p => selectedPlatforms.includes(p.id)).map(p => {
+                  const PIcon = p.Icon
+                  return (
+                    <div key={p.id} className="flex items-center gap-2 text-xs text-[#6B5744]">
+                      <CheckCircle size={12} className="text-green-500" />
+                      <PIcon size={12} /> {p.label} — ready
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </div>
@@ -235,7 +241,7 @@ export default function ContentPage() {
                 </div>
               </div>
               <div className="text-right flex-shrink-0">
-                <p className="text-xs font-semibold text-gray-700">{post.likes} ❤️</p>
+                <p className="text-xs font-semibold text-gray-700 inline-flex items-center gap-1"><Heart size={11} className="fill-current text-red-500" /> {post.likes}</p>
                 <p className="text-xs text-[#8B7355]">{post.views?.toLocaleString()} views</p>
               </div>
             </div>

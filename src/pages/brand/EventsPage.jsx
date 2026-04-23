@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import {
   Calendar, Plus, MapPin, Clock, Users, Edit2, Trash2, MoreHorizontal,
-  TrendingUp, CheckCircle, AlertCircle, Sparkles, Copy, BarChart2, DollarSign
+  TrendingUp, CheckCircle, AlertCircle, Sparkles, Copy, BarChart2, DollarSign,
+  Store, Zap, Rocket, Palette, Handshake, ImagePlus
 } from 'lucide-react'
 import { MOCK_EVENTS } from '../../data/mockData'
 import { formatCurrency, formatDate, formatRelativeTime } from '../../lib/utils'
@@ -56,12 +57,12 @@ const DRAFT_EVENTS = [
 ]
 
 const EVENT_TYPE_LABELS = {
-  market: '🏪 Market',
-  pop_up: '⚡ Pop-Up',
-  launch: '🚀 Launch',
-  workshop: '🎨 Workshop',
-  collab: '🤝 Collab',
-  other: '📍 Event',
+  market: 'Market',
+  pop_up: 'Pop-Up',
+  launch: 'Launch',
+  workshop: 'Workshop',
+  collab: 'Collab',
+  other: 'Event',
 }
 
 const TABS = [
@@ -398,7 +399,7 @@ function PlanTab({ onCreated }) {
               placeholder="100 Tras Street, Singapore 079027"
               className="w-full px-3 py-2.5 border border-gray-200 rounded-xl text-sm outline-none focus:ring-2 focus:ring-[#D94545]/30"
             />
-            <p className="text-xs text-[#8B7355] mt-1">📍 This will be pinned on the public event map.</p>
+            <p className="text-xs text-[#8B7355] mt-1 inline-flex items-center gap-1"><MapPin size={11} /> This will be pinned on the public event map.</p>
           </div>
 
           <div>
@@ -415,7 +416,7 @@ function PlanTab({ onCreated }) {
           <div>
             <label className="text-sm font-semibold text-gray-700 mb-1.5 block">Cover Image</label>
             <div className="border-2 border-dashed border-gray-200 rounded-xl p-8 text-center hover:border-[#D94545] transition-colors cursor-pointer">
-              <p className="text-3xl mb-2">📸</p>
+              <ImagePlus size={28} className="text-[#8B7355] mx-auto mb-2" />
               <p className="text-sm text-[#6B5744]">Click to upload or drag and drop</p>
               <p className="text-xs text-[#8B7355] mt-1">PNG, JPG up to 5MB</p>
             </div>

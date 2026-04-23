@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Package, Plus, Zap, Edit2, Trash2, Eye, EyeOff, Search, MoreHorizontal, DollarSign, ShoppingBag, BarChart2, Clock, Flame } from 'lucide-react'
+import { Package, Plus, Zap, Edit2, Trash2, Eye, EyeOff, Search, MoreHorizontal, DollarSign, ShoppingBag, BarChart2, Clock, Flame, ImagePlus } from 'lucide-react'
 import { MOCK_PRODUCTS, MOCK_DROPS } from '../../data/mockData'
 import { formatCurrency, formatDate, formatCountdown, formatNumber } from '../../lib/utils'
 import { useBrandProfile } from '../../lib/brandStore'
@@ -223,7 +223,7 @@ function DropsTab() {
           <div className="mb-4">
             <label className="text-sm font-semibold text-gray-700 mb-1.5 block">Cover Image</label>
             <div className="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center hover:border-[#D94545] transition-colors cursor-pointer">
-              <p className="text-2xl mb-1">📸</p>
+              <ImagePlus size={24} className="text-[#8B7355] mx-auto mb-2" />
               <p className="text-sm text-[#6B5744]">Drop + drag or click to upload</p>
             </div>
           </div>

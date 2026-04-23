@@ -42,10 +42,10 @@ const OPEN_COLLABS = [
 ]
 
 const COLLAB_TYPE_LABELS = {
-  pop_up_partner: '⚡ Pop-Up Partner',
-  product_collab: '🤝 Product Collab',
-  event_collab: '📍 Event Collab',
-  sponsor: '🏅 Sponsorship',
+  pop_up_partner: 'Pop-Up Partner',
+  product_collab: 'Product Collab',
+  event_collab: 'Event Collab',
+  sponsor: 'Sponsorship',
 }
 
 function CollabCard({ collab }) {
@@ -82,7 +82,7 @@ function CollabCard({ collab }) {
               : 'bg-[#D94545] text-white hover:bg-[#a85225]'
           }`}
         >
-          {applied ? '✓ Applied' : 'Apply Now'}
+          {applied ? (<span className="inline-flex items-center gap-1"><CheckCircle size={14} /> Applied</span>) : 'Apply Now'}
         </button>
       </div>
     </div>

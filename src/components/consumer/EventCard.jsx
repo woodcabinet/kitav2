@@ -1,16 +1,26 @@
 import { Link } from 'react-router-dom'
-import { Calendar, MapPin, Users, Clock } from 'lucide-react'
+import { Calendar, MapPin, Users, Clock, Check, Store, Zap, Rocket, Palette, Handshake } from 'lucide-react'
 import { useState } from 'react'
 import { cn, formatDate, formatCurrency } from '../../lib/utils'
 import { Avatar } from '../shared/Avatar'
 
-const EVENT_TYPE_LABELS = {
-  market: '🏪 Market',
-  pop_up: '⚡ Pop-Up',
-  launch: '🚀 Launch',
-  workshop: '🎨 Workshop',
-  collab: '🤝 Collab',
-  other: '📍 Event',
+const EVENT_TYPE_META = {
+  market:   { label: 'Market',   Icon: Store },
+  pop_up:   { label: 'Pop-Up',   Icon: Zap },
+  launch:   { label: 'Launch',   Icon: Rocket },
+  workshop: { label: 'Workshop', Icon: Palette },
+  collab:   { label: 'Collab',   Icon: Handshake },
+  other:    { label: 'Event',    Icon: MapPin },
+}
+
+function EventTypeBadge({ type, className = '' }) {
+  const meta = EVENT_TYPE_META[type] ?? EVENT_TYPE_META.other
+  const Icon = meta.Icon
+  return (
+    <span className={`inline-flex items-center gap-1 ${className}`}>
+      <Icon size={11} /> {meta.label}
+    </span>
+  )
 }
 
 export function EventCard({ event, compact = false }) {
@@ -23,14 +33,14 @@ export function EventCard({ event, compact = false }) {
         <div className="w-16 h-16 rounded-xl overflow-hidden flex-shrink-0">
           {event.cover_url
             ? <img src={event.cover_url} alt="" className="w-full h-full object-cover" />
-            : <div className="w-full h-full bg-[#C4B49A] flex items-center justify-center text-2xl">
-                {EVENT_TYPE_LABELS[event.event_type]?.slice(0, 2)}
+            : <div className="w-full h-full bg-[#C4B49A] flex items-center justify-center">
+                <Calendar size={22} className="text-white" />
               </div>
           }
         </div>
         <div className="flex-1 min-w-0">
           <p className="font-semibold text-sm text-ink line-clamp-1">{event.title}</p>
-          <p className="text-xs text-accent font-medium">{EVENT_TYPE_LABELS[event.event_type]}</p>
+          <p className="text-xs text-accent font-medium"><EventTypeBadge type={event.event_type} /></p>
           <div className="flex items-center gap-1 mt-0.5">
             <Calendar size={10} className="text-[#8B7355]" />
             <span className="text-xs text-[#6B5744]">{formatDate(event.starts_at, 'EEE, MMM d · h:mm a')}</span>
@@ -50,8 +60,8 @@ export function EventCard({ event, compact = false }) {
       <div className="relative h-44 overflow-hidden">
         {event.cover_url
           ? <img src={event.cover_url} alt={event.title} className="w-full h-full object-cover" />
-          : <div className="w-full h-full bg-gradient-to-br from-[#C4B49A] to-[#E8DDD1] flex items-center justify-center text-5xl">
-              {EVENT_TYPE_LABELS[event.event_type]?.slice(0, 2)}
+          : <div className="w-full h-full bg-gradient-to-br from-[#C4B49A] to-[#E8DDD1] flex items-center justify-center">
+              <Calendar size={42} className="text-white" />
             </div>
         }
         {/* Date badge */}
@@ -61,7 +71,7 @@ export function EventCard({ event, compact = false }) {
         </div>
         {/* Type badge */}
         <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-sm rounded-full px-2.5 py-1">
-          <span className="text-white text-xs font-medium">{EVENT_TYPE_LABELS[event.event_type]}</span>
+          <span className="text-white text-xs font-medium"><EventTypeBadge type={event.event_type} /></span>
         </div>
         {/* Free/Price */}
         <div className="absolute bottom-3 right-3">
@@ -111,7 +121,7 @@ export function EventCard({ event, compact = false }) {
                 : 'bg-accent text-white hover:bg-accent-dark'
           )}
         >
-          {isSoldOut && !rsvped ? 'Sold Out' : rsvped ? '✓ Going' : 'RSVP Now'}
+          {isSoldOut && !rsvped ? 'Sold Out' : rsvped ? (<span className="inline-flex items-center gap-1"><Check size={14} /> Going</span>) : 'RSVP Now'}
         </button>
       </div>
     </div>

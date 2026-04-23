@@ -1,7 +1,7 @@
 import { useState, useMemo, useEffect, useRef } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Search, X, ArrowLeft, TrendingUp, Coffee, Sparkles, MapPin, Calendar, ShoppingBag, Users, MessageCircle } from 'lucide-react'
+import { Search, X, ArrowLeft, TrendingUp, Coffee, Sparkles, MapPin, Calendar, ShoppingBag, Users, MessageCircle, CheckCircle } from 'lucide-react'
 import {
   MOCK_BRANDS, MOCK_POSTS, MOCK_EVENTS, MOCK_DROPS, MOCK_PRODUCTS, MOCK_THREADS
 } from '../../data/mockData'
@@ -376,7 +376,7 @@ function BrandRow({ brand }) {
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-1.5">
           <p className="font-semibold text-[15px] text-ink truncate group-hover:text-accent transition-colors">{brand.name}</p>
-          {brand.verified && <span className="text-accent text-xs">✓</span>}
+          {brand.verified && <CheckCircle size={12} className="text-accent flex-shrink-0" />}
         </div>
         <p className="text-[13px] text-[#6B5744] truncate">{brand.tagline}</p>
         <div className="flex items-center gap-2 mt-0.5 text-[11px] text-[#8B7355]">

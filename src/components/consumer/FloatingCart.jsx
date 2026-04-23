@@ -92,7 +92,8 @@ export function FloatingCart() {
                 {items.length === 0 ? (
                   <div className="text-center py-12 text-[#8B7355]">
                     <ShoppingBag size={36} className="mx-auto mb-3 opacity-40" />
-                    <p className="text-sm">Basket is empty — add something local ☕</p>
+                    <p className="text-sm">Your basket is empty</p>
+                    <p className="text-xs mt-1">Browse the shop to add items</p>
                   </div>
                 ) : (
                   <div className="space-y-2">
@@ -152,7 +153,7 @@ export function FloatingCart() {
                     Checkout
                   </Link>
                   <p className="text-[11px] text-center text-[#8B7355] mt-2">
-                    Checkout coming soon — we'll take your order via email for now ☕
+                    Secure checkout — powered by Stripe
                   </p>
                 </div>
               )}
