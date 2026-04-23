@@ -318,9 +318,15 @@ function EventsTab({ events, loading }) {
         </div>
       </div>
       <div className="px-4 space-y-3">
-        {events.map(event => (
-          <EventFullCard key={event.id} event={event} />
-        ))}
+        {events.length === 0 && !loading ? (
+          <div className="text-center py-12 px-4 paper-card rounded-3xl">
+            <Calendar size={32} className="mx-auto mb-3 text-[#C4B49A]" />
+            <p className="font-display text-lg text-ink">No events this week</p>
+            <p className="text-sm text-[#6B5744] mt-1">Check back soon — local brands drop new ones weekly.</p>
+          </div>
+        ) : (
+          events.map(event => <EventFullCard key={event.id} event={event} />)
+        )}
       </div>
     </div>
   )
