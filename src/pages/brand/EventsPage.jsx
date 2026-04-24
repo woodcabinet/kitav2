@@ -544,12 +544,12 @@ export default function EventsPage() {
             <Icon size={16} />
             {label}
             {id === 'upcoming' && upcomingEvents.length > 0 && (
-              <span className="bg-[#D94545] text-white text-[11px] font-bold px-2 py-0.5 rounded-full ml-1">
+              <span className="bg-[#D94545] text-white text-[11px] font-bold px-2 py-0.5 rounded-full ml-1 min-w-[18px] inline-flex items-center justify-center">
                 {upcomingEvents.length}
               </span>
             )}
             {id === 'drafts' && draftEvents.length > 0 && (
-              <span className="bg-yellow-400 text-white text-[11px] font-bold px-2 py-0.5 rounded-full ml-1">
+              <span className="bg-yellow-400 text-white text-[11px] font-bold px-2 py-0.5 rounded-full ml-1 min-w-[18px] inline-flex items-center justify-center">
                 {draftEvents.length}
               </span>
             )}

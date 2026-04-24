@@ -134,11 +134,11 @@ function EventTile({ event }) {
         {/* Status badge */}
         <div className="absolute top-2 left-2">
           {isLive ? (
-            <span className="flex items-center gap-1 bg-[#D94545] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+            <span className="flex items-center gap-1 bg-[#D94545] text-white text-[11px] font-bold px-2.5 py-1 rounded-full">
               <span className="w-1.5 h-1.5 bg-[#FAF6EE] rounded-full animate-pulse" />LIVE
             </span>
           ) : (
-            <span className="bg-[#1A1513] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
+            <span className="bg-[#1A1513] text-white text-[11px] font-bold px-2.5 py-1 rounded-full">
               {formatDate(event.starts_at, 'MMM d')}
             </span>
           )}
@@ -167,8 +167,8 @@ function EventTile({ event }) {
         {/* Free / Price */}
         <div className="absolute bottom-2 right-2">
           {event.is_free
-            ? <span className="bg-green-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">FREE</span>
-            : <span className="bg-[#FAF6EE] text-ink text-[10px] font-bold px-2 py-0.5 rounded-full shadow">{formatCurrency(event.ticket_price)}</span>
+            ? <span className="bg-green-500 text-white text-[11px] font-bold px-2.5 py-1 rounded-full">FREE</span>
+            : <span className="bg-[#FAF6EE] text-ink text-[11px] font-bold px-2.5 py-1 rounded-full shadow">{formatCurrency(event.ticket_price)}</span>
           }
         </div>
       </div>
@@ -205,14 +205,14 @@ function DropTile({ drop }) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
 
         {/* Drop badge */}
-        <div className="absolute top-2 left-2 flex items-center gap-1 bg-[#D94545] text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
-          <Zap size={10} /> DROP
+        <div className="absolute top-2 left-2 flex items-center gap-1 bg-[#D94545] text-white text-[11px] font-bold px-2.5 py-1 rounded-full">
+          <Zap size={11} /> DROP
         </div>
 
         {/* Hype */}
-        <div className="absolute top-2 right-2 flex items-center gap-1 bg-[#FAF6EE]/20 backdrop-blur-sm text-white rounded-full px-2 py-0.5">
-          <Flame size={10} className="text-orange-300" />
-          <span className="text-[10px] font-semibold">{formatNumber(drop.hype_count)}</span>
+        <div className="absolute top-2 right-2 flex items-center gap-1 bg-[#FAF6EE]/20 backdrop-blur-sm text-white rounded-full px-2.5 py-1">
+          <Flame size={11} className="text-orange-300" />
+          <span className="text-[11px] font-semibold">{formatNumber(drop.hype_count)}</span>
         </div>
 
         {/* Countdown + info */}
@@ -229,7 +229,7 @@ function DropTile({ drop }) {
               </span>
             </div>
           ) : (
-            <span className="inline-flex items-center gap-1 bg-[#D94545] text-white text-[10px] font-bold px-2 py-0.5 rounded-full mt-1">
+            <span className="inline-flex items-center gap-1 bg-[#D94545] text-white text-[11px] font-bold px-2.5 py-1 rounded-full mt-1">
               <span className="w-1.5 h-1.5 bg-[#FAF6EE] rounded-full animate-pulse" /> LIVE NOW
             </span>
           )}
