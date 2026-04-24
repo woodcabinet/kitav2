@@ -10,28 +10,42 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    // Race guard: if the user signs in/out fast (e.g. logout immediately
+    // followed by a switch-account sign-in), an in-flight fetchProfile()
+    // for the OLD user could resolve AFTER the new auth state arrives and
+    // overwrite the new profile. We tag each fetch with a token and drop
+    // stale results.
+    let activeToken = 0
+    const makeToken = () => ++activeToken
+    const isStale = (t) => t !== activeToken
+
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null)
-      if (session?.user) fetchProfile(session.user.id)
+      if (session?.user) fetchProfile(session.user.id, makeToken(), isStale)
       else setLoading(false)
     })
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       setUser(session?.user ?? null)
-      if (session?.user) fetchProfile(session.user.id)
-      else { setProfile(null); setBrand(null); setLoading(false) }
+      if (session?.user) {
+        fetchProfile(session.user.id, makeToken(), isStale)
+      } else {
+        makeToken() // bump to invalidate any in-flight fetch
+        setProfile(null); setBrand(null); setLoading(false)
+      }
     })
 
     return () => subscription.unsubscribe()
   }, [])
 
-  async function fetchProfile(userId) {
+  async function fetchProfile(userId, token, isStale) {
     const { data: prof } = await supabase
       .from('profiles')
       .select('*')
       .eq('id', userId)
       .single()
 
+    if (isStale?.(token)) return
     setProfile(prof)
 
     if (prof?.account_type === 'brand') {
@@ -40,7 +54,10 @@ export function AuthProvider({ children }) {
         .select('*')
         .eq('owner_id', userId)
         .single()
+      if (isStale?.(token)) return
       setBrand(br)
+    } else {
+      setBrand(null)
     }
 
     setLoading(false)
@@ -60,7 +77,10 @@ export function AuthProvider({ children }) {
   }
 
   async function refreshProfile() {
-    if (user) await fetchProfile(user.id)
+    // Manual refresh from callers (e.g. after brand onboarding). Uses a
+    // one-off token that's always considered current — this path only
+    // runs when the user explicitly asks for a re-fetch.
+    if (user) await fetchProfile(user.id, 0, () => false)
   }
 
   return (

@@ -1,0 +1,1996 @@
+[
+  {
+    "brand_id": "1",
+    "name": "Maroon",
+    "ok": true,
+    "kind": "shopify",
+    "banner": "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/6111405675717004940.jpg?v=1771705725",
+    "logo": "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/6111405675717004940.jpg?v=1771705725",
+    "products": [
+      {
+        "id": 15645272801361,
+        "name": "Maroon Signature Tee",
+        "handle": "maroon-signature-tee",
+        "price": 40,
+        "image": "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/6111405675717004940.jpg?v=1771705725",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/6111405675717004940.jpg?v=1771705725",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/6111405675717004941.jpg?v=1771705725",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/6111405675717004943.jpg?v=1771705725",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/6111405675717004946.jpg?v=1771705725"
+        ],
+        "vendor": "Maroon Clothing",
+        "product_type": "",
+        "tags": [],
+        "url": "https://maroon-clothing.store/products/maroon-signature-tee"
+      },
+      {
+        "id": 15705613828177,
+        "name": "Pinstripe Cap",
+        "handle": "pinstripe-cap",
+        "price": 29,
+        "image": "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/6111405675717004930.jpg?v=1771705127",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/6111405675717004930.jpg?v=1771705127",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/6111405675717004929.jpg?v=1771705127",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/6111405675717004931.jpg?v=1771705127",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/6111405675717004934.jpg?v=1771705127"
+        ],
+        "vendor": "Maroon Clothing",
+        "product_type": "",
+        "tags": [],
+        "url": "https://maroon-clothing.store/products/pinstripe-cap"
+      },
+      {
+        "id": 15645271654481,
+        "name": "COT Long-sleeve Tee",
+        "handle": "cot-long-sleeve-tee",
+        "price": 40,
+        "image": "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/MxR_15.jpg?v=1766943805",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/MxR_15.jpg?v=1766943805",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/MxR_17.jpg?v=1766943805",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/MxR_09.jpg?v=1766943805",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/photo_6219836012049927630_y.jpg?v=1766944369"
+        ],
+        "vendor": "Maroon Clothing",
+        "product_type": "",
+        "tags": [],
+        "url": "https://maroon-clothing.store/products/cot-long-sleeve-tee"
+      },
+      {
+        "id": 15590838370385,
+        "name": "Dusty Grey Tee",
+        "handle": "untitled-nov2_17-30",
+        "price": 35,
+        "image": "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DSC02344.jpg?v=1765298136",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DSC02344.jpg?v=1765298136",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DSC02398.jpg?v=1765298155",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DSC02282.jpg?v=1765298290",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DSC02302.jpg?v=1765298330"
+        ],
+        "vendor": "Maroon Clothing",
+        "product_type": "",
+        "tags": [],
+        "url": "https://maroon-clothing.store/products/untitled-nov2_17-30"
+      },
+      {
+        "id": 15628174327889,
+        "name": "Wide Baggy Sweatshorts",
+        "handle": "wide-baggy-sweatshorts",
+        "price": 45,
+        "image": "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DSC02615-Edit-ig-portrait-1080-1350.jpg?v=1765302614",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DSC02615-Edit-ig-portrait-1080-1350.jpg?v=1765302614",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DSC02643-Edit.jpg?v=1765302525",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DSC02545-Edit.jpg?v=1765302525",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DSC02583-Edit-ig-portrait-1080-1350.jpg?v=1765302614"
+        ],
+        "vendor": "Maroon Clothing",
+        "product_type": "",
+        "tags": [],
+        "url": "https://maroon-clothing.store/products/wide-baggy-sweatshorts"
+      },
+      {
+        "id": 15535863201873,
+        "name": "The Vortex Tee",
+        "handle": "the-vortex-tee",
+        "price": 30,
+        "image": "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DSC08618_1_-ig-portrait-1080-1350.jpg?v=1757413054",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DSC08618_1_-ig-portrait-1080-1350.jpg?v=1757413054",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DSC08709-ig-portrait-1080-1350.jpg?v=1757413054",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/myng-right-shirt_01.jpg?v=1757413054",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DSC_3159.jpg?v=1757413054"
+        ],
+        "vendor": "Maroon Clothing",
+        "product_type": "",
+        "tags": [],
+        "url": "https://maroon-clothing.store/products/the-vortex-tee"
+      },
+      {
+        "id": 15535871492177,
+        "name": "The Ripple Tee",
+        "handle": "the-ripple-tee",
+        "price": 30,
+        "image": "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DSC08583-ig-portrait-1080-1350.jpg?v=1757351751",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DSC08583-ig-portrait-1080-1350.jpg?v=1757351751",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/WhatsAppImage2025-09-09at12.01.59AM.jpg?v=1757351584",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DSC08516-ig-portrait-1080-1350.jpg?v=1757412977",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DSC_3133.jpg?v=1757412977"
+        ],
+        "vendor": "Maroon Clothing",
+        "product_type": "",
+        "tags": [],
+        "url": "https://maroon-clothing.store/products/the-ripple-tee"
+      },
+      {
+        "id": 7834246316113,
+        "name": "Camo Cap",
+        "handle": "camo-cap",
+        "price": 29,
+        "image": "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/photo_6053212961956283894_y.jpg?v=1753230928",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/photo_6053212961956283894_y.jpg?v=1753230928",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/photo_6053212961956283896_y.jpg?v=1753230928",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/photo_6053212961956283895_y.jpg?v=1753230928",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/FE66AECB-7B99-4FDA-9AC2-88BB04B6AB6C.jpg?v=1753235719"
+        ],
+        "vendor": "Maroon Clothing",
+        "product_type": "",
+        "tags": [],
+        "url": "https://maroon-clothing.store/products/camo-cap"
+      },
+      {
+        "id": 7787704057937,
+        "name": "TDC x Maroon Metal Pins",
+        "handle": "tdc-x-maroon-metal-pins",
+        "price": 4,
+        "image": "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/6EE2CB39-1F27-410B-BFD3-1E46D7001FEE.jpg?v=1748429212",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/6EE2CB39-1F27-410B-BFD3-1E46D7001FEE.jpg?v=1748429212",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/52E4F6E5-6E31-4814-BEB7-4966FF9750BD.jpg?v=1748429381",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DE35687D-16D1-433F-A533-1B641B6DDDC9.jpg?v=1748429381",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/783588AA-6A18-4D44-8CDA-4D61DAE45491.jpg?v=1748429381"
+        ],
+        "vendor": "Maroon Clothing",
+        "product_type": "",
+        "tags": [],
+        "url": "https://maroon-clothing.store/products/tdc-x-maroon-metal-pins"
+      },
+      {
+        "id": 7787380277329,
+        "name": "TDC x MAROON Denim Sling Bag",
+        "handle": "tdc-x-maroon-denim-sling-bag",
+        "price": 57.9,
+        "image": "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/BFBE9621-D4D8-4583-BD1E-A4211F9E1943.jpg?v=1748366020",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/BFBE9621-D4D8-4583-BD1E-A4211F9E1943.jpg?v=1748366020",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/16D3DE39-CE72-49A5-A400-76D4677AC758.jpg?v=1748366020",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/66652172-C90D-4F82-BA14-D25303E05FB6.jpg?v=1748366020",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/46A02D35-B440-4593-811F-0A80AB892C85.jpg?v=1748366020"
+        ],
+        "vendor": "Maroon Clothing",
+        "product_type": "",
+        "tags": [],
+        "url": "https://maroon-clothing.store/products/tdc-x-maroon-denim-sling-bag"
+      },
+      {
+        "id": 7707414036561,
+        "name": "Pomegranate Baby Tee",
+        "handle": "pomegranate-baby-tee",
+        "price": 25,
+        "image": "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/2C7DBF4B-2CD1-4A2F-9DC5-8D825FA604E5.jpg?v=1735014097",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/2C7DBF4B-2CD1-4A2F-9DC5-8D825FA604E5.jpg?v=1735014097",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/DSC01949.jpg?v=1735014097",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/7ABDF545-AE42-4BF0-9C78-4B27EA62B6C3.jpg?v=1735014097",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/D8E50AF4-3FBF-4370-9C21-2CE90D27EB13.jpg?v=1735014097"
+        ],
+        "vendor": "Maroon Clothing",
+        "product_type": "",
+        "tags": [],
+        "url": "https://maroon-clothing.store/products/pomegranate-baby-tee"
+      },
+      {
+        "id": 7707411841105,
+        "name": "“Let It Snow” Hoodie",
+        "handle": "let-it-snow-hoodie",
+        "price": 49,
+        "image": "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/CE9CD4F7-6F0E-4557-956A-FFDD03B09C03.jpg?v=1735011834",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/CE9CD4F7-6F0E-4557-956A-FFDD03B09C03.jpg?v=1735011834",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/0ACBCF81-1A7C-4977-81D5-2ED9F23D93D5.jpg?v=1735011834",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/20375E5D-7E01-4192-92DB-4647C5804E00.jpg?v=1735012321",
+          "https://cdn.shopify.com/s/files/1/0581/6421/5889/files/C71D6817-8134-4E0C-BFE7-D824095E2B8F.jpg?v=1735012321"
+        ],
+        "vendor": "Maroon Clothing",
+        "product_type": "",
+        "tags": [],
+        "url": "https://maroon-clothing.store/products/let-it-snow-hoodie"
+      }
+    ]
+  },
+  {
+    "brand_id": "2",
+    "name": "Koyoyu Studio",
+    "ok": true,
+    "kind": "shopify",
+    "banner": "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/chatgpt.png?v=1776246167",
+    "logo": "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/chatgpt.png?v=1776246167",
+    "products": [
+      {
+        "id": 10654742118712,
+        "name": "KOYOYU EMBROIDERED SWEATSHORTS - WHITE",
+        "handle": "koyoyu-embroidered-sweatshorts-white",
+        "price": 48.48,
+        "image": "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/chatgpt.png?v=1776246167",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/chatgpt.png?v=1776246167",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/WHITE_SWEATS_09f7dce0-08e2-4598-a50b-71b2b4a301b5.png?v=1776245300"
+        ],
+        "vendor": "KOYOYU STUDIO",
+        "product_type": "",
+        "tags": [],
+        "url": "https://koyoyu.com/products/koyoyu-embroidered-sweatshorts-white"
+      },
+      {
+        "id": 10649922863416,
+        "name": "KOYOYU EMBROIDERED SWEATSHORTS - GREY",
+        "handle": "koyoyu-embroided-sweatshorts",
+        "price": 48.48,
+        "image": "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/16.jpg?v=1776241827",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/16.jpg?v=1776241827",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/2026_MARCH_KOYOYU6884_e80da7d8-683e-4565-8a36-43e372b8df1e.jpg?v=1776241861",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/2026_MARCH_KOYOYU6948_copy_8e91f60d-5007-418d-bfff-5d541d7d85d8.jpg?v=1776064482",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/Copy_of_2026_MARCH_KOYOYU6897_raw.jpg?v=1776064482"
+        ],
+        "vendor": "KOYOYU STUDIO",
+        "product_type": "",
+        "tags": [],
+        "url": "https://koyoyu.com/products/koyoyu-embroided-sweatshorts"
+      },
+      {
+        "id": 10549815312696,
+        "name": "KOYOYU DIAMOND ZIP-UP HOODIE",
+        "handle": "koyoyu-stud-jacket",
+        "price": 88.88,
+        "image": "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/33.jpg?v=1776240200",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/33.jpg?v=1776240200",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/34.jpg?v=1776240742",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/2026_MARCH_KOYOYU6884.jpg?v=1775447202",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/Copy_of_2026_MARCH_KOYOYU6984_raw.jpg?v=1775447202"
+        ],
+        "vendor": "KOYOYU STUDIO",
+        "product_type": "",
+        "tags": [],
+        "url": "https://koyoyu.com/products/koyoyu-stud-jacket"
+      },
+      {
+        "id": 10549813641528,
+        "name": "KOYOYU RAW DENIM SHORTS - BLACK",
+        "handle": "koyoyu-raw-denim-pants-black-copy",
+        "price": 62.62,
+        "image": "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/17.jpg?v=1776240832",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/17.jpg?v=1776240832",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/18.jpg?v=1776242075",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/2026_MARCH_KOYOYU6266.jpg?v=1776240979",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/2026_MARCH_KOYOYU6296.jpg?v=1775446172"
+        ],
+        "vendor": "KOYOYU STUDIO",
+        "product_type": "",
+        "tags": [],
+        "url": "https://koyoyu.com/products/koyoyu-raw-denim-pants-black-copy"
+      },
+      {
+        "id": 10549814395192,
+        "name": "KOYOYU RAW DENIM SHORTS - INDIGO",
+        "handle": "koyoyu-raw-denim-shorts-blue",
+        "price": 62.62,
+        "image": "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/21.jpg?v=1776240658",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/21.jpg?v=1776240658",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/22.jpg?v=1776242006",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/31.jpg?v=1776240695",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/32.jpg?v=1775446547"
+        ],
+        "vendor": "KOYOYU STUDIO",
+        "product_type": "",
+        "tags": [],
+        "url": "https://koyoyu.com/products/koyoyu-raw-denim-shorts-blue"
+      },
+      {
+        "id": 10549809381688,
+        "name": "KOYOYU RAW DENIM PANTS - BLACK",
+        "handle": "koyoyu-raw-denim-pants-black",
+        "price": 74.74,
+        "image": "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/25_24343317-1b24-44ce-90fd-bb4415e60468.jpg?v=1776244343",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/25_24343317-1b24-44ce-90fd-bb4415e60468.jpg?v=1776244343",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/26_03f4d7e8-f8d0-4fa4-973b-5fc3d3748bbc.jpg?v=1776244343",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/27.jpg?v=1776244343",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/19.jpg?v=1776244343"
+        ],
+        "vendor": "KOYOYU STUDIO",
+        "product_type": "",
+        "tags": [],
+        "url": "https://koyoyu.com/products/koyoyu-raw-denim-pants-black"
+      },
+      {
+        "id": 10549808988472,
+        "name": "KOYOYU RAW DENIM PANTS- INDIGO",
+        "handle": "koyoyu-raw-denim-pants-indigo",
+        "price": 74.74,
+        "image": "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/29.jpg?v=1776244343",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/29.jpg?v=1776244343",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/30.jpg?v=1776244343",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/24.jpg?v=1775398875",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/31.jpg?v=1776240695"
+        ],
+        "vendor": "KOYOYU STUDIO",
+        "product_type": "",
+        "tags": [],
+        "url": "https://koyoyu.com/products/koyoyu-raw-denim-pants-indigo"
+      },
+      {
+        "id": 10549764981048,
+        "name": "KOYOYU DREAMING TEE",
+        "handle": "koyoyu-dreaming-tee",
+        "price": 33.33,
+        "image": "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/koyoyu_dreaming_tee.jpg?v=1776241859",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/koyoyu_dreaming_tee.jpg?v=1776241859",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/koyoyu_dreaming_tee2.jpg?v=1776241877",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/2026_MARCH_KOYOYU6509.jpg?v=1775436766",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/2026_MARCH_KOYOYU6527.jpg?v=1775436765"
+        ],
+        "vendor": "KOYOYU STUDIO",
+        "product_type": "",
+        "tags": [],
+        "url": "https://koyoyu.com/products/koyoyu-dreaming-tee"
+      },
+      {
+        "id": 10549765898552,
+        "name": "KOYOYU OPEN YOUR EYES TEE",
+        "handle": "koyoyu-open-your-eyes-tee",
+        "price": 38.38,
+        "image": "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/openyoureyes_tee.jpg?v=1776240782",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/openyoureyes_tee.jpg?v=1776240782",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/2026_MARCH_KOYOYU6734.jpg?v=1776240909",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/2026_MARCH_KOYOYU6765.jpg?v=1775436963",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/2026_MARCH_KOYOYU6797.jpg?v=1775436963"
+        ],
+        "vendor": "KOYOYU STUDIO",
+        "product_type": "",
+        "tags": [],
+        "url": "https://koyoyu.com/products/koyoyu-open-your-eyes-tee"
+      },
+      {
+        "id": 10549766881592,
+        "name": "KOYOYU OPEN YOUR EYES LONGSLEEVE",
+        "handle": "koyoyu-open-your-eyes-longsleeve",
+        "price": 42.42,
+        "image": "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/39.jpg?v=1776240952",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/39.jpg?v=1776240952",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/2026_MARCH_KOYOYU6266.jpg?v=1776240979",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/2026_MARCH_KOYOYU6296.jpg?v=1775446172",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/2026_MARCH_KOYOYU6330.jpg?v=1775437670"
+        ],
+        "vendor": "KOYOYU STUDIO",
+        "product_type": "",
+        "tags": [],
+        "url": "https://koyoyu.com/products/koyoyu-open-your-eyes-longsleeve"
+      },
+      {
+        "id": 10549770944824,
+        "name": "KOYOYU TRIPLE NAIL TEE",
+        "handle": "koyoyu-nail-tee-grey",
+        "price": 45.45,
+        "image": "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/4.jpg?v=1776240452",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/4.jpg?v=1776240452",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/5.jpg?v=1776240484",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/6.jpg?v=1776240514",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/7.jpg?v=1776240657"
+        ],
+        "vendor": "KOYOYU STUDIO",
+        "product_type": "",
+        "tags": [],
+        "url": "https://koyoyu.com/products/koyoyu-nail-tee-grey"
+      },
+      {
+        "id": 10549773140280,
+        "name": "KOYOYU BULLET TEE - GREY",
+        "handle": "koyoyu-nail-tee-black",
+        "price": 42.42,
+        "image": "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/13.jpg?v=1776243159",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/13.jpg?v=1776243159",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/15.jpg?v=1776243175",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/14.jpg?v=1775438665",
+          "https://cdn.shopify.com/s/files/1/0873/7934/5720/files/2026_MARCH_KOYOYU5925.jpg?v=1775438809"
+        ],
+        "vendor": "KOYOYU STUDIO",
+        "product_type": "",
+        "tags": [],
+        "url": "https://koyoyu.com/products/koyoyu-nail-tee-black"
+      }
+    ]
+  },
+  {
+    "brand_id": "3",
+    "name": "Charms and Links",
+    "ok": true,
+    "kind": "oghtml",
+    "banner": null,
+    "logo": "https://charmsandlinks.com/icon.png?v=20260424",
+    "products": []
+  },
+  {
+    "brand_id": "4",
+    "name": "Heritage Bay",
+    "ok": true,
+    "kind": "shopify",
+    "banner": "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/Kids_Kumo_7f3547fe-a394-4fdf-9d27-e8ebb7a40cdd.png?v=1776306124",
+    "logo": "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/Kids_Kumo_7f3547fe-a394-4fdf-9d27-e8ebb7a40cdd.png?v=1776306124",
+    "products": [
+      {
+        "id": 9255315472617,
+        "name": "Kids Floral Kawung Batik Shirt",
+        "handle": "kids-floral-kawung-shirt",
+        "price": 34.9,
+        "image": "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/Kids_Kumo_7f3547fe-a394-4fdf-9d27-e8ebb7a40cdd.png?v=1776306124",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/Kids_Kumo_7f3547fe-a394-4fdf-9d27-e8ebb7a40cdd.png?v=1776306124"
+        ],
+        "vendor": "Heritage Bay",
+        "product_type": "",
+        "tags": [],
+        "url": "https://heritagebayshop.com/products/kids-floral-kawung-shirt"
+      },
+      {
+        "id": 9255315439849,
+        "name": "Floral Kawung Shirt",
+        "handle": "floral-kawung-shirt",
+        "price": 69.9,
+        "image": "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/MegaMandungCover.png?v=1776305876",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/MegaMandungCover.png?v=1776305876"
+        ],
+        "vendor": "Heritage Bay",
+        "product_type": "",
+        "tags": [],
+        "url": "https://heritagebayshop.com/products/floral-kawung-shirt"
+      },
+      {
+        "id": 9244534571241,
+        "name": "Small Carrier (THICK POLYESTER)",
+        "handle": "small-carrier-thick-polyester",
+        "price": 7.9,
+        "image": "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/7823e9db-0b6a-47b4-8f28-6a632b6a9c16.jpg?v=1752654137",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/7823e9db-0b6a-47b4-8f28-6a632b6a9c16.jpg?v=1752654137"
+        ],
+        "vendor": "Heritage Bay",
+        "product_type": "",
+        "tags": [],
+        "url": "https://heritagebayshop.com/products/small-carrier-thick-polyester"
+      },
+      {
+        "id": 9244524806377,
+        "name": "Small Carrier (JUTE)",
+        "handle": "small-carrier-jute",
+        "price": 8.9,
+        "image": "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/293f8ec3-ede0-4764-81f7-0b6d08bea0cb.jpg?v=1752654138",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/293f8ec3-ede0-4764-81f7-0b6d08bea0cb.jpg?v=1752654138"
+        ],
+        "vendor": "Heritage Bay",
+        "product_type": "",
+        "tags": [],
+        "url": "https://heritagebayshop.com/products/small-carrier-jute"
+      },
+      {
+        "id": 9244447375593,
+        "name": "Machine-Printed Batik Pouches",
+        "handle": "machine-printed-batik-pouches",
+        "price": 2.2,
+        "image": "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/heritagebay_4_141c8ff4-99ee-4f2c-96f7-ba21ad3a97a4.png?v=1775117008",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/heritagebay_4_141c8ff4-99ee-4f2c-96f7-ba21ad3a97a4.png?v=1775117008"
+        ],
+        "vendor": "Heritage Bay",
+        "product_type": "",
+        "tags": [],
+        "url": "https://heritagebayshop.com/products/machine-printed-batik-pouches"
+      },
+      {
+        "id": 9244446490857,
+        "name": "Handstamped Batik Pouches",
+        "handle": "handstamped-batik-pouches",
+        "price": 2.9,
+        "image": "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/heritage_bay_5.png?v=1775117043",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/heritage_bay_5.png?v=1775117043",
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/6228996137910210059.jpg?v=1775117043",
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/6228996137910210060.jpg?v=1775117043",
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/6228996137910210061.jpg?v=1775117043"
+        ],
+        "vendor": "Heritage Bay",
+        "product_type": "",
+        "tags": [],
+        "url": "https://heritagebayshop.com/products/handstamped-batik-pouches"
+      },
+      {
+        "id": 9244445901033,
+        "name": "Batik Tote Bags (BLACK)",
+        "handle": "batik-tote-bags-black-1",
+        "price": 9.9,
+        "image": "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/heritage_bay_2.png?v=1775115978",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/heritage_bay_2.png?v=1775115978",
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/6228996137910210059.jpg?v=1775117043",
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/6228996137910210060.jpg?v=1775117043",
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/6228996137910210061.jpg?v=1775117043"
+        ],
+        "vendor": "Heritage Bay",
+        "product_type": "",
+        "tags": [],
+        "url": "https://heritagebayshop.com/products/batik-tote-bags-black-1"
+      },
+      {
+        "id": 9244445540585,
+        "name": "Batik Tote Bags (WHITE)",
+        "handle": "batik-tote-bags",
+        "price": 9.9,
+        "image": "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/heritage_bay_1.png?v=1775115912",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/heritage_bay_1.png?v=1775115912",
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/6228996137910210059.jpg?v=1775117043",
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/6228996137910210060.jpg?v=1775117043",
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/6228996137910210061.jpg?v=1775117043"
+        ],
+        "vendor": "Heritage Bay",
+        "product_type": "",
+        "tags": [],
+        "url": "https://heritagebayshop.com/products/batik-tote-bags"
+      },
+      {
+        "id": 9244445180137,
+        "name": "Batik Handbags",
+        "handle": "batik-handbags-1",
+        "price": 9.9,
+        "image": "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/heritagebay.png?v=1775114491",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/heritagebay.png?v=1775114491",
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/6228996137910210059.jpg?v=1775117043",
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/6228996137910210060.jpg?v=1775117043",
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/6228996137910210061.jpg?v=1775117043"
+        ],
+        "vendor": "Heritage Bay",
+        "product_type": "",
+        "tags": [],
+        "url": "https://heritagebayshop.com/products/batik-handbags-1"
+      },
+      {
+        "id": 8985688178921,
+        "name": "Mandarin Banji & Parang Shirt",
+        "handle": "mandarin-banji-parang-shirt",
+        "price": 55.9,
+        "image": "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/18.png?v=1752558760",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/18.png?v=1752558760",
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/24.png?v=1752558760",
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/21_d8df7a36-0922-405d-b404-fe0f2fc68da6.png?v=1752558760",
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/23_714240c1-45dc-4241-9678-a422fe668480.png?v=1752558760"
+        ],
+        "vendor": "My Store",
+        "product_type": "",
+        "tags": [],
+        "url": "https://heritagebayshop.com/products/mandarin-banji-parang-shirt"
+      },
+      {
+        "id": 9234776293609,
+        "name": "Kids Sage Flora Batik Shirt",
+        "handle": "kids-sage-flora-batik-shirt",
+        "price": 39.9,
+        "image": "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/sage_flora.png?v=1774590439",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/sage_flora.png?v=1774590439",
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/Size_Chart_4.png?v=1774590624"
+        ],
+        "vendor": "Heritage Bay",
+        "product_type": "",
+        "tags": [],
+        "url": "https://heritagebayshop.com/products/kids-sage-flora-batik-shirt"
+      },
+      {
+        "id": 9234775867625,
+        "name": "Kids Salmon Flora Girls Top",
+        "handle": "kids-salmon-flora-girls-top",
+        "price": 39.9,
+        "image": "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/pink_girls.png?v=1774590483",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/pink_girls.png?v=1774590483",
+          "https://cdn.shopify.com/s/files/1/0756/1075/1209/files/Size_Chart_4.png?v=1774590624"
+        ],
+        "vendor": "Heritage Bay",
+        "product_type": "",
+        "tags": [],
+        "url": "https://heritagebayshop.com/products/kids-salmon-flora-girls-top"
+      }
+    ]
+  },
+  {
+    "brand_id": "5",
+    "name": "VintageWknd",
+    "ok": true,
+    "kind": "shopify",
+    "banner": "https://cdn.shopify.com/s/files/1/2109/5375/files/Store_Signage_A4_Landscape.png?v=1761190790",
+    "logo": "https://cdn.shopify.com/s/files/1/2109/5375/files/Store_Signage_A4_Landscape.png?v=1761190790",
+    "products": [
+      {
+        "id": 4635973222442,
+        "name": "Vintagewknd Gift Card",
+        "handle": "vintagewknd-gift-card",
+        "price": 50,
+        "image": "https://cdn.shopify.com/s/files/1/2109/5375/files/Store_Signage_A4_Landscape.png?v=1761190790",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/2109/5375/files/Store_Signage_A4_Landscape.png?v=1761190790"
+        ],
+        "vendor": "VINTAGEWKND",
+        "product_type": "Gifts",
+        "tags": [
+          "pph1"
+        ],
+        "url": "https://vintagewknd.com/products/vintagewknd-gift-card"
+      },
+      {
+        "id": 7435203510314,
+        "name": "Little Red Shoes (小红Shoes)",
+        "handle": "kibo-shoes",
+        "price": 160,
+        "image": "https://cdn.shopify.com/s/files/1/2109/5375/files/IMG_2634.jpg?v=1723110477",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/2109/5375/files/IMG_2634.jpg?v=1723110477",
+          "https://cdn.shopify.com/s/files/1/2109/5375/files/IMG_2635.jpg?v=1723110477",
+          "https://cdn.shopify.com/s/files/1/2109/5375/files/IMG_2636.jpg?v=1723110477",
+          "https://cdn.shopify.com/s/files/1/2109/5375/files/IMG_2637.jpg?v=1723110477"
+        ],
+        "vendor": "KIBO",
+        "product_type": "Consignment",
+        "tags": [
+          "Merch"
+        ],
+        "url": "https://vintagewknd.com/products/kibo-shoes"
+      },
+      {
+        "id": 7004241657898,
+        "name": "SUPERWASTED Baby Tee - Black",
+        "handle": "superwasted-baby-tee-black",
+        "price": 40,
+        "image": "https://cdn.shopify.com/s/files/1/2109/5375/files/9_a8ac8eaa-9d22-4fa2-921a-c483be180d1c.jpg?v=1699689023",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/2109/5375/files/9_a8ac8eaa-9d22-4fa2-921a-c483be180d1c.jpg?v=1699689023",
+          "https://cdn.shopify.com/s/files/1/2109/5375/files/10_e2eaaf4f-5738-4fa3-8973-29b0a38ffe98.jpg?v=1699689028"
+        ],
+        "vendor": "WKND Merch",
+        "product_type": "Tops",
+        "tags": [
+          "Merch",
+          "TOPS"
+        ],
+        "url": "https://vintagewknd.com/products/superwasted-baby-tee-black"
+      },
+      {
+        "id": 7004241592362,
+        "name": "SUPERWASTED Oversized Tee - White",
+        "handle": "superwasted-oversized-tee-white",
+        "price": 45,
+        "image": "https://cdn.shopify.com/s/files/1/2109/5375/files/13_c32f9eb2-26c5-4eec-b5da-fbf88ac38800.jpg?v=1699689062",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/2109/5375/files/13_c32f9eb2-26c5-4eec-b5da-fbf88ac38800.jpg?v=1699689062",
+          "https://cdn.shopify.com/s/files/1/2109/5375/files/14_d1da0b0d-afe1-4227-b545-4643e86f57e8.jpg?v=1699689069"
+        ],
+        "vendor": "WKND Merch",
+        "product_type": "Tops",
+        "tags": [
+          "Merch",
+          "TOPS"
+        ],
+        "url": "https://vintagewknd.com/products/superwasted-oversized-tee-white"
+      },
+      {
+        "id": 7004241395754,
+        "name": "SUPERWASTED Oversized Tee - Black",
+        "handle": "superwasted-oversized-tee-black",
+        "price": 50,
+        "image": "https://cdn.shopify.com/s/files/1/2109/5375/files/11_518bc75b-5e21-4d9d-a0dc-ecbc414cd7be.jpg?v=1699689098",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/2109/5375/files/11_518bc75b-5e21-4d9d-a0dc-ecbc414cd7be.jpg?v=1699689098",
+          "https://cdn.shopify.com/s/files/1/2109/5375/files/12_28cc8311-ea31-4179-9c15-39b9f0113fba.jpg?v=1699689107"
+        ],
+        "vendor": "WKND Merch",
+        "product_type": "Tops",
+        "tags": [
+          "Merch",
+          "TOPS"
+        ],
+        "url": "https://vintagewknd.com/products/superwasted-oversized-tee-black"
+      },
+      {
+        "id": 7004241362986,
+        "name": "WKND Club Oversized Tee",
+        "handle": "wknd-club-oversize-tee",
+        "price": 45,
+        "image": "https://cdn.shopify.com/s/files/1/2109/5375/files/1_31f4797c-b231-4ffb-871f-e57a4fabc1ad.jpg?v=1699688727",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/2109/5375/files/1_31f4797c-b231-4ffb-871f-e57a4fabc1ad.jpg?v=1699688727",
+          "https://cdn.shopify.com/s/files/1/2109/5375/files/2_ddbb7753-e464-4130-a71f-884a0abb568f.jpg?v=1699688738"
+        ],
+        "vendor": "WKND Merch",
+        "product_type": "Tops",
+        "tags": [
+          "Merch",
+          "TOPS"
+        ],
+        "url": "https://vintagewknd.com/products/wknd-club-oversize-tee"
+      },
+      {
+        "id": 7004239134762,
+        "name": "WKND Club Baby Tee - Baby Pink",
+        "handle": "wknd-club-baby-tee-baby-pink",
+        "price": 35,
+        "image": "https://cdn.shopify.com/s/files/1/2109/5375/files/7_450355ba-ad18-4c4f-bb69-86a6edb5e1fc.jpg?v=1699688855",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/2109/5375/files/7_450355ba-ad18-4c4f-bb69-86a6edb5e1fc.jpg?v=1699688855",
+          "https://cdn.shopify.com/s/files/1/2109/5375/files/8_4c7de20c-2762-4bee-b418-b8561995ffc2.jpg?v=1699688859"
+        ],
+        "vendor": "WKND Merch",
+        "product_type": "Tops",
+        "tags": [
+          "Merch",
+          "TOPS"
+        ],
+        "url": "https://vintagewknd.com/products/wknd-club-baby-tee-baby-pink"
+      },
+      {
+        "id": 7004239101994,
+        "name": "WKND Club Baby Tee - Baby Blue",
+        "handle": "wknd-club-baby-tee-baby-blue",
+        "price": 35,
+        "image": "https://cdn.shopify.com/s/files/1/2109/5375/files/5_68d71b78-872b-43cb-9d1d-e673e3127696.jpg?v=1699688893",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/2109/5375/files/5_68d71b78-872b-43cb-9d1d-e673e3127696.jpg?v=1699688893",
+          "https://cdn.shopify.com/s/files/1/2109/5375/files/6_c042a089-10bf-47eb-b046-c60da096ce9c.jpg?v=1699688900"
+        ],
+        "vendor": "WKND Merch",
+        "product_type": "Tops",
+        "tags": [
+          "Merch",
+          "TOPS"
+        ],
+        "url": "https://vintagewknd.com/products/wknd-club-baby-tee-baby-blue"
+      },
+      {
+        "id": 7004239069226,
+        "name": "WKND Club Baby Tee - Baby Brown",
+        "handle": "wknd-club-baby-tee-baby-brown",
+        "price": 35,
+        "image": "https://cdn.shopify.com/s/files/1/2109/5375/files/3_e6bb549e-459b-496f-a58e-eda2ae2099e3.jpg?v=1699688974",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/2109/5375/files/3_e6bb549e-459b-496f-a58e-eda2ae2099e3.jpg?v=1699688974",
+          "https://cdn.shopify.com/s/files/1/2109/5375/files/4_dba653a7-ed02-4e2c-8da7-97aa423d194e.jpg?v=1699688976"
+        ],
+        "vendor": "WKND Merch",
+        "product_type": "Tops",
+        "tags": [
+          "Merch",
+          "TOPS"
+        ],
+        "url": "https://vintagewknd.com/products/wknd-club-baby-tee-baby-brown"
+      }
+    ]
+  },
+  {
+    "brand_id": "6",
+    "ok": false,
+    "reason": "no website"
+  },
+  {
+    "brand_id": "7",
+    "ok": false,
+    "reason": "no website"
+  },
+  {
+    "brand_id": "8",
+    "name": "Tonêff",
+    "ok": true,
+    "kind": "shopify",
+    "banner": "https://cdn.shopify.com/s/files/1/0725/8793/5922/files/Gemini_Generated_Image_7smjvq7smjvq7smj.png?v=1775196564",
+    "logo": "https://cdn.shopify.com/s/files/1/0725/8793/5922/files/Gemini_Generated_Image_7smjvq7smjvq7smj.png?v=1775196564",
+    "products": [
+      {
+        "id": 8787866026162,
+        "name": "The Reversible Jacket (PRE ORDER)",
+        "handle": "the-reversible-jacket-1",
+        "price": 75,
+        "image": "https://cdn.shopify.com/s/files/1/0725/8793/5922/files/Gemini_Generated_Image_7smjvq7smjvq7smj.png?v=1775196564",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0725/8793/5922/files/Gemini_Generated_Image_7smjvq7smjvq7smj.png?v=1775196564",
+          "https://cdn.shopify.com/s/files/1/0725/8793/5922/files/IMG_0433.jpg?v=1775196564",
+          "https://cdn.shopify.com/s/files/1/0725/8793/5922/files/DSC08129.jpg?v=1775196564",
+          "https://cdn.shopify.com/s/files/1/0725/8793/5922/files/IMG_9292_ee014c08-a296-469c-b8d4-69d2d777a137.jpg?v=1775196564"
+        ],
+        "vendor": "Tonêff",
+        "product_type": "",
+        "tags": [],
+        "url": "https://toneffclothing.com/products/the-reversible-jacket-1"
+      },
+      {
+        "id": 8653791658162,
+        "name": "Jet Black Pleated Jeans",
+        "handle": "pleated-jeans",
+        "price": 70,
+        "image": "https://cdn.shopify.com/s/files/1/0725/8793/5922/files/IMG_6810.png?v=1775080329",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0725/8793/5922/files/IMG_6810.png?v=1775080329",
+          "https://cdn.shopify.com/s/files/1/0725/8793/5922/files/DSC04304-2.jpg?v=1775157190",
+          "https://cdn.shopify.com/s/files/1/0725/8793/5922/files/IMG_6811.jpg?v=1775157190",
+          "https://cdn.shopify.com/s/files/1/0725/8793/5922/files/DSC04515_1.jpg?v=1775157190"
+        ],
+        "vendor": "Tonêff",
+        "product_type": "",
+        "tags": [],
+        "url": "https://toneffclothing.com/products/pleated-jeans"
+      },
+      {
+        "id": 8653776617650,
+        "name": "The Askew Shirt",
+        "handle": "askew-button-up",
+        "price": 45,
+        "image": "https://cdn.shopify.com/s/files/1/0725/8793/5922/files/Gemini_Generated_Image_lo70fnlo70fnlo70.png?v=1775080274",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0725/8793/5922/files/Gemini_Generated_Image_lo70fnlo70fnlo70.png?v=1775080274",
+          "https://cdn.shopify.com/s/files/1/0725/8793/5922/files/DSC03411_1.jpg?v=1774306022",
+          "https://cdn.shopify.com/s/files/1/0725/8793/5922/files/IMG_6854.jpg?v=1775157190",
+          "https://cdn.shopify.com/s/files/1/0725/8793/5922/files/DSC04131_1.jpg?v=1774306022"
+        ],
+        "vendor": "Tonêff",
+        "product_type": "",
+        "tags": [],
+        "url": "https://toneffclothing.com/products/askew-button-up"
+      }
+    ]
+  },
+  {
+    "brand_id": "9",
+    "name": "Un.Wastelands",
+    "ok": false,
+    "reason": "products.json → 401 / no og:image / icon"
+  },
+  {
+    "brand_id": "10",
+    "name": "Birds of Paradise Gelato",
+    "ok": true,
+    "kind": "shopify",
+    "banner": "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080SpicedPearCupUpdated_abf56ab2-e884-4342-bcf7-4be710586dde.png?v=1776825775",
+    "logo": "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080SpicedPearCupUpdated_abf56ab2-e884-4342-bcf7-4be710586dde.png?v=1776825775",
+    "products": [
+      {
+        "id": 8227589718060,
+        "name": "Spiced Pear",
+        "handle": "spiced-pear-2",
+        "price": 4.6,
+        "image": "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080SpicedPearCupUpdated_abf56ab2-e884-4342-bcf7-4be710586dde.png?v=1776825775",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080SpicedPearCupUpdated_abf56ab2-e884-4342-bcf7-4be710586dde.png?v=1776825775"
+        ],
+        "vendor": "Sweet, delicate, nutty",
+        "product_type": "Cup - Events",
+        "tags": [
+          "bis-hidden",
+          "events-flavour",
+          "hide-delivery",
+          "hide-event-shipping",
+          "hide-pickup",
+          "shipping-enabled"
+        ],
+        "url": "https://birdsofparadise.sg/products/spiced-pear-2"
+      },
+      {
+        "id": 8227589881900,
+        "name": "Coconut Sorbet",
+        "handle": "coconut-sorbet-2",
+        "price": 4.6,
+        "image": "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080CoconutSorbetCupUpdated_402e6987-75aa-45a1-8fc2-603be344a1ba.png?v=1776825764",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080CoconutSorbetCupUpdated_402e6987-75aa-45a1-8fc2-603be344a1ba.png?v=1776825764"
+        ],
+        "vendor": "Sweet, delicate, nutty",
+        "product_type": "Cup - Events",
+        "tags": [
+          "bis-hidden",
+          "events-flavour",
+          "hide-delivery",
+          "hide-event-shipping",
+          "hide-pickup",
+          "shipping-enabled"
+        ],
+        "url": "https://birdsofparadise.sg/products/coconut-sorbet-2"
+      },
+      {
+        "id": 8251130576940,
+        "name": "Mother’s Day Gelato Pint Trio",
+        "handle": "mother-s-day-gelato-pint-trio",
+        "price": 68.5,
+        "image": "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080Mother_sDayPintset.png?v=1776657649",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080Mother_sDayPintset.png?v=1776657649"
+        ],
+        "vendor": "Cookies & Cream, Midnight Gianduja, Strawberry Basil, Pistachio",
+        "product_type": "",
+        "tags": [
+          "hide-event-shipping",
+          "Mother's Day",
+          "seasonal",
+          "Sets"
+        ],
+        "url": "https://birdsofparadise.sg/products/mother-s-day-gelato-pint-trio"
+      },
+      {
+        "id": 8251132313644,
+        "name": "Mother’s Day Party Cup Set",
+        "handle": "mother-s-day-party-cup-set",
+        "price": 58,
+        "image": "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080Mother_sDayPartyCupSet.png?v=1776657644",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080Mother_sDayPartyCupSet.png?v=1776657644"
+        ],
+        "vendor": "Birds of Paradise Gelato Boutique",
+        "product_type": "",
+        "tags": [
+          "best",
+          "hide-event-shipping",
+          "Mother's Day",
+          "party cups",
+          "seasonal",
+          "Sets"
+        ],
+        "url": "https://birdsofparadise.sg/products/mother-s-day-party-cup-set"
+      },
+      {
+        "id": 8251165081644,
+        "name": "Osmanthus Pear Sorbet",
+        "handle": "osmanthus-pear-sorbet-2",
+        "price": null,
+        "image": "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/Copyof783x1080OsmanthusPearSorbetCupUpdated.png?v=1776668871",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/Copyof783x1080OsmanthusPearSorbetCupUpdated.png?v=1776668871"
+        ],
+        "vendor": "Birds of Paradise Gelato Boutique",
+        "product_type": "Cup",
+        "tags": [
+          "bis-hidden",
+          "events-flavour",
+          "hide-event-shipping",
+          "premium flavour"
+        ],
+        "url": "https://birdsofparadise.sg/products/osmanthus-pear-sorbet-2"
+      },
+      {
+        "id": 8251164819500,
+        "name": "Macadamia Butterfly Pea",
+        "handle": "macadamia-butterfly-pea-3",
+        "price": 1,
+        "image": "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/Copyof783x1080MacademiaButterflyPeaCupUpdated.png?v=1776668845",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/Copyof783x1080MacademiaButterflyPeaCupUpdated.png?v=1776668845"
+        ],
+        "vendor": "Birds of Paradise Gelato Boutique",
+        "product_type": "Cup",
+        "tags": [
+          "bis-hidden",
+          "events-flavour",
+          "hide-event-shipping",
+          "premium flavour",
+          "seasonal"
+        ],
+        "url": "https://birdsofparadise.sg/products/macadamia-butterfly-pea-3"
+      },
+      {
+        "id": 8227590733868,
+        "name": "Mandarin Sorbet",
+        "handle": "mandarin-sorbet-1",
+        "price": 4.6,
+        "image": "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080MandarinSorbetCupUpdated_62b7e0c8-54f7-461e-8f08-344898a93bc1.png?v=1776825712",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080MandarinSorbetCupUpdated_62b7e0c8-54f7-461e-8f08-344898a93bc1.png?v=1776825712"
+        ],
+        "vendor": "Sweet, delicate, nutty",
+        "product_type": "Cup - Events",
+        "tags": [
+          "bis-hidden",
+          "events-flavour",
+          "hide-delivery",
+          "hide-event-shipping",
+          "hide-pickup",
+          "seasonal",
+          "shipping-enabled"
+        ],
+        "url": "https://birdsofparadise.sg/products/mandarin-sorbet-1"
+      },
+      {
+        "id": 8227590438956,
+        "name": "Valhrona Sea Salt Cookies & Cream",
+        "handle": "valhrona-sea-salt-cookies-cream",
+        "price": 5.6,
+        "image": "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080ValrhonaSeaSaltCookies_CreamCupUpdated_360076c9-17f9-4a03-9b38-6f550bcdea9c.png?v=1776825727",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080ValrhonaSeaSaltCookies_CreamCupUpdated_360076c9-17f9-4a03-9b38-6f550bcdea9c.png?v=1776825727"
+        ],
+        "vendor": "Sweet, delicate, nutty",
+        "product_type": "Cup - Events",
+        "tags": [
+          "bis-hidden",
+          "events-flavour",
+          "hide-delivery",
+          "hide-event-shipping",
+          "hide-pickup",
+          "premium flavour",
+          "seasonal",
+          "shipping-enabled"
+        ],
+        "url": "https://birdsofparadise.sg/products/valhrona-sea-salt-cookies-cream"
+      },
+      {
+        "id": 8227590242348,
+        "name": "Cold Brew Coffee Sorbet",
+        "handle": "cold-brew-coffee-sorbet-2",
+        "price": 5.6,
+        "image": "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080CoffeeSorbetPartyCupUpdated_153077ac-f97f-4515-830b-fef5d31cb09a.png?v=1776825741",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080CoffeeSorbetPartyCupUpdated_153077ac-f97f-4515-830b-fef5d31cb09a.png?v=1776825741"
+        ],
+        "vendor": "Sweet, delicate, nutty",
+        "product_type": "Cup - Events",
+        "tags": [
+          "bis-hidden",
+          "events-flavour",
+          "hide-delivery",
+          "hide-event-shipping",
+          "hide-pickup",
+          "premium flavour",
+          "seasonal",
+          "shipping-enabled"
+        ],
+        "url": "https://birdsofparadise.sg/products/cold-brew-coffee-sorbet-2"
+      },
+      {
+        "id": 8227590045740,
+        "name": "Black Sticky Rice",
+        "handle": "black-sticky-rice-1",
+        "price": 4.6,
+        "image": "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080BlackStickyRiceCupUpdated_55a384fc-8dba-4354-b33e-a0b22dd42a92.png?v=1776825746",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080BlackStickyRiceCupUpdated_55a384fc-8dba-4354-b33e-a0b22dd42a92.png?v=1776825746"
+        ],
+        "vendor": "Sweet, delicate, nutty",
+        "product_type": "Cup - Events",
+        "tags": [
+          "bis-hidden",
+          "events-flavour",
+          "hide-delivery",
+          "hide-event-shipping",
+          "hide-pickup",
+          "seasonal",
+          "shipping-enabled"
+        ],
+        "url": "https://birdsofparadise.sg/products/black-sticky-rice-1"
+      },
+      {
+        "id": 8227589980204,
+        "name": "Smoked Double Chocolate",
+        "handle": "smoked-double-chocolate-1",
+        "price": 4.6,
+        "image": "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080SmokedDoubleChocolateCupUpdated_9689c4a9-6212-48d3-ba31-c3a6b53c3cf6.png?v=1776825756",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080SmokedDoubleChocolateCupUpdated_9689c4a9-6212-48d3-ba31-c3a6b53c3cf6.png?v=1776825756"
+        ],
+        "vendor": "Sweet, delicate, nutty",
+        "product_type": "Cup - Events",
+        "tags": [
+          "bis-hidden",
+          "events-flavour",
+          "hide-delivery",
+          "hide-event-shipping",
+          "hide-pickup",
+          "shipping-enabled"
+        ],
+        "url": "https://birdsofparadise.sg/products/smoked-double-chocolate-1"
+      },
+      {
+        "id": 8227589586988,
+        "name": "Mint Cacao",
+        "handle": "mint-cacao-1",
+        "price": 4.6,
+        "image": "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080MintCacaoCupUpdated_b4333382-6c03-4f18-bcba-16491fb2e504.png?v=1776825783",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0365/9110/8140/files/783x1080MintCacaoCupUpdated_b4333382-6c03-4f18-bcba-16491fb2e504.png?v=1776825783"
+        ],
+        "vendor": "Sweet, delicate, nutty",
+        "product_type": "Cup - Events",
+        "tags": [
+          "bis-hidden",
+          "events-flavour",
+          "hide-delivery",
+          "hide-event-shipping",
+          "hide-pickup",
+          "shipping-enabled"
+        ],
+        "url": "https://birdsofparadise.sg/products/mint-cacao-1"
+      }
+    ]
+  },
+  {
+    "brand_id": "11",
+    "name": "Tiong Bahru Bakery",
+    "ok": true,
+    "kind": "oghtml",
+    "banner": null,
+    "logo": "https://tiongbahrubakery.com/cdn/shop/files/TBB_Logo_Favicon_3.png?v=1758877116&width=32",
+    "products": []
+  },
+  {
+    "brand_id": "12",
+    "name": "Sin Lee Foods",
+    "ok": true,
+    "kind": "oghtml",
+    "banner": null,
+    "logo": "https://sinleefoods.com/images/logo.svg",
+    "products": []
+  },
+  {
+    "brand_id": "13",
+    "name": "Killiney Kopitiam",
+    "ok": true,
+    "kind": "oghtml",
+    "banner": null,
+    "logo": "https://killiney.com/vite.svg",
+    "products": []
+  },
+  {
+    "brand_id": "14",
+    "name": "Nanyang Old Coffee",
+    "ok": false,
+    "reason": "products.json → 404 / no og:image / icon"
+  },
+  {
+    "brand_id": "15",
+    "name": "Apiary Ice Cream",
+    "ok": true,
+    "kind": "shopify",
+    "banner": "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/shisoicream.jpg?v=1769236659",
+    "logo": "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/shisoicream.jpg?v=1769236659",
+    "products": [
+      {
+        "id": 9077185249506,
+        "name": "Shiso Makgeolli Ice Cream Pint",
+        "handle": "shiso-makgeolli-ice-cream-pint",
+        "price": 22,
+        "image": "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/shisoicream.jpg?v=1769236659",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/shisoicream.jpg?v=1769236659"
+        ],
+        "vendor": "Apiary",
+        "product_type": "Ice Cream",
+        "tags": [
+          "featured",
+          "Ice Cream",
+          "Online Store",
+          "Pints & Tubs",
+          "Regular"
+        ],
+        "url": "https://apiary.sg/products/shiso-makgeolli-ice-cream-pint"
+      },
+      {
+        "id": 9045725970658,
+        "name": "Apiary Gingerbread Cookies",
+        "handle": "gingerbread-cookies",
+        "price": 8.99,
+        "image": "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/gingerbreadman.png?v=1764581312",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/gingerbreadman.png?v=1764581312"
+        ],
+        "vendor": "Apiary",
+        "product_type": "Brownies",
+        "tags": [
+          "Cookies",
+          "Online Store",
+          "Pastries",
+          "POS"
+        ],
+        "url": "https://apiary.sg/products/gingerbread-cookies"
+      },
+      {
+        "id": 9041263001826,
+        "name": "Gingerbread Ice Cream – Pint (Apiary Seasonal)",
+        "handle": "gingerbread-ice-cream-pint-apiary-seasonal",
+        "price": 22,
+        "image": "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/20251129_1429_Gingerbread_Ice_Cream_Focus_remix_01kb74s0cpe0dt7skf18j0q6sb.png?v=1764580481",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/20251129_1429_Gingerbread_Ice_Cream_Focus_remix_01kb74s0cpe0dt7skf18j0q6sb.png?v=1764580481"
+        ],
+        "vendor": "Apiary",
+        "product_type": "Ice Cream",
+        "tags": [
+          "featured",
+          "Ice Cream",
+          "Online Store",
+          "Pints & Tubs",
+          "Regular"
+        ],
+        "url": "https://apiary.sg/products/gingerbread-ice-cream-pint-apiary-seasonal"
+      },
+      {
+        "id": 9034843291874,
+        "name": "$50 Apiary Gift Card",
+        "handle": "50-apiary-gift-card",
+        "price": 50,
+        "image": "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiaryGC.jpg?v=1763195940",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiaryGC.jpg?v=1763195940",
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary_GC.jpg?v=1763196296"
+        ],
+        "vendor": "Apiary Singapore",
+        "product_type": "",
+        "tags": [
+          "Gift Card",
+          "online gift card"
+        ],
+        "url": "https://apiary.sg/products/50-apiary-gift-card"
+      },
+      {
+        "id": 9034843259106,
+        "name": "$25 Apiary Gift Card",
+        "handle": "25-apiary-gift-card",
+        "price": 25,
+        "image": "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiaryGC.jpg?v=1763195940",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiaryGC.jpg?v=1763195940",
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary_GC.jpg?v=1763196296"
+        ],
+        "vendor": "Apiary Singapore",
+        "product_type": "",
+        "tags": [
+          "Gift Card",
+          "online gift card"
+        ],
+        "url": "https://apiary.sg/products/25-apiary-gift-card"
+      },
+      {
+        "id": 8860584935650,
+        "name": "Lychee & Yuzu Sorbet",
+        "handle": "apiary-ice-cream-lychee-yuzu-sorbet-pint-tub",
+        "price": 19,
+        "image": "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary-ice-cream-lychee-yuzu-sorbet-pint-tub.jpg?v=1743065931",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary-ice-cream-lychee-yuzu-sorbet-pint-tub.jpg?v=1743065931",
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary-ice-cream-lychee-yuzu.jpg?v=1741758279"
+        ],
+        "vendor": "Apiary",
+        "product_type": "Sorbet",
+        "tags": [
+          "Ice Cream",
+          "Online Store",
+          "Pints & Tubs",
+          "Regular",
+          "Sorbet"
+        ],
+        "url": "https://apiary.sg/products/apiary-ice-cream-lychee-yuzu-sorbet-pint-tub"
+      },
+      {
+        "id": 8861202710754,
+        "name": "Sicilian Pistachio",
+        "handle": "apiary-ice-cream-sicilian-pistachio-pint-tub",
+        "price": 22,
+        "image": "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary-ice-cream-sicilian-pistachio-pint-tub.jpg?v=1743065932",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary-ice-cream-sicilian-pistachio-pint-tub.jpg?v=1743065932",
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary-ice-cream-sicilian-pistachio.jpg?v=1741758248"
+        ],
+        "vendor": "Apiary",
+        "product_type": "Ice Cream",
+        "tags": [
+          "Ice Cream",
+          "Online Store",
+          "Pints & Tubs",
+          "Premium"
+        ],
+        "url": "https://apiary.sg/products/apiary-ice-cream-sicilian-pistachio-pint-tub"
+      },
+      {
+        "id": 8849211916514,
+        "name": "73% Dark Chocolate Brownie",
+        "handle": "73-dark-chocolate-brownie",
+        "price": 9,
+        "image": "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary-chocolate-brownie.jpg?v=1743997808",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary-chocolate-brownie.jpg?v=1743997808"
+        ],
+        "vendor": "Apiary",
+        "product_type": "Brownies",
+        "tags": [
+          "Brownie",
+          "Online Store",
+          "Pastries",
+          "POS"
+        ],
+        "url": "https://apiary.sg/products/73-dark-chocolate-brownie"
+      },
+      {
+        "id": 8864163397858,
+        "name": "Kids Favourite Ice Cream Tasting Set",
+        "handle": "kids-favourite-ice-cream-tasting-set",
+        "price": 36,
+        "image": "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary-ice-cream-set-02.jpg?v=1747882976",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary-ice-cream-set-02.jpg?v=1747882976",
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/kids-favourite-ice-cream-tasting-set.jpg?v=1747882976"
+        ],
+        "vendor": "Apiary",
+        "product_type": "Ice Cream",
+        "tags": [
+          "Ice Cream",
+          "Online Store",
+          "Pints & Tubs",
+          "Set"
+        ],
+        "url": "https://apiary.sg/products/kids-favourite-ice-cream-tasting-set"
+      },
+      {
+        "id": 8864154321122,
+        "name": "Apiary Gourmet Ice Cream Tasting Set",
+        "handle": "apiary-gourmet-ice-cream-tasting-set",
+        "price": 36,
+        "image": "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary-ice-cream-set.jpg?v=1747882976",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary-ice-cream-set.jpg?v=1747882976",
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary-gourmet-ice-cream-tasting-set.jpg?v=1743998949"
+        ],
+        "vendor": "Apiary",
+        "product_type": "Ice Cream",
+        "tags": [
+          "Ice Cream",
+          "Online Store",
+          "Pints & Tubs",
+          "Set"
+        ],
+        "url": "https://apiary.sg/products/apiary-gourmet-ice-cream-tasting-set"
+      },
+      {
+        "id": 8863776080098,
+        "name": "Caramelized Strawberry",
+        "handle": "apiary-ice-cream-caramelized-strawberry-pint-tub",
+        "price": 19,
+        "image": "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary-ice-cream-caramelized-strawberry-pint-tub.jpg?v=1743065932",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary-ice-cream-caramelized-strawberry-pint-tub.jpg?v=1743065932",
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary-ice-cream-caramelized-strawberry.jpg?v=1741758866"
+        ],
+        "vendor": "Apiary",
+        "product_type": "Ice Cream",
+        "tags": [
+          "Ice Cream",
+          "Online Store",
+          "Pints & Tubs",
+          "Regular"
+        ],
+        "url": "https://apiary.sg/products/apiary-ice-cream-caramelized-strawberry-pint-tub"
+      },
+      {
+        "id": 8861207068898,
+        "name": "Vanilla Bean",
+        "handle": "apiary-ice-cream-vanilla-bean-pint-tub",
+        "price": 19,
+        "image": "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary-ice-cream-vanilla-bean-pint-tub.jpg?v=1743065932",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary-ice-cream-vanilla-bean-pint-tub.jpg?v=1743065932",
+          "https://cdn.shopify.com/s/files/1/0739/8939/0562/files/apiary-ice-cream-vanilla-bean.jpg?v=1742544014"
+        ],
+        "vendor": "Apiary",
+        "product_type": "Ice Cream",
+        "tags": [
+          "Ice Cream",
+          "Online Store",
+          "Pints & Tubs",
+          "Regular"
+        ],
+        "url": "https://apiary.sg/products/apiary-ice-cream-vanilla-bean-pint-tub"
+      }
+    ]
+  },
+  {
+    "brand_id": "16",
+    "name": "Ashley Studio Pottery",
+    "ok": false,
+    "reason": "products.json → invalid JSON / no og:image / icon"
+  },
+  {
+    "brand_id": "17",
+    "ok": false,
+    "reason": "no website"
+  },
+  {
+    "brand_id": "18",
+    "ok": false,
+    "reason": "host blocked: sproutstationery.sg"
+  },
+  {
+    "brand_id": "19",
+    "ok": false,
+    "reason": "host blocked: cat-socrates.com"
+  },
+  {
+    "brand_id": "20",
+    "ok": false,
+    "reason": "host blocked: commune.com.sg"
+  },
+  {
+    "brand_id": "21",
+    "name": "Scene Shang",
+    "ok": false,
+    "reason": "products.json → AbortError: This operation was aborted / homepage → AbortError: This operation was aborted"
+  },
+  {
+    "brand_id": "22",
+    "ok": false,
+    "reason": "host blocked: naiiseiconic.com"
+  },
+  {
+    "brand_id": "23",
+    "name": "Woopa Travels",
+    "ok": false,
+    "reason": "products.json → TypeError: fetch failed / homepage → TypeError: fetch failed"
+  },
+  {
+    "brand_id": "24",
+    "name": "Wheeler",
+    "ok": true,
+    "kind": "oghtml",
+    "banner": null,
+    "logo": "https://wheelersyard.com/media/9c9d71_29c914485e4d452d813e566d35b3372b-mv2_d_4788_1812_s_2_jpg/v1/fill/w_32-h_32-lg_1-usm_0.66_1.00_0.01/9c9d71_29c914485e4d452d813e566d35b3372b-mv2_d_4788_1812_s_2.jpg",
+    "products": []
+  },
+  {
+    "brand_id": "25",
+    "ok": false,
+    "reason": "no website"
+  },
+  {
+    "brand_id": "26",
+    "name": "The Better Toy Store",
+    "ok": true,
+    "kind": "shopify",
+    "banner": "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/Folkmanis_Mini_Ameise_8019-Fingerpuppe_4.webp?v=1776924528",
+    "logo": "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/Folkmanis_Mini_Ameise_8019-Fingerpuppe_4.webp?v=1776924528",
+    "products": [
+      {
+        "id": 10346877190308,
+        "name": "MINI ANT",
+        "handle": "mini-ant",
+        "price": 16.9,
+        "image": "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/Folkmanis_Mini_Ameise_8019-Fingerpuppe_4.webp?v=1776924528",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/Folkmanis_Mini_Ameise_8019-Fingerpuppe_4.webp?v=1776924528"
+        ],
+        "vendor": "Folkmanis",
+        "product_type": "",
+        "tags": [
+          "finger puppet",
+          "new"
+        ],
+        "url": "https://thebettertoystore.com/products/mini-ant"
+      },
+      {
+        "id": 10346876960932,
+        "name": "MINI BEAR",
+        "handle": "mini-bear",
+        "price": 19.9,
+        "image": "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/Gross_Folkmanis_Fingerpuppe_Bar_8016_2.jpg?v=1776924415",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/Gross_Folkmanis_Fingerpuppe_Bar_8016_2.jpg?v=1776924415"
+        ],
+        "vendor": "Folkmanis",
+        "product_type": "",
+        "tags": [
+          "finger puppet",
+          "new"
+        ],
+        "url": "https://thebettertoystore.com/products/mini-bear"
+      },
+      {
+        "id": 10346876731556,
+        "name": "MINI MAGIC HAT FINGER PUPPET",
+        "handle": "mini-magic-hat-finger-puppet",
+        "price": 22.9,
+        "image": "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/8015Mini_Hase_im_Hut4.jpg?v=1776924289",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/8015Mini_Hase_im_Hut4.jpg?v=1776924289"
+        ],
+        "vendor": "Folkmanis",
+        "product_type": "",
+        "tags": [
+          "finger puppet",
+          "new"
+        ],
+        "url": "https://thebettertoystore.com/products/mini-magic-hat-finger-puppet"
+      },
+      {
+        "id": 10346876174500,
+        "name": "MINI BLUE-RINGED OCTOPUS",
+        "handle": "mini-blue-ringed-octopus",
+        "price": 24.9,
+        "image": "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/610vCxquchL._AC_SL1500.jpg?v=1776924058",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/610vCxquchL._AC_SL1500.jpg?v=1776924058"
+        ],
+        "vendor": "Folkmanis",
+        "product_type": "",
+        "tags": [
+          "finger puppet",
+          "new"
+        ],
+        "url": "https://thebettertoystore.com/products/mini-blue-ringed-octopus"
+      },
+      {
+        "id": 10346875617444,
+        "name": "MINI BLACK CAT",
+        "handle": "mini-black-cat",
+        "price": 16.9,
+        "image": "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/8004_mini_catblack_8004_h_srgb__1.webp?v=1776923907",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/8004_mini_catblack_8004_h_srgb__1.webp?v=1776923907"
+        ],
+        "vendor": "Folkmanis",
+        "product_type": "",
+        "tags": [
+          "finger puppet",
+          "new"
+        ],
+        "url": "https://thebettertoystore.com/products/mini-black-cat"
+      },
+      {
+        "id": 10346875224228,
+        "name": "WHITE POODLE PUPPY",
+        "handle": "white-poodle-puppy",
+        "price": 56.9,
+        "image": "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/whitepoodlepuppy_3241_front_rgb.jpg?v=1776923719",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/whitepoodlepuppy_3241_front_rgb.jpg?v=1776923719",
+          "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/whitepoodlepuppy_3241_g3_rgb.jpg?v=1776923725"
+        ],
+        "vendor": "Folkmanis",
+        "product_type": "",
+        "tags": [
+          "hand puppet",
+          "new"
+        ],
+        "url": "https://thebettertoystore.com/products/white-poodle-puppy"
+      },
+      {
+        "id": 10346874732708,
+        "name": "MOSQUITO",
+        "handle": "mosquito-1",
+        "price": 39.9,
+        "image": "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/mosquito_3240_front_rgb.jpg?v=1776923592",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/mosquito_3240_front_rgb.jpg?v=1776923592",
+          "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/mosquito_3240_g1_rgb.jpg?v=1776923601"
+        ],
+        "vendor": "Folkmanis",
+        "product_type": "",
+        "tags": [
+          "hand puppet",
+          "new"
+        ],
+        "url": "https://thebettertoystore.com/products/mosquito-1"
+      },
+      {
+        "id": 10346874372260,
+        "name": "LIZARD",
+        "handle": "lizard",
+        "price": 46.9,
+        "image": "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/lizard_3239_front_rgb.jpg?v=1776923414",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/lizard_3239_front_rgb.jpg?v=1776923414",
+          "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/lizard_3239_b2_rgb.jpg?v=1776923425"
+        ],
+        "vendor": "Folkmanis",
+        "product_type": "",
+        "tags": [
+          "hand puppet",
+          "new"
+        ],
+        "url": "https://thebettertoystore.com/products/lizard"
+      },
+      {
+        "id": 10346873979044,
+        "name": "CHINESE CRESTED DOG",
+        "handle": "chinese-crested-dog",
+        "price": 59.9,
+        "image": "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/dogchinesecrested_3243_front_rgb.jpg?v=1776923289",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/dogchinesecrested_3243_front_rgb.jpg?v=1776923289",
+          "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/dogchinesecrested_3243_g4_rgb.jpg?v=1776923296"
+        ],
+        "vendor": "Folkmanis",
+        "product_type": "",
+        "tags": [
+          "hand puppet",
+          "new"
+        ],
+        "url": "https://thebettertoystore.com/products/chinese-crested-dog"
+      },
+      {
+        "id": 10346873553060,
+        "name": "CALICO CAT",
+        "handle": "calico-cat",
+        "price": 52.9,
+        "image": "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/catcalico_3238_front_rgb.jpg?v=1776923100",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/catcalico_3238_front_rgb.jpg?v=1776923100",
+          "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/catcalico_3238_g3_rgb.jpg?v=1776923093"
+        ],
+        "vendor": "Folkmanis",
+        "product_type": "",
+        "tags": [
+          "hand puppet",
+          "new"
+        ],
+        "url": "https://thebettertoystore.com/products/calico-cat"
+      },
+      {
+        "id": 10346873192612,
+        "name": "BOX TURTLE",
+        "handle": "box-turtle",
+        "price": 64.9,
+        "image": "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/boxturtle_3242_front_rgb.jpg?v=1776922886",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/boxturtle_3242_front_rgb.jpg?v=1776922886",
+          "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/boxturtle_3242_b1_rgb.jpg?v=1776922866"
+        ],
+        "vendor": "Folkmanis",
+        "product_type": "",
+        "tags": [
+          "hand puppet",
+          "new"
+        ],
+        "url": "https://thebettertoystore.com/products/box-turtle"
+      },
+      {
+        "id": 10346872799396,
+        "name": "MINI LONG-TAILED TIT",
+        "handle": "mini-long-tailed-tit",
+        "price": 18.9,
+        "image": "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/mini_longtailedtit_8018_hand_v2_rgb.jpg?v=1776922696",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0654/2298/3332/files/mini_longtailedtit_8018_hand_v2_rgb.jpg?v=1776922696"
+        ],
+        "vendor": "Folkmanis",
+        "product_type": "",
+        "tags": [
+          "finger puppet",
+          "new"
+        ],
+        "url": "https://thebettertoystore.com/products/mini-long-tailed-tit"
+      }
+    ]
+  },
+  {
+    "brand_id": "27",
+    "ok": false,
+    "reason": "host blocked: hopscotchfriends.com"
+  },
+  {
+    "brand_id": "28",
+    "name": "Love, Bonito",
+    "ok": true,
+    "kind": "oghtml",
+    "banner": null,
+    "logo": "https://lovebonito.com/resources/favicons/48.png?v=3",
+    "products": []
+  },
+  {
+    "brand_id": "29",
+    "name": "Beyond The Vines",
+    "ok": true,
+    "kind": "shopify",
+    "banner": "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/DRAWSTRINGPOUCHBROWN_01.jpg?v=1775794977",
+    "logo": "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/DRAWSTRINGPOUCHBROWN_01.jpg?v=1775794977",
+    "products": [
+      {
+        "id": 15501299515761,
+        "name": "(GWP) Drawstring Pouch",
+        "handle": "gwp-drawstring-pouch",
+        "price": null,
+        "image": "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/DRAWSTRINGPOUCHBROWN_01.jpg?v=1775794977",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/DRAWSTRINGPOUCHBROWN_01.jpg?v=1775794977",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/DRAWSTRINGPOUCHBROWN_02.jpg?v=1775794977"
+        ],
+        "vendor": "Beyond The Vines Singapore",
+        "product_type": "GWP",
+        "tags": [
+          "bis-hidden",
+          "Hide Product",
+          "pdp-hide-atc",
+          "suggestr-hidden"
+        ],
+        "url": "https://beyondthevines.com/products/gwp-drawstring-pouch"
+      },
+      {
+        "id": 15348248707441,
+        "name": "Parallel™ Eyewear Case",
+        "handle": "parallel-eyewear-case",
+        "price": 30,
+        "image": "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/CASE_01.jpg?v=1776238757",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/CASE_01.jpg?v=1776238757",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/CASE_02.jpg?v=1776238757",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/CASE_03.png?v=1776239505",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/CASE_02.png?v=1776239505"
+        ],
+        "vendor": "Beyond The Vines",
+        "product_type": "Eyewear",
+        "tags": [
+          "eyewear",
+          "new-in",
+          "non-mrng",
+          "packet",
+          "S Gift Wrap",
+          "Shop All"
+        ],
+        "url": "https://beyondthevines.com/products/parallel-eyewear-case"
+      },
+      {
+        "id": 15348098892145,
+        "name": "Parallel™ Eyewear - Tangent",
+        "handle": "parallel-eyewear-tangent",
+        "price": 129,
+        "image": "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/TANGENTSHELL_01.jpg?v=1776222245",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/TANGENTSHELL_01.jpg?v=1776222245",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/TANGENT_SHELL_02.jpg?v=1776222245",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/TANGENT_SHELL_03.jpg?v=1776222245",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/TANGENT_SHELL_04.jpg?v=1776222245"
+        ],
+        "vendor": "Beyond The Vines",
+        "product_type": "Eyewear",
+        "tags": [
+          "eyewear",
+          "new-in",
+          "non-mrng",
+          "packet",
+          "S Gift Wrap",
+          "Shop All"
+        ],
+        "url": "https://beyondthevines.com/products/parallel-eyewear-tangent"
+      },
+      {
+        "id": 15348097646961,
+        "name": "Parallel™ Eyewear - Contour",
+        "handle": "parallel-eyewear-contour",
+        "price": 129,
+        "image": "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/CONTOURBROWN_01_d989753c-e0db-4d97-8b52-d2f93ab369b7.jpg?v=1776221880",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/CONTOURBROWN_01_d989753c-e0db-4d97-8b52-d2f93ab369b7.jpg?v=1776221880",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/CONTOURBROWN_02.jpg?v=1776221880",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/CONTOURBROWN_03.jpg?v=1776221880",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/CONTOURBROWN_04.jpg?v=1776221880"
+        ],
+        "vendor": "Beyond The Vines",
+        "product_type": "Eyewear",
+        "tags": [
+          "eyewear",
+          "new-in",
+          "non-mrng",
+          "packet",
+          "S Gift Wrap",
+          "Shop All"
+        ],
+        "url": "https://beyondthevines.com/products/parallel-eyewear-contour"
+      },
+      {
+        "id": 15348086538609,
+        "name": "Parallel™ Eyewear - Horizon",
+        "handle": "parallel-eyewear-horizon",
+        "price": 129,
+        "image": "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/HORIZONSHELL_01.jpg?v=1776222149",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/HORIZONSHELL_01.jpg?v=1776222149",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/HORIZONTSHELL_02.jpg?v=1776222149",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/HORIZONTSHELL_03.jpg?v=1776222149",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/HORIZONTSHELL_04.jpg?v=1776222149"
+        ],
+        "vendor": "Beyond The Vines",
+        "product_type": "Eyewear",
+        "tags": [
+          "eyewear",
+          "new-in",
+          "non-mrng",
+          "packet",
+          "S Gift Wrap",
+          "Shop All"
+        ],
+        "url": "https://beyondthevines.com/products/parallel-eyewear-horizon"
+      },
+      {
+        "id": 15494817907057,
+        "name": "Eyewear Case Engraving",
+        "handle": "eyewear-engraving",
+        "price": null,
+        "image": "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/A_d45cef54-8e06-48ec-9c84-6c914c75e9bb.png?v=1775701399",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/A_d45cef54-8e06-48ec-9c84-6c914c75e9bb.png?v=1775701399",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/B_b596b972-e8bd-4eda-a695-6d94aa895d43.png?v=1775701399",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/C_c6e720c3-170f-4af9-aee6-99ff383d06d2.png?v=1775701399",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/D_4bd8e6cb-d884-406f-8e68-8e031bae5b6c.png?v=1775701399"
+        ],
+        "vendor": "Beyond The Vines",
+        "product_type": "",
+        "tags": [
+          "Engraving",
+          "Hide Product",
+          "non-mrng",
+          "packet"
+        ],
+        "url": "https://beyondthevines.com/products/eyewear-engraving"
+      },
+      {
+        "id": 15011714236785,
+        "name": "Test 3",
+        "handle": "test-3",
+        "price": 15,
+        "image": "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/redsquare.jpg?v=1722582891",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/redsquare.jpg?v=1722582891",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/whitesquare.png?v=1722504967",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/yellowsquare.png?v=1722582891",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/orangesquare.png?v=1722582891"
+        ],
+        "vendor": "Beyond The Vines",
+        "product_type": "Other",
+        "tags": [
+          "suggestr-hidden"
+        ],
+        "url": "https://beyondthevines.com/products/test-3"
+      },
+      {
+        "id": 15312839115121,
+        "name": "Test (GWP)",
+        "handle": "test-gwp",
+        "price": null,
+        "image": "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/lightbluesquare.webp?v=1763022335",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/lightbluesquare.webp?v=1763022335",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/lightbluesquare_be87f69e-15a1-4b8c-b6c9-a37de32e81ba.webp?v=1763022370"
+        ],
+        "vendor": "Beyond The Vines",
+        "product_type": "Lifestyle",
+        "tags": [
+          "Hide Price",
+          "suggestr-hidden"
+        ],
+        "url": "https://beyondthevines.com/products/test-gwp"
+      },
+      {
+        "id": 15466650567025,
+        "name": "Leather Canvas Carryall 0.5",
+        "handle": "leather-canvas-carryall-0-5",
+        "price": 79,
+        "image": "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/CC0.5_LEATHER01.jpg?v=1774944801",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/CC0.5_LEATHER01.jpg?v=1774944801",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/LeatherCarryall-01.jpg?v=1775015290",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/CC0.5MULTI_01.jpg?v=1775015290",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/CC0.5MULTI_02.jpg?v=1775015290"
+        ],
+        "vendor": "Beyond The Vines",
+        "product_type": "Bags",
+        "tags": [
+          "all bags",
+          "bags",
+          "carryall",
+          "gifting",
+          "new in",
+          "non-mrng",
+          "packet",
+          "S Gift Wrap",
+          "Shop All",
+          "under 100",
+          "vdayheart"
+        ],
+        "url": "https://beyondthevines.com/products/leather-canvas-carryall-0-5"
+      },
+      {
+        "id": 15466655514993,
+        "name": "Leather Canvas Carryall 1.5",
+        "handle": "leather-canvas-carryall-1-5",
+        "price": 99,
+        "image": "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/CC1.5_LEATHER01.jpg?v=1773635746",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/CC1.5_LEATHER01.jpg?v=1773635746",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/LeatherCarryall-02.jpg?v=1775015314",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/CC1.5MULTI_04.jpg?v=1775120384",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/CC1.5MULTI_01_d43bc9e5-e9fa-46ce-acbc-0a9cb40ef6c9.jpg?v=1775120384"
+        ],
+        "vendor": "Beyond The Vines",
+        "product_type": "Bags",
+        "tags": [
+          "all bags",
+          "bags",
+          "carryall",
+          "gifting",
+          "new in",
+          "non-mrng",
+          "packet",
+          "Shop All",
+          "under 100",
+          "vdayheart",
+          "XL Gift Wrap"
+        ],
+        "url": "https://beyondthevines.com/products/leather-canvas-carryall-1-5"
+      },
+      {
+        "id": 15292809412977,
+        "name": "Beyond Boulevard Gift Wrap - XL",
+        "handle": "beyond-boulevard-gift-wrap-xl",
+        "price": null,
+        "image": "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/XLFESTIVEGW_02.jpg?v=1761724882",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/XLFESTIVEGW_02.jpg?v=1761724882",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/XLFESTIVEGW_01.jpg?v=1761724882",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/FESTIVEGW_87006d91-3c23-4f49-a7d8-b979304efca3.jpg?v=1761724882"
+        ],
+        "vendor": "Beyond The Vines",
+        "product_type": "GWP",
+        "tags": [
+          "Hide Product",
+          "pdp-hide-atc",
+          "suggestr-hidden"
+        ],
+        "url": "https://beyondthevines.com/products/beyond-boulevard-gift-wrap-xl"
+      },
+      {
+        "id": 14928678551921,
+        "name": "Gift Wrap - XS",
+        "handle": "gift-wrap-xs",
+        "price": null,
+        "image": "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/25GIFTWRAP_XS01.jpg?v=1772681793",
+        "images": [
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/25GIFTWRAP_XS01.jpg?v=1772681793",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/25GIFTWRAP_XS02.jpg?v=1772681793",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/GIFTWRAP-10.png?v=1772681793",
+          "https://cdn.shopify.com/s/files/1/0207/5974/0480/files/GIFTWRAP-11.png?v=1772681793"
+        ],
+        "vendor": "Beyond The Vines",
+        "product_type": "GWP",
+        "tags": [
+          "Hide Product",
+          "pdp-hide-atc",
+          "suggestr-hidden"
+        ],
+        "url": "https://beyondthevines.com/products/gift-wrap-xs"
+      }
+    ]
+  }
+]

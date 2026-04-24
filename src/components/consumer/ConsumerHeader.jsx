@@ -1,9 +1,10 @@
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useState } from 'react'
-import { Bell, Search, User } from 'lucide-react'
+import { Search, User } from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
 import { Avatar } from '../shared/Avatar'
 import { LogoMark } from '../shared/Logo'
+import { NotificationCenter } from './NotificationCenter'
 
 export function ConsumerHeader() {
   const { profile } = useAuth()
@@ -55,10 +56,7 @@ export function ConsumerHeader() {
           <Link to="/search" className="sm:hidden w-9 h-9 flex items-center justify-center rounded-xl hover:bg-[#F0E7D5] text-[#6B5744] transition-colors">
             <Search size={19} />
           </Link>
-          <Link to="/notifications" className="relative w-9 h-9 flex items-center justify-center rounded-xl hover:bg-[#F0E7D5] text-[#6B5744] transition-colors">
-            <Bell size={19} />
-            <span className="absolute top-1.5 right-1.5 w-2 h-2 bg-accent rounded-full" />
-          </Link>
+          <NotificationCenter />
           {profile
             ? <Link to="/profile">
                 <Avatar src={profile.avatar_url} name={profile.display_name} size="sm" />

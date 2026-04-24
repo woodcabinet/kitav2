@@ -27,8 +27,9 @@ import StorePage from './pages/brand/StorePage'
 import BrandEventsPage from './pages/brand/EventsPage'
 import OnboardingPage from './pages/brand/OnboardingPage'
 
-// Auth pages
+// Auth pages + gates
 import LoginPage from './pages/auth/LoginPage'
+import { ProtectedRoute } from './components/auth/ProtectedRoute'
 
 const queryClient = new QueryClient()
 
@@ -82,8 +83,8 @@ export default function App() {
             {/* Global search (standalone full-page) */}
             <Route path="/search" element={<SearchPage />} />
 
-            {/* Brand dashboard */}
-            <Route path="/dashboard" element={<DashboardLayout />}>
+            {/* Brand dashboard — requires signed-in user with a brand record */}
+            <Route path="/dashboard" element={<ProtectedRoute requireBrand><DashboardLayout /></ProtectedRoute>}>
               <Route index element={<DashboardOverview />} />
               <Route path="content" element={<ContentPage />} />
               <Route path="connect" element={<ConnectPage />} />
@@ -103,8 +104,8 @@ export default function App() {
               <Route path="/threads" element={<ThreadsPage />} />
               <Route path="/shop" element={<ShopPage />} />
               <Route path="/rewards" element={<RewardsPage />} />
-              <Route path="/profile" element={<ProfilePage />} />
-              <Route path="/profile/orders" element={<OrderHistoryPage />} />
+              <Route path="/profile" element={<ProtectedRoute><ProfilePage /></ProtectedRoute>} />
+              <Route path="/profile/orders" element={<ProtectedRoute><OrderHistoryPage /></ProtectedRoute>} />
               <Route path="/brand/:slug" element={<BrandProfilePage />} />
             </Route>
           </Routes>

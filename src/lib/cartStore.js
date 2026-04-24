@@ -5,6 +5,7 @@
 // Items are keyed by product.id. Quantity increments on re-add.
 
 import { useEffect, useState } from 'react'
+import { pushNotification } from './notificationStore'
 
 const KEY = 'kita_cart'
 
@@ -25,7 +26,8 @@ export function getCart() { return read() }
 export function addToCart(product, qty = 1) {
   const items = read()
   const i = items.findIndex(x => x.id === product.id)
-  if (i >= 0) {
+  const isNew = i < 0
+  if (!isNew) {
     items[i] = { ...items[i], qty: (items[i].qty ?? 1) + qty }
   } else {
     items.push({
@@ -39,6 +41,15 @@ export function addToCart(product, qty = 1) {
     })
   }
   write(items)
+  // Only notify on first add — repeated +1 would spam the bell.
+  if (isNew) {
+    pushNotification({
+      kind: 'order',
+      title: 'Added to cart',
+      body: `${product.name}${product.brand?.name ? ' · ' + product.brand.name : ''}`,
+      url: '/shop',
+    })
+  }
   return items
 }
 
