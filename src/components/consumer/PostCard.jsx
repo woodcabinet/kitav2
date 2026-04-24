@@ -1,11 +1,83 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Heart, MessageCircle, Share2, Bookmark, MoreHorizontal, CheckCircle, ShoppingBag, Plus, Volume2, VolumeX } from 'lucide-react'
+import { Heart, MessageCircle, Share2, Bookmark, MoreHorizontal, CheckCircle, ShoppingBag, Plus, Volume2, VolumeX, ExternalLink } from 'lucide-react'
 import { cn, formatRelativeTime, formatNumber, formatCurrency } from '../../lib/utils'
 import { Avatar } from '../shared/Avatar'
 import { PlatformBadge } from '../shared/Badge'
 import { MOCK_PRODUCTS } from '../../data/mockData'
 import { addToCart } from '../../lib/cartStore'
+
+// Convert a public IG / TikTok post URL into the platform's official embed
+// iframe URL. These endpoints are public (no auth key required) and are the
+// sanctioned way to surface real brand posts inside our feed — the video
+// plays off Instagram/TikTok's CDN with attribution + tap-through intact.
+function buildEmbedSrc(url) {
+  if (!url) return null
+  const ig = url.match(/instagram\.com\/(p|reel|tv)\/([^/?#]+)/i)
+  if (ig) return `https://www.instagram.com/${ig[1]}/${ig[2]}/embed`
+  const tt = url.match(/tiktok\.com\/.*\/video\/(\d+)/i) || url.match(/tiktok\.com\/embed\/v2\/(\d+)/i)
+  if (tt) return `https://www.tiktok.com/embed/v2/${tt[1]}`
+  return null
+}
+
+function platformFromUrl(url) {
+  if (!url) return null
+  if (/instagram\.com/i.test(url)) return 'instagram'
+  if (/tiktok\.com/i.test(url)) return 'tiktok'
+  return null
+}
+
+// Embedded real IG/TikTok post. Lazy-loads via IntersectionObserver so the
+// feed doesn't fetch 20 embeds on first render. Aspect is 4:5 — closest
+// common denominator between IG feed posts and TikTok videos.
+function EmbedMedia({ url }) {
+  const src = useMemo(() => buildEmbedSrc(url), [url])
+  const hostRef = useRef(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const el = hostRef.current
+    if (!el || visible) return
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) { setVisible(true); io.disconnect() }
+      },
+      { rootMargin: '200px' }
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [visible])
+
+  if (!src) return null
+  const platform = platformFromUrl(url)
+
+  return (
+    <div ref={hostRef} className="relative w-full bg-black" style={{ aspectRatio: '4 / 5' }}>
+      {visible ? (
+        <iframe
+          src={src}
+          title={platform === 'tiktok' ? 'TikTok post' : 'Instagram post'}
+          className="w-full h-full"
+          frameBorder="0"
+          scrolling="no"
+          allow="encrypted-media; autoplay; clipboard-write; picture-in-picture"
+          allowFullScreen
+        />
+      ) : (
+        <div className="w-full h-full flex items-center justify-center text-white/70 text-xs">Loading…</div>
+      )}
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="absolute bottom-2 right-2 bg-black/55 backdrop-blur-sm text-white text-[10px] font-semibold px-2 py-1 rounded-full inline-flex items-center gap-1 hover:bg-black/70"
+      >
+        <ExternalLink size={10} />
+        Open on {platform === 'tiktok' ? 'TikTok' : 'Instagram'}
+      </a>
+    </div>
+  )
+}
 
 // Autoplay-on-scroll: the video starts (muted, so browsers allow it) the
 // moment 60%+ of the frame is visible; pauses when it scrolls out. The sound
@@ -144,7 +216,9 @@ export function PostCard({ post }) {
       </div>
 
       {/* Media */}
-      {mediaUrl && (
+      {post.embed_url ? (
+        <EmbedMedia url={post.embed_url} />
+      ) : mediaUrl ? (
         <div className="aspect-square overflow-hidden bg-black">
           {isVideo ? (
             <FeedVideo src={mediaUrl} poster={post.poster_url} />
@@ -156,7 +230,7 @@ export function PostCard({ post }) {
             />
           )}
         </div>
-      )}
+      ) : null}
 
       {/* Shop this post — linked products */}
       {post.product_ids?.length > 0 && <ShopThisPost productIds={post.product_ids} />}
