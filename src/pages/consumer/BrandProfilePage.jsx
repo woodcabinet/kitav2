@@ -8,6 +8,7 @@ import { ProductCard } from '../../components/consumer/ProductCard'
 import { EventCard } from '../../components/consumer/EventCard'
 import { DropCard } from '../../components/consumer/DropCard'
 import { formatNumber } from '../../lib/utils'
+import { useFollows } from '../../lib/followStore'
 
 const SAVED_KEY = 'kk_saved_brands'
 
@@ -23,7 +24,8 @@ export default function BrandProfilePage() {
   const { slug } = useParams()
   const brand = MOCK_BRANDS.find(b => b.slug === slug)
   const [activeTab, setActiveTab] = useState('posts')
-  const [followed, setFollowed] = useState(false)
+  const follows = useFollows()
+  const followed = brand ? follows.isFollowing(brand.id) : false
   const [saved, setSaved] = useState(false)
 
   useEffect(() => {
@@ -121,12 +123,13 @@ export default function BrandProfilePage() {
             </motion.button>
             <motion.button
               whileTap={{ scale: 0.96 }}
-              onClick={() => setFollowed(f => !f)}
+              onClick={() => follows.toggle(brand)}
               className={`px-5 py-2 rounded-2xl text-sm font-semibold transition-colors shadow-warm ${
                 followed
                   ? 'paper-card text-[#6B5744]'
                   : 'bg-accent hover:bg-accent-dark text-cream animate-breathe'
               }`}
+              aria-pressed={followed}
             >
               {followed ? 'Following' : 'Follow'}
             </motion.button>

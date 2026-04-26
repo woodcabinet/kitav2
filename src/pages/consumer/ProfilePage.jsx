@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { LogOut, Heart, Calendar, ShoppingBag, MapPin, Clock, Settings, Bell, Shield, HelpCircle, Info, ChevronRight, Coffee } from 'lucide-react'
+import { LogOut, Heart, Calendar, ShoppingBag, MapPin, Clock, Settings, Bell, Shield, HelpCircle, Info, ChevronRight, Coffee, UserPlus } from 'lucide-react'
 import { useAuth } from '../../contexts/AuthContext'
 import { Avatar } from '../../components/shared/Avatar'
 import { MOCK_BRANDS, MOCK_EVENTS } from '../../data/mockData'
 import { formatDate } from '../../lib/utils'
+import { useFollows } from '../../lib/followStore'
 
 const SETTINGS_ROWS = [
   { icon: ShoppingBag, label: 'Order history', hint: 'Track past purchases', to: '/profile/orders' },
@@ -20,16 +21,17 @@ export default function ProfilePage() {
   const navigate = useNavigate()
   const [savedBrands, setSavedBrands] = useState([])
   const [rsvpEvents, setRsvpEvents] = useState([])
-  const [wishlist, setWishlist] = useState([])
+  const follows = useFollows()
+  // Followed brands are derived live from the follow store so the count
+  // stays in sync if the user follows/unfollows from another tab.
+  const followedBrands = MOCK_BRANDS.filter(b => follows.isFollowing(b.id))
 
   useEffect(() => {
     if (!user) { navigate('/auth/login'); return }
     const saved = JSON.parse(localStorage.getItem(`saves_${user?.id}`) || '[]')
     const rsvps = JSON.parse(localStorage.getItem(`rsvps_${user?.id}`) || '[]')
-    const wish = JSON.parse(localStorage.getItem(`wishlist_${user?.id}`) || '[]')
     setSavedBrands(MOCK_BRANDS.filter(b => saved.includes(b.id)))
     setRsvpEvents(MOCK_EVENTS.filter(e => rsvps.includes(e.id)))
-    setWishlist(wish)
   }, [user, navigate])
 
   async function handleSignOut() {
@@ -39,7 +41,7 @@ export default function ProfilePage() {
 
   if (!profile) return null
 
-  const isEmpty = savedBrands.length === 0 && rsvpEvents.length === 0 && wishlist.length === 0
+  const isEmpty = savedBrands.length === 0 && rsvpEvents.length === 0 && followedBrands.length === 0
 
   return (
     <div className="pb-24 bg-[#FAF6EE] min-h-screen">
@@ -59,12 +61,12 @@ export default function ProfilePage() {
             <p className="text-xs text-[#8B7355] mt-2">{user?.email}</p>
 
             <div className="flex gap-2 mt-4">
-              <button className="px-4 py-2 rounded-xl bg-white border border-[#E8DDC8] text-[13px] font-semibold text-ink hover:bg-[#F0E7D5] transition-colors">
+              <button className="px-4 py-2 rounded-xl bg-white border border-[#E8DDC8] text-[13px] font-semibold text-ink hover:bg-[#F0E7D5] active:scale-[0.97] transition-all duration-150">
                 Edit profile
               </button>
               <button
                 onClick={handleSignOut}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-accent/10 text-accent text-[13px] font-semibold hover:bg-accent hover:text-white transition-colors"
+                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-accent/10 text-accent text-[13px] font-semibold hover:bg-accent hover:text-white active:scale-[0.97] transition-all duration-150"
               >
                 <LogOut size={14} /> Sign out
               </button>
@@ -73,19 +75,19 @@ export default function ProfilePage() {
         </div>
       </motion.div>
 
-      {/* Stats */}
+      {/* Stats — Saved / Following / RSVPs match real localStorage stores */}
       <div className="grid grid-cols-3 gap-2 px-4 -mt-3 relative z-10 stagger-in">
         <div className="paper-card rounded-2xl p-3 text-center">
           <p className="font-display font-semibold text-accent text-xl">{savedBrands.length}</p>
           <p className="text-[10px] text-[#8B7355] uppercase tracking-wider mt-0.5">Saved</p>
         </div>
         <div className="paper-card rounded-2xl p-3 text-center">
-          <p className="font-display font-semibold text-accent text-xl">{rsvpEvents.length}</p>
-          <p className="text-[10px] text-[#8B7355] uppercase tracking-wider mt-0.5">RSVPs</p>
+          <p className="font-display font-semibold text-accent text-xl">{followedBrands.length}</p>
+          <p className="text-[10px] text-[#8B7355] uppercase tracking-wider mt-0.5">Following</p>
         </div>
         <div className="paper-card rounded-2xl p-3 text-center">
-          <p className="font-display font-semibold text-accent text-xl">{wishlist.length}</p>
-          <p className="text-[10px] text-[#8B7355] uppercase tracking-wider mt-0.5">Wishlist</p>
+          <p className="font-display font-semibold text-accent text-xl">{rsvpEvents.length}</p>
+          <p className="text-[10px] text-[#8B7355] uppercase tracking-wider mt-0.5">RSVPs</p>
         </div>
       </div>
 
@@ -149,21 +151,28 @@ export default function ProfilePage() {
           </div>
         )}
 
-        {/* Wishlist */}
-        {wishlist.length > 0 && (
+        {/* Following — the brands the user has hit Follow on across the app */}
+        {followedBrands.length > 0 && (
           <div>
             <h2 className="font-display text-lg font-semibold text-ink mb-3 flex items-center gap-1.5">
-              <ShoppingBag size={16} className="text-accent" /> Your wishlist
+              <UserPlus size={16} className="text-accent" /> Following
             </h2>
-            <div className="grid grid-cols-3 gap-2">
-              {wishlist.map(item => (
-                <div key={item.id} className="paper-card rounded-xl overflow-hidden">
-                  {item.images?.[0] && <img src={item.images[0]} alt="" className="w-full aspect-square object-cover" />}
-                  <div className="p-1.5">
-                    <p className="text-[11px] font-semibold text-ink truncate">{item.name}</p>
-                    <p className="text-[11px] text-accent font-display font-semibold">${item.price}</p>
+            <div className="space-y-2">
+              {followedBrands.map(brand => (
+                <Link
+                  key={brand.id}
+                  to={`/brand/${brand.slug}`}
+                  className="paper-card rounded-2xl p-3 flex items-center gap-3 hover:shadow-warm-lg active:scale-[0.99] transition-all duration-150 group"
+                >
+                  <img src={brand.logo_url} alt="" className="w-12 h-12 rounded-xl object-cover ring-1 ring-[#E8DDC8]" />
+                  <div className="flex-1 min-w-0">
+                    <p className="font-semibold text-sm text-ink truncate group-hover:text-accent transition-colors">{brand.name}</p>
+                    <p className="text-xs text-[#8B7355] truncate">{brand.tagline}</p>
                   </div>
-                </div>
+                  <span className="text-[10px] font-bold uppercase tracking-wider text-accent bg-accent/10 px-2.5 py-1 rounded-full">
+                    Following
+                  </span>
+                </Link>
               ))}
             </div>
           </div>

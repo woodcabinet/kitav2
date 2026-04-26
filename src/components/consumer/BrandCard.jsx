@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom'
-import { CheckCircle, MapPin } from 'lucide-react'
-import { useState } from 'react'
+import { CheckCircle, MapPin, Check } from 'lucide-react'
+import { motion } from 'framer-motion'
 import { cn, formatNumber } from '../../lib/utils'
 import { CategoryBadge } from '../shared/Badge'
 import { Avatar } from '../shared/Avatar'
-import { Button } from '../shared/Button'
+import { useFollows } from '../../lib/followStore'
 
 export function BrandCard({ brand, compact = false }) {
-  const [followed, setFollowed] = useState(false)
+  const follows = useFollows()
+  const followed = follows.isFollowing(brand?.id)
 
   if (compact) {
     return (
@@ -50,17 +51,19 @@ export function BrandCard({ brand, compact = false }) {
               <Avatar src={brand.logo_url} name={brand.name} size="lg" className="rounded-2xl" />
             </div>
           </Link>
-          <button
-            onClick={() => setFollowed(f => !f)}
+          <motion.button
+            whileTap={{ scale: 0.94 }}
+            onClick={(e) => { e.preventDefault(); e.stopPropagation(); follows.toggle(brand) }}
+            aria-pressed={followed}
             className={cn(
-              'text-xs font-semibold px-4 py-1.5 rounded-xl border transition-all',
+              'inline-flex items-center gap-1 text-xs font-semibold px-4 py-1.5 rounded-xl border transition-all duration-150 active:scale-[0.97]',
               followed
-                ? 'border-gray-300 text-[#6B5744]'
-                : 'border-[#D94545] text-[#D94545] hover:bg-[#D94545] hover:text-white'
+                ? 'border-[#E8DDC8] bg-[#FAF6EE] text-[#6B5744]'
+                : 'border-accent text-accent hover:bg-accent hover:text-white shadow-warm',
             )}
           >
-            {followed ? 'Following' : 'Follow'}
-          </button>
+            {followed ? <><Check size={12} /> Following</> : 'Follow'}
+          </motion.button>
         </div>
 
         <Link to={`/brand/${brand.slug}`}>

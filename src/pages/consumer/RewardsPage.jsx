@@ -124,9 +124,9 @@ export default function RewardsPage() {
                 <p className="text-[11px] text-[#8B7355] mt-0.5">{reward.brand}</p>
                 <button
                   disabled={!canRedeem}
-                  className={`mt-2.5 w-full py-1.5 rounded-xl text-xs font-semibold transition-all ${
+                  className={`mt-2.5 w-full py-1.5 rounded-xl text-xs font-semibold transition-all duration-150 ${
                     canRedeem
-                      ? 'bg-accent hover:bg-accent-dark text-white'
+                      ? 'bg-accent hover:bg-accent-dark text-white shadow-warm active:scale-[0.97]'
                       : 'bg-[#F0E7D5] text-[#A89880] cursor-not-allowed'
                   }`}
                 >
