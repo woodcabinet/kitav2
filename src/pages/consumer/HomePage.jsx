@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { Zap, TrendingUp, MapPin, Coffee, Sparkles, Check } from 'lucide-react'
 import { PostCard } from '../../components/consumer/PostCard'
 import { EventCard } from '../../components/consumer/EventCard'
@@ -8,6 +8,14 @@ import { MOCK_POSTS, MOCK_BRANDS, MOCK_EVENTS, MOCK_DROPS } from '../../data/moc
 import { useFollows } from '../../lib/followStore'
 
 const FILTERS = ['All', 'Following', 'Fashion', 'Food & Drink', 'Lifestyle', 'Beauty']
+
+// Map UI label → brand.category slug
+const FILTER_TO_CATEGORY = {
+  'Fashion':      'fashion',
+  'Food & Drink': 'food_beverage',
+  'Lifestyle':    'lifestyle',
+  'Beauty':       'beauty',
+}
 
 // Greeting by time of day — tiny homey touch
 function greeting() {
@@ -23,6 +31,16 @@ export default function HomePage() {
 
   // Find the drop happening soonest for the teaser
   const nextDrop = [...MOCK_DROPS].sort((a, b) => new Date(a.drop_at) - new Date(b.drop_at))[0]
+
+  // Actually filter posts by the active pill
+  const filteredPosts = useMemo(() => {
+    if (activeFilter === 'All') return MOCK_POSTS
+    if (activeFilter === 'Following') {
+      return MOCK_POSTS.filter(p => follows.isFollowing(p.brand?.id ?? p.brand_id))
+    }
+    const cat = FILTER_TO_CATEGORY[activeFilter]
+    return MOCK_POSTS.filter(p => p.brand?.category === cat)
+  }, [activeFilter, follows.ids])
 
   return (
     <div className="pb-20 bg-[#FAF6EE]">
@@ -46,7 +64,11 @@ export default function HomePage() {
             </div>
             <span className="text-[10px] text-[#6B5744] w-14 text-center truncate font-medium">Explore</span>
           </Link>
-          {MOCK_BRANDS.map(brand => {
+          {MOCK_BRANDS.filter(b =>
+            activeFilter === 'All' ? true
+            : activeFilter === 'Following' ? follows.isFollowing(b.id)
+            : b.category === FILTER_TO_CATEGORY[activeFilter]
+          ).map(brand => {
             const followed = follows.isFollowing(brand.id)
             return (
               <Link key={brand.id} to={`/brand/${brand.slug}`} className="flex flex-col items-center gap-1.5 flex-shrink-0 hover-wiggle">
@@ -132,15 +154,51 @@ export default function HomePage() {
 
       {/* Main feed */}
       <div className="px-1">
-        <div className="flex items-center gap-1.5 mb-2 px-4">
-          <Coffee size={14} className="text-accent" />
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#8B7355]">Your Feed</span>
+        <div className="flex items-center justify-between mb-2 px-4">
+          <div className="flex items-center gap-1.5">
+            <Coffee size={14} className="text-accent" />
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#8B7355]">
+              {activeFilter === 'All' ? 'Your Feed' : activeFilter}
+            </span>
+            <span className="text-xs text-[#C4B49A]">{filteredPosts.length} posts</span>
+          </div>
         </div>
-        <div className="space-y-1">
-          {MOCK_POSTS.map(post => (
-            <PostCard key={post.id} post={post} />
-          ))}
-        </div>
+
+        <AnimatePresence mode="wait">
+          {filteredPosts.length > 0 ? (
+            <motion.div
+              key={activeFilter}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="space-y-1"
+            >
+              {filteredPosts.map(post => (
+                <PostCard key={post.id} post={post} />
+              ))}
+            </motion.div>
+          ) : (
+            <motion.div
+              key="empty"
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mx-4 paper-card rounded-3xl p-8 text-center"
+            >
+              <Coffee size={28} className="text-[#C4B49A] mx-auto mb-3 animate-breathe" />
+              <p className="font-display font-semibold text-ink">
+                {activeFilter === 'Following'
+                  ? 'Follow some brands first'
+                  : `No ${activeFilter} posts yet`}
+              </p>
+              <p className="text-sm text-[#6B5744] mt-1">
+                {activeFilter === 'Following'
+                  ? 'Hit Follow on any brand to see their posts here.'
+                  : 'Check back soon — more local brands are joining.'}
+              </p>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
 
       {/* Discover more prompt */}
