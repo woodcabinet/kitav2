@@ -113,15 +113,15 @@ export function EventCard({ event, compact = false }) {
           onClick={() => setRsvped(r => !r)}
           disabled={isSoldOut && !rsvped}
           className={cn(
-            'w-full py-2.5 rounded-xl text-sm font-semibold transition-all',
+            'w-full h-11 rounded-full text-sm font-semibold transition-all inline-flex items-center justify-center gap-1.5',
             isSoldOut && !rsvped
               ? 'bg-gray-100 text-[#8B7355] cursor-not-allowed'
               : rsvped
                 ? 'bg-green-50 text-green-600 border border-green-200'
-                : 'bg-accent text-white hover:bg-accent-dark'
+                : 'bg-accent text-white hover:bg-accent-dark active:scale-[0.97]'
           )}
         >
-          {isSoldOut && !rsvped ? 'Sold Out' : rsvped ? (<span className="inline-flex items-center gap-1"><Check size={14} /> Going</span>) : 'RSVP Now'}
+          {isSoldOut && !rsvped ? 'Sold Out' : rsvped ? <><Check size={14} /> Going</> : 'RSVP Now'}
         </button>
       </div>
     </div>

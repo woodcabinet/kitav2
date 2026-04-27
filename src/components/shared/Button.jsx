@@ -28,11 +28,11 @@ const VARIANTS = {
 // px is wide so text never touches the pill edge.
 // py + min-h together lock the height independent of content.
 const SIZES = {
-  xs: 'h-7  px-3.5 text-[11px] font-semibold gap-1   [&_svg]:w-3   [&_svg]:h-3',
-  sm: 'h-8  px-4   text-xs     font-semibold gap-1.5 [&_svg]:w-3.5 [&_svg]:h-3.5',
-  md: 'h-10 px-5   text-[13px] font-semibold gap-1.5 [&_svg]:w-4   [&_svg]:h-4',
-  lg: 'h-11 px-6   text-sm     font-semibold gap-2   [&_svg]:w-4   [&_svg]:h-4',
-  xl: 'h-13 px-7   text-[15px] font-semibold gap-2   [&_svg]:w-5   [&_svg]:h-5',
+  xs: 'h-7  px-4   text-[11px] font-semibold gap-1   [&_svg]:w-3   [&_svg]:h-3',
+  sm: 'h-9  px-5   text-xs     font-semibold gap-1.5 [&_svg]:w-3.5 [&_svg]:h-3.5',
+  md: 'h-10 px-6   text-[13px] font-semibold gap-1.5 [&_svg]:w-4   [&_svg]:h-4',
+  lg: 'h-11 px-7   text-sm     font-semibold gap-2   [&_svg]:w-4   [&_svg]:h-4',
+  xl: 'h-12 px-8   text-[15px] font-semibold gap-2   [&_svg]:w-5   [&_svg]:h-5',
 }
 
 export function Button({

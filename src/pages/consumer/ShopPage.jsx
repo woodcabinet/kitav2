@@ -76,7 +76,7 @@ export default function ShopPage() {
               key={cat.id}
               onClick={() => setActiveCategory(cat.id)}
               whileTap={{ scale: 0.94 }}
-              className={`flex-shrink-0 px-4 py-2 rounded-full text-xs font-semibold transition-all ${
+              className={`flex-shrink-0 h-9 px-5 rounded-full text-xs font-semibold transition-all whitespace-nowrap ${
                 active
                   ? 'bg-ink text-cream shadow-warm'
                   : 'paper-card text-[#6B5744] hover:text-ink'
