@@ -56,10 +56,10 @@ export function BrandCard({ brand, compact = false }) {
             onClick={(e) => { e.preventDefault(); e.stopPropagation(); follows.toggle(brand) }}
             aria-pressed={followed}
             className={cn(
-              'inline-flex items-center gap-1 text-xs font-semibold px-4 py-1.5 rounded-xl border transition-all duration-150 active:scale-[0.97]',
+              'h-9 px-4 inline-flex items-center gap-1.5 rounded-full text-xs font-semibold transition-all duration-150',
               followed
-                ? 'border-[#E8DDC8] bg-[#FAF6EE] text-[#6B5744]'
-                : 'border-accent text-accent hover:bg-accent hover:text-white shadow-warm',
+                ? 'bg-[#F0E7D5] text-[#6B5744] hover:bg-[#E8DDC8]'
+                : 'bg-accent text-white hover:bg-accent-dark shadow-warm',
             )}
           >
             {followed ? <><Check size={12} /> Following</> : 'Follow'}

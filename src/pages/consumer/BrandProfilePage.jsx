@@ -124,10 +124,10 @@ export default function BrandProfilePage() {
             <motion.button
               whileTap={{ scale: 0.96 }}
               onClick={() => follows.toggle(brand)}
-              className={`px-5 py-2 rounded-2xl text-sm font-semibold transition-colors shadow-warm ${
+              className={`h-10 px-5 rounded-full text-sm font-semibold transition-all duration-150 shadow-warm ${
                 followed
-                  ? 'paper-card text-[#6B5744]'
-                  : 'bg-accent hover:bg-accent-dark text-cream animate-breathe'
+                  ? 'bg-[#F0E7D5] text-[#6B5744] hover:bg-[#E8DDC8]'
+                  : 'bg-accent hover:bg-accent-dark text-white'
               }`}
               aria-pressed={followed}
             >

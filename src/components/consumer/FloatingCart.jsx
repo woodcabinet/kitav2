@@ -186,7 +186,7 @@ export function FloatingCart() {
                   <Link
                     to="/checkout"
                     onClick={() => setOpen(false)}
-                    className="block w-full text-center bg-accent hover:bg-[#a85225] text-white font-semibold py-3.5 rounded-2xl shadow-warm"
+                    className="block w-full text-center bg-accent hover:bg-accent-dark text-white font-semibold py-3.5 rounded-full shadow-warm transition-colors"
                   >
                     Checkout
                   </Link>

@@ -155,7 +155,7 @@ export default function HomePage() {
         <MapPin size={26} className="text-accent mx-auto mb-2 relative" />
         <p className="font-display font-semibold text-lg text-ink mb-1 relative">Discover more local brands</p>
         <p className="text-sm text-[#6B5744] mb-4 relative">120+ Singapore makers and growing daily.</p>
-        <Link to="/discover" className="inline-block bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-6 py-2.5 rounded-xl shadow-warm transition-colors relative">
+        <Link to="/discover" className="inline-block bg-accent hover:bg-accent-dark text-white text-sm font-semibold px-6 py-2.5 rounded-full shadow-warm transition-colors relative">
           Explore Brands →
         </Link>
       </motion.div>
