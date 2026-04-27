@@ -65,14 +65,13 @@ export function ProductCard({ product }) {
             )}
           </div>
           {!isOutOfStock && (
-            <motion.button
-              whileTap={{ scale: 0.88 }}
+            <button
               onClick={(e) => { e.preventDefault(); e.stopPropagation(); addToCart(product) }}
-              className="w-9 h-9 bg-accent rounded-full flex items-center justify-center hover:bg-accent-dark transition-colors shadow-warm"
+              className="w-8 h-8 bg-accent rounded-xl flex items-center justify-center hover:bg-[#a85225] active:scale-90 transition-all"
               aria-label="Add to cart"
             >
-              <ShoppingBag size={15} className="text-white" />
-            </motion.button>
+              <ShoppingBag size={14} className="text-white" />
+            </button>
           )}
         </div>
       </div>

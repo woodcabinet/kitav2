@@ -579,7 +579,7 @@ function DropFullCard({ drop }) {
           </div>
         )}
         <button onClick={() => { setHyped(h => !h); setHypers(c => hyped ? c - 1 : c + 1) }}
-          className="absolute top-3 right-3 h-9 flex items-center gap-1.5 bg-[#FAF6EE]/20 backdrop-blur-sm text-white rounded-full px-4">
+          className="absolute top-3 right-3 flex items-center gap-1.5 bg-[#FAF6EE]/20 backdrop-blur-sm text-white rounded-full px-3 py-1.5">
           <Flame size={14} className={hyped ? 'fill-orange-400 text-orange-400' : ''} />
           <span className="text-xs font-semibold">{formatNumber(hypers)}</span>
         </button>
@@ -681,16 +681,16 @@ export default function DiscoverPage() {
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-2">
+        <div className="flex gap-1">
           {TABS.map(({ id, label, icon: Icon }) => (
             <button
               key={id}
               onClick={() => setActiveTab(id)}
               className={cn(
-                'h-9 flex items-center gap-1.5 px-5 rounded-full text-xs font-semibold transition-all whitespace-nowrap',
+                'flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all',
                 activeTab === id
-                  ? 'bg-[#D94545] text-white shadow-warm'
-                  : 'bg-[#F0E7D5] text-[#6B5744] hover:bg-[#E8DDC8]'
+                  ? 'bg-[#D94545] text-white'
+                  : 'bg-[#F0E7D5] text-[#6B5744] hover:bg-gray-200'
               )}
             >
               <Icon size={13} />
@@ -708,10 +708,10 @@ export default function DiscoverPage() {
               key={cat}
               onClick={() => setActiveCategory(cat)}
               className={cn(
-                'flex-shrink-0 h-8 px-4 rounded-full text-xs font-medium transition-all whitespace-nowrap',
+                'flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-medium transition-all',
                 activeCategory === cat
                   ? 'bg-[#1A1513] text-white'
-                  : 'bg-[#F0E7D5] text-[#6B5744] hover:bg-[#E8DDC8]'
+                  : 'bg-[#F0E7D5] text-[#6B5744] hover:bg-gray-200'
               )}
             >
               {cat === 'all' ? 'All' : CATEGORY_LABELS[cat]}
