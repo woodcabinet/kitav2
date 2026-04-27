@@ -61,12 +61,12 @@ export default function ProfilePage() {
             <p className="text-xs text-[#8B7355] mt-2">{user?.email}</p>
 
             <div className="flex gap-2 mt-4">
-              <button className="px-4 py-2 rounded-xl bg-white border border-[#E8DDC8] text-[13px] font-semibold text-ink hover:bg-[#F0E7D5] active:scale-[0.97] transition-all duration-150">
+              <button className="px-5 py-2.5 rounded-xl bg-white border border-[#E8DDC8] text-[13px] font-semibold text-ink hover:bg-[#F0E7D5] active:scale-[0.97] transition-all duration-150">
                 Edit profile
               </button>
               <button
                 onClick={handleSignOut}
-                className="flex items-center gap-1.5 px-4 py-2 rounded-xl bg-accent/10 text-accent text-[13px] font-semibold hover:bg-accent hover:text-white active:scale-[0.97] transition-all duration-150"
+                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-xl bg-accent/10 text-accent text-[13px] font-semibold hover:bg-accent hover:text-white active:scale-[0.97] transition-all duration-150"
               >
                 <LogOut size={14} /> Sign out
               </button>

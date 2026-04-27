@@ -113,7 +113,7 @@ export function EventCard({ event, compact = false }) {
           onClick={() => setRsvped(r => !r)}
           disabled={isSoldOut && !rsvped}
           className={cn(
-            'w-full py-2.5 rounded-xl text-sm font-semibold transition-all',
+            'w-full py-3 rounded-xl text-sm font-semibold transition-all inline-flex items-center justify-center gap-1.5',
             isSoldOut && !rsvped
               ? 'bg-gray-100 text-[#8B7355] cursor-not-allowed'
               : rsvped

@@ -73,7 +73,7 @@ export default function HomePage() {
           <button
             key={f}
             onClick={() => setActiveFilter(f)}
-            className={`flex-shrink-0 px-3.5 py-1.5 rounded-full text-sm font-medium transition-all ${
+            className={`flex-shrink-0 px-4 py-2 rounded-full text-sm font-medium transition-all whitespace-nowrap ${
               activeFilter === f
                 ? 'bg-ink text-cream shadow-warm'
                 : 'bg-white text-[#6B5744] border border-[#E8DDC8] hover:bg-[#F0E7D5]'
@@ -104,7 +104,7 @@ export default function HomePage() {
               <p className="text-white font-display font-semibold text-[15px] truncate">{nextDrop.title}</p>
               <p className="text-white/70 text-xs truncate mt-0.5">{nextDrop.brand?.name}</p>
             </div>
-            <Link to="/discover" className="bg-accent hover:bg-accent-dark text-white text-xs font-bold px-4 py-2.5 rounded-xl flex-shrink-0 shadow-warm transition-colors">
+            <Link to="/discover" className="inline-flex items-center bg-accent hover:bg-accent-dark text-white text-xs font-bold px-5 py-2.5 rounded-xl flex-shrink-0 shadow-warm transition-colors whitespace-nowrap">
               Hype →
             </Link>
           </div>
