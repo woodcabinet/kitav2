@@ -4,23 +4,61 @@
 // Bottom-right on desktop, bottom-right above BottomNav on mobile.
 // Hides itself on cart-checkout pages where a permanent cart is shown.
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ShoppingBag, X, Minus, Plus, Trash2 } from 'lucide-react'
+import { ShoppingBag, X, Minus, Plus, Trash2, Check } from 'lucide-react'
 import { useCart, setQty, removeFromCart } from '../../lib/cartStore'
 import { formatCurrency } from '../../lib/utils'
 
 export function FloatingCart() {
   const { items, count, subtotal } = useCart()
   const [open, setOpen] = useState(false)
+  const [toast, setToast] = useState(null) // { name, brand }
   const location = useLocation()
+
+  // Listen for new-item-added events and flash a brief toast
+  useEffect(() => {
+    let timer
+    const handler = (e) => {
+      setToast(e.detail)
+      clearTimeout(timer)
+      timer = setTimeout(() => setToast(null), 2200)
+    }
+    window.addEventListener('cart:item-added', handler)
+    return () => {
+      window.removeEventListener('cart:item-added', handler)
+      clearTimeout(timer)
+    }
+  }, [])
 
   // Hide on dedicated cart/checkout routes (future)
   if (/^\/(cart|checkout)/.test(location.pathname)) return null
 
   return (
     <>
+      {/* "Added to cart" toast — pops above the FAB for 2 s */}
+      <AnimatePresence>
+        {toast && !open && (
+          <motion.div
+            key="cart-toast"
+            initial={{ opacity: 0, y: 12, scale: 0.92 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 8, scale: 0.92 }}
+            transition={{ type: 'spring', stiffness: 380, damping: 28 }}
+            className="fixed z-40 bottom-[7.5rem] right-4 md:bottom-20 md:right-6 bg-ink text-cream rounded-2xl px-3.5 py-2.5 shadow-warm-lg flex items-center gap-2.5 max-w-[230px]"
+          >
+            <span className="w-6 h-6 rounded-full bg-accent flex items-center justify-center flex-shrink-0">
+              <Check size={13} strokeWidth={2.5} />
+            </span>
+            <div className="min-w-0">
+              <p className="text-[12px] font-semibold truncate leading-tight">{toast.name}</p>
+              {toast.brand && <p className="text-[10px] text-cream/60 truncate leading-tight">{toast.brand}</p>}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* FAB — always visible on consumer screens so people know where the cart lives */}
       <AnimatePresence>
         {!open && (

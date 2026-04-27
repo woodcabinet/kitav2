@@ -1,12 +1,14 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { Heart, ShoppingBag, Zap } from 'lucide-react'
-import { cn, formatCurrency, formatCountdown } from '../../lib/utils'
+import { formatCurrency } from '../../lib/utils'
 import { Avatar } from '../shared/Avatar'
 import { addToCart } from '../../lib/cartStore'
+import { useWishlist } from '../../lib/wishlistStore'
 
 export function ProductCard({ product }) {
-  const [wishlisted, setWishlisted] = useState(false)
+  const wishlist = useWishlist()
+  const wishlisted = wishlist.isWishlisted(product?.id)
   const isDropItem = !!product.drop_at
   const isOutOfStock = product.stock === 0 && !product.unlimited_stock && !isDropItem
 
@@ -21,12 +23,17 @@ export function ProductCard({ product }) {
             </div>
         }
         {/* Wishlist */}
-        <button
-          onClick={() => setWishlisted(w => !w)}
-          className="absolute top-2 right-2 w-8 h-8 bg-white/90 rounded-full flex items-center justify-center shadow-sm"
+        <motion.button
+          whileTap={{ scale: 0.8 }}
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); wishlist.toggle(product) }}
+          aria-pressed={wishlisted}
+          className="absolute top-2 right-2 w-8 h-8 bg-white/90 backdrop-blur rounded-full flex items-center justify-center shadow-sm active:scale-90 transition-transform"
         >
-          <Heart size={16} className={wishlisted ? 'fill-red-500 text-red-500' : 'text-[#8B7355]'} />
-        </button>
+          <Heart
+            size={16}
+            className={wishlisted ? 'fill-accent text-accent' : 'text-[#8B7355]'}
+          />
+        </motion.button>
         {/* Drop badge */}
         {isDropItem && (
           <div className="absolute top-2 left-2 flex items-center gap-1 bg-accent text-white rounded-full px-2.5 py-1">

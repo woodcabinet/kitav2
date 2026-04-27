@@ -41,8 +41,11 @@ export function addToCart(product, qty = 1) {
     })
   }
   write(items)
-  // Only notify on first add — repeated +1 would spam the bell.
+  // Only notify / toast on first add — repeated +1 would spam.
   if (isNew) {
+    window.dispatchEvent(new CustomEvent('cart:item-added', {
+      detail: { name: product.name, brand: product.brand?.name ?? product.brand_name ?? null },
+    }))
     pushNotification({
       kind: 'order',
       title: 'Added to cart',

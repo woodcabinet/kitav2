@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Zap, TrendingUp, MapPin, Coffee, Sparkles } from 'lucide-react'
+import { Zap, TrendingUp, MapPin, Coffee, Sparkles, Check } from 'lucide-react'
 import { PostCard } from '../../components/consumer/PostCard'
 import { EventCard } from '../../components/consumer/EventCard'
 import { MOCK_POSTS, MOCK_BRANDS, MOCK_EVENTS, MOCK_DROPS } from '../../data/mockData'
-import { formatCurrency } from '../../lib/utils'
+import { useFollows } from '../../lib/followStore'
 
 const FILTERS = ['All', 'Following', 'Fashion', 'Food & Drink', 'Lifestyle', 'Beauty']
 
@@ -19,6 +19,7 @@ function greeting() {
 
 export default function HomePage() {
   const [activeFilter, setActiveFilter] = useState('All')
+  const follows = useFollows()
 
   // Find the drop happening soonest for the teaser
   const nextDrop = [...MOCK_DROPS].sort((a, b) => new Date(a.drop_at) - new Date(b.drop_at))[0]
@@ -45,14 +46,24 @@ export default function HomePage() {
             </div>
             <span className="text-[10px] text-[#6B5744] w-14 text-center truncate font-medium">Explore</span>
           </Link>
-          {MOCK_BRANDS.map(brand => (
-            <Link key={brand.id} to={`/brand/${brand.slug}`} className="flex flex-col items-center gap-1.5 flex-shrink-0 hover-wiggle">
-              <div className="w-14 h-14 rounded-2xl overflow-hidden ring-2 ring-accent ring-offset-2 ring-offset-[#FAF6EE]">
-                <img src={brand.logo_url} alt={brand.name} className="w-full h-full object-cover" />
-              </div>
-              <span className="text-[10px] text-[#6B5744] w-14 text-center truncate font-medium">{brand.name}</span>
-            </Link>
-          ))}
+          {MOCK_BRANDS.map(brand => {
+            const followed = follows.isFollowing(brand.id)
+            return (
+              <Link key={brand.id} to={`/brand/${brand.slug}`} className="flex flex-col items-center gap-1.5 flex-shrink-0 hover-wiggle">
+                <div className="relative">
+                  <div className={`w-14 h-14 rounded-2xl overflow-hidden ring-2 ring-offset-2 ring-offset-[#FAF6EE] transition-all ${followed ? 'ring-accent' : 'ring-[#D4C4AE]'}`}>
+                    <img src={brand.logo_url} alt={brand.name} className="w-full h-full object-cover" />
+                  </div>
+                  {followed && (
+                    <span className="absolute -bottom-1 -right-1 w-4.5 h-4.5 bg-accent rounded-full flex items-center justify-center ring-2 ring-[#FAF6EE]">
+                      <Check size={9} strokeWidth={3} className="text-white" />
+                    </span>
+                  )}
+                </div>
+                <span className={`text-[10px] w-14 text-center truncate font-medium transition-colors ${followed ? 'text-accent' : 'text-[#6B5744]'}`}>{brand.name}</span>
+              </Link>
+            )
+          })}
         </div>
       </div>
 
