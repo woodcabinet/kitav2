@@ -40,27 +40,31 @@ export default function HomePage() {
       {/* Stories / Brand Quick Access */}
       <div className="px-4 pt-3 pb-2">
         <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-2 stagger-in">
-          <Link to="/discover" className="flex flex-col items-center gap-1.5 flex-shrink-0 hover-wiggle">
-            <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center shadow-warm">
-              <Sparkles size={22} className="text-white" />
+          <Link to="/discover" className="flex flex-col items-center gap-2 flex-shrink-0">
+            <div className="w-[60px] h-[60px] rounded-full bg-gradient-to-br from-accent to-accent-dark flex items-center justify-center shadow-warm">
+              <Sparkles size={24} className="text-white" />
             </div>
-            <span className="text-[10px] text-[#6B5744] w-14 text-center truncate font-medium">Explore</span>
+            <span className="text-[10px] text-[#6B5744] w-[60px] text-center truncate font-medium">Explore</span>
           </Link>
           {MOCK_BRANDS.map(brand => {
             const followed = follows.isFollowing(brand.id)
             return (
-              <Link key={brand.id} to={`/brand/${brand.slug}`} className="flex flex-col items-center gap-1.5 flex-shrink-0 hover-wiggle">
+              <Link key={brand.id} to={`/brand/${brand.slug}`} className="flex flex-col items-center gap-2 flex-shrink-0">
                 <div className="relative">
-                  <div className={`w-14 h-14 rounded-2xl overflow-hidden ring-2 ring-offset-2 ring-offset-[#FAF6EE] transition-all ${followed ? 'ring-accent' : 'ring-[#D4C4AE]'}`}>
+                  <div className={`w-[60px] h-[60px] rounded-full overflow-hidden transition-all duration-200 ${
+                    followed
+                      ? 'ring-[3px] ring-accent ring-offset-2 ring-offset-[#FAF6EE]'
+                      : 'ring-2 ring-[#E0D5C4] ring-offset-2 ring-offset-[#FAF6EE]'
+                  }`}>
                     <img src={brand.logo_url} alt={brand.name} className="w-full h-full object-cover" />
                   </div>
                   {followed && (
-                    <span className="absolute -bottom-1 -right-1 w-4.5 h-4.5 bg-accent rounded-full flex items-center justify-center ring-2 ring-[#FAF6EE]">
-                      <Check size={9} strokeWidth={3} className="text-white" />
+                    <span className="absolute bottom-0 right-0 w-5 h-5 bg-accent rounded-full flex items-center justify-center ring-2 ring-[#FAF6EE]">
+                      <Check size={10} strokeWidth={3} className="text-white" />
                     </span>
                   )}
                 </div>
-                <span className={`text-[10px] w-14 text-center truncate font-medium transition-colors ${followed ? 'text-accent' : 'text-[#6B5744]'}`}>{brand.name}</span>
+                <span className={`text-[10px] w-[60px] text-center truncate font-medium transition-colors ${followed ? 'text-accent' : 'text-[#6B5744]'}`}>{brand.name}</span>
               </Link>
             )
           })}
@@ -73,7 +77,7 @@ export default function HomePage() {
           <button
             key={f}
             onClick={() => setActiveFilter(f)}
-            className={`flex-shrink-0 px-3.5 py-1.5 rounded-full text-sm font-medium transition-all ${
+            className={`flex-shrink-0 h-9 px-4 rounded-full text-[13px] font-medium transition-all whitespace-nowrap ${
               activeFilter === f
                 ? 'bg-ink text-cream shadow-warm'
                 : 'bg-white text-[#6B5744] border border-[#E8DDC8] hover:bg-[#F0E7D5]'
@@ -95,16 +99,16 @@ export default function HomePage() {
           <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink to-[#3a2d1f]" />
           <div className="absolute inset-0 opacity-40 bg-cover bg-center" style={{ backgroundImage: `url(${nextDrop.cover_url})` }} />
           <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/30" />
-          <div className="relative p-4 flex items-center justify-between gap-3">
+          <div className="relative px-5 py-4 flex items-center justify-between gap-4">
             <div className="min-w-0 flex-1">
-              <div className="flex items-center gap-1.5 mb-1">
+              <div className="flex items-center gap-1.5 mb-1.5">
                 <Zap size={12} className="text-accent" />
                 <span className="text-accent text-[10px] font-bold uppercase tracking-widest">Next Drop</span>
               </div>
-              <p className="text-white font-display font-semibold text-[15px] truncate">{nextDrop.title}</p>
-              <p className="text-white/70 text-xs truncate mt-0.5">{nextDrop.brand?.name}</p>
+              <p className="text-white font-display font-semibold text-[15px] leading-snug line-clamp-2">{nextDrop.title}</p>
+              <p className="text-white/60 text-xs mt-1">{nextDrop.brand?.name}</p>
             </div>
-            <Link to="/discover" className="bg-accent hover:bg-accent-dark text-white text-xs font-bold px-4 py-2.5 rounded-xl flex-shrink-0 shadow-warm transition-colors">
+            <Link to="/discover" className="h-9 px-5 rounded-full bg-accent hover:bg-accent-dark text-white text-xs font-bold flex-shrink-0 flex items-center shadow-warm transition-colors whitespace-nowrap">
               Hype →
             </Link>
           </div>
