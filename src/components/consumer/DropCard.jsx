@@ -93,7 +93,7 @@ export function DropCard({ drop }) {
         ) : (
           <Link
             to={`/brand/${drop.brand?.slug}`}
-            className="block w-full bg-accent hover:bg-accent-dark text-white text-sm font-semibold py-3 rounded-xl text-center transition-colors"
+            className="flex items-center justify-center w-full bg-accent hover:bg-accent-dark text-white text-sm font-semibold py-3 px-6 rounded-xl transition-colors"
           >
             Shop Now →
           </Link>

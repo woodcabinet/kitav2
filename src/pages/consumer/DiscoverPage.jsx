@@ -687,7 +687,7 @@ export default function DiscoverPage() {
               key={id}
               onClick={() => setActiveTab(id)}
               className={cn(
-                'flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all',
+                'flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold transition-all whitespace-nowrap',
                 activeTab === id
                   ? 'bg-[#D94545] text-white'
                   : 'bg-[#F0E7D5] text-[#6B5744] hover:bg-gray-200'
@@ -708,7 +708,7 @@ export default function DiscoverPage() {
               key={cat}
               onClick={() => setActiveCategory(cat)}
               className={cn(
-                'flex-shrink-0 px-3 py-1.5 rounded-full text-xs font-medium transition-all',
+                'flex-shrink-0 px-4 py-2 rounded-full text-xs font-medium transition-all whitespace-nowrap',
                 activeCategory === cat
                   ? 'bg-[#1A1513] text-white'
                   : 'bg-[#F0E7D5] text-[#6B5744] hover:bg-gray-200'
